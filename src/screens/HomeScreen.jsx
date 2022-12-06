@@ -5,6 +5,7 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls } from '@react-three/drei'
 import { useControls } from "leva"
 import Cylinder from '../components/Cylinder'
+import Cloud from '../components/Cloud'
 import { Vector3 } from 'three'
 import CameraControls from "../components/CameraControls"
 
@@ -43,11 +44,13 @@ const HomeScreen = () => {
         <CameraControls />
         {/* <axesHelper args={[60, 60, 60]} /> */}
         <color attach="background" args={[backgroundColor]} />
-        <fog attach="fog" args={[backgroundColor, 0, 50]} />
-        <OrbitControls target={cylinderCenter} />
+        <fog attach="fog" args={[backgroundColor, 0, 80]} />
+        <OrbitControls />
         <ambientLight intensity={0.4} />
         <directionalLight color="red" position={[0, 0, 5]} />
-        <Cylinder height={cylinderHeight} radius={radius} columns={9} numOfWordsByColumn={4} />
+        {/* <Cylinder height={cylinderHeight} radius={radius} columns={9} numOfWordsByColumn={4} /> */}
+        <Cloud count={8} radius={20} />
+
       </Canvas>
     </div>
   )

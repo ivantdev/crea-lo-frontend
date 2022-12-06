@@ -3,22 +3,23 @@ import * as THREE from "three"
 import Word from "./Word"
 import { useFrame } from "@react-three/fiber"
 import { interpolateColors } from "../utils"
+import randomWord from "random-words"
 
-const BLUE = 0x005af7
-const RED = 0xF06F5B
-const GREEN = 0xB8F02B
+const BLUE = 0x1a1a40
+const RED = 0x4c0027
+const GREEN = 0x1e5128
 
-function Cylinder({ height = 4, radius = 20, columns = 4, numOfWordsByColumn = 0 }) {
+function Cloud({ count = 4, radius = 20 }) {
     // Create a count x count random words with cylindrical distribution
     const words = useMemo(() => {
         const temp = []
-        const cylindrical = new THREE.Cylindrical()
-        const thetaSpan = (Math.PI * 2) / columns
-        const heightSpan = height / numOfWordsByColumn
-        for (let i = 1; i < columns + 1; i++)
-            for (let j = 0; j < numOfWordsByColumn; j++) temp.push([new THREE.Vector3().setFromCylindrical(cylindrical.set(radius, thetaSpan * i, j * heightSpan)), "Hola"])
+        const spherical = new THREE.Spherical()
+        const phiSpan = Math.PI / (count + 1)
+        const thetaSpan = (Math.PI * 2) / count
+        for (let i = 1; i < count + 1; i++)
+            for (let j = 0; j < count; j++) temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), randomWord()])
         return temp
-    }, [height, radius, columns, numOfWordsByColumn])
+    }, [count, radius])
 
     // Lerp background color based on angle
     useFrame(({ camera, scene }) => {
@@ -63,4 +64,4 @@ function Cylinder({ height = 4, radius = 20, columns = 4, numOfWordsByColumn = 0
     return words.map(([pos, word], index) => <Word key={index} position={pos} children={word} />)
 }
 
-export default Cylinder
+export default Cloud
