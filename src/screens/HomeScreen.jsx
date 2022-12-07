@@ -9,6 +9,7 @@ import Cloud from '../components/Cloud'
 import { Vector3 } from 'three'
 import CameraControls from "../components/CameraControls"
 import Connections from '../components/Connections'
+import DynamicBackground from '../components/DynamicBackground'
 
 const HomeScreen = () => {
   const [pasoTags, setPasoTags] = React.useState([])
@@ -42,6 +43,7 @@ const HomeScreen = () => {
   return (
     <div id="canvas-container">
       <Canvas className='canvas' camera={{ position: [0, 0, 0] }}>
+        <DynamicBackground />
         <CameraControls />
         {/* <axesHelper args={[60, 60, 60]} /> */}
         <color attach="background" args={[backgroundColor]} />
@@ -51,8 +53,8 @@ const HomeScreen = () => {
         <ambientLight intensity={0.4} />
         <directionalLight color="red" position={[0, 0, 5]} />
         {/* <Cylinder height={cylinderHeight} radius={radius} columns={9} numOfWordsByColumn={4} /> */}
-        <Cloud count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
-        <Connections count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+        <Cloud count={49} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+        <Connections count={49} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
       </Canvas>
     </div>
   )
