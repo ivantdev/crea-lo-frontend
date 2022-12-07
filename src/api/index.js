@@ -6,4 +6,9 @@ const getTagsByCategory = async (category) => {
     return data
 }
 
-export { getTagsByCategory }
+const getTagContent = async (tag) => {
+    const data = await axios.get(`${BASE_URL}/api/tags?populate=%2A&filters[name][$eq]=${tag}`)
+    return data
+}
+
+export { getTagsByCategory, getTagContent }

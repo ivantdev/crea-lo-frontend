@@ -1,7 +1,8 @@
 import * as THREE from "three"
 import React, { useEffect, useState, useRef } from "react"
-import { useFrame, useThree } from "@react-three/fiber"
-import { Html, Text } from "@react-three/drei"
+import { useFrame } from "@react-three/fiber"
+import { Text } from "@react-three/drei"
+import { useNavigate } from 'react-router-dom'
 
 function Word({ children, ...props }) {
     const color = new THREE.Color()
@@ -27,27 +28,10 @@ function Word({ children, ...props }) {
 
     })
 
-    function handleOnClick() {
-        if (clicked) {
-            setClicked(false)
-        } else {
-            setClicked(true)
-        }
-    }
+    const navigate = useNavigate()
 
+    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => navigate(`/tags/${children}`)} {...props} {...fontProps} children={children} />
 
-    return (
-        <group>
-            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleOnClick} {...props} {...fontProps} children={children} />
-            <Html center>
-                {clicked ? <div className="word-info">
-                    <h1>{children}</h1>
-                    <p>Definition</p>
-                    <p>Example</p>
-                </div> : null}
-            </Html>
-        </group>
-    )
 }
 
 export default Word
