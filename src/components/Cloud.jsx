@@ -3,7 +3,7 @@ import * as THREE from "three"
 import Word from "./Word"
 
 function Cloud({ count = 6, radius = 20, tags = [] }) {
-    // Creates a cloud of count tags with spherical distribution
+    // Creates a cloud of count x count tags with spherical distribution
     const words = useMemo(() => {
         const temp = []
         const spherical = new THREE.Spherical()
