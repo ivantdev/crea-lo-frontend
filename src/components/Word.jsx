@@ -1,7 +1,7 @@
 import * as THREE from "three"
 import React, { useEffect, useState, useRef } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
-import { Text } from "@react-three/drei"
+import { Html, Text } from "@react-three/drei"
 
 function Word({ children, ...props }) {
     const color = new THREE.Color()
@@ -36,7 +36,18 @@ function Word({ children, ...props }) {
     }
 
 
-    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleOnClick} {...props} {...fontProps} children={children} />
+    return (
+        <group>
+            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={handleOnClick} {...props} {...fontProps} children={children} />
+            <Html center>
+                {clicked ? <div className="word-info">
+                    <h1>{children}</h1>
+                    <p>Definition</p>
+                    <p>Example</p>
+                </div> : null}
+            </Html>
+        </group>
+    )
 }
 
 export default Word
