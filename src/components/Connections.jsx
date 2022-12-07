@@ -4,18 +4,17 @@ import { Line } from "@react-three/drei"
 
 const Connections = ({ count = 6, tags = [], radius = 20 }) => {
 
-    const countSquared = Math.round(Math.sqrt(count))
     const mapIdToVector3 = useMemo(() => {
         const temp = new Map()
         const spherical = new THREE.Spherical()
-        const phiSpan = Math.PI / (countSquared + 1)
-        const thetaSpan = (Math.PI * 2) / countSquared
+        const phiSpan = Math.PI / (count + 1)
+        const thetaSpan = (Math.PI * 2) / count
         let tagIndex = 0
         if (tags.length === 0) {
             return temp
         }
-        for (let i = 1; i < countSquared + 1; i++)
-            for (let j = 0; j < countSquared; j++) {
+        for (let i = 1; i < count + 1; i++)
+            for (let j = 0; j < count; j++) {
                 temp.set(tags[tagIndex++ % tags.length].id, new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)))
             }
         return temp
@@ -27,12 +26,6 @@ const Connections = ({ count = 6, tags = [], radius = 20 }) => {
         const points = []
         points.push(mapIdToVector3.get(tag.id))
         points.push(mapIdToVector3.get(tag.attributes.next.data.id))
-        if (!mapIdToVector3.get(tag.id)) {
-            console.log(tag.attributes.name)
-        }
-        if (!mapIdToVector3.get(tag.attributes.next.data.id)) {
-            console.log(tag.attributes.next.data.name)
-        }
         return <Line key={index} points={points} dashed color="white"></Line>
     })
 }

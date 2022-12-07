@@ -12,6 +12,7 @@
     "@react-three/drei": "^9.46.2",
     "@react-three/fiber": "^8.9.1",
     "axios": "^1.2.1",
+    "camera-controls": "^1.37.4",
     "leva": "^0.9.34",
     "random-words": "^1.2.0",
     "react": "^18.2.0",

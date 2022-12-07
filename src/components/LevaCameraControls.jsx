@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { useThree } from "@react-three/fiber"
 import { useControls } from "leva"
 
-const CameraControls = () => {
+const LevaCameraControls = () => {
     const { camera } = useThree()
     const { cameraPosition } = useControls({ cameraPosition: { x: 0, y: 5, z: 30 } })
     useEffect(() => {
@@ -12,4 +12,4 @@ const CameraControls = () => {
     }, [cameraPosition])
 }
 
-export default CameraControls
+export default LevaCameraControls
