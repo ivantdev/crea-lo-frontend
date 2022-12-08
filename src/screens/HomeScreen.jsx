@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, Suspense } from 'react'
 import "../css/HomeScreen.css"
 import { getTagsByCategory } from "../api"
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, FlyControls } from '@react-three/drei'
+import { OrbitControls, FlyControls, Loader } from '@react-three/drei'
 import { useControls } from "leva"
 import Cloud from '../components/Cloud'
 import LevaCameraControls from "../components/LevaCameraControls"
@@ -35,15 +35,18 @@ const HomeScreen = () => {
   return (
     <div id="canvas-container">
       <Canvas className='canvas' camera={{ position: [0, 0, 0] }}>
-        <DynamicBackground />
-        <LevaCameraControls />
-        <fog attach="fog" near={0} far={farFog} />
-        <OrbitControls dampingFactor={dampingFactor} />
-        {/* <FlyControls movementSpeed={10} rollSpeed={0.6} /> */}
-        <ambientLight intensity={0.4} />
-        <Cloud count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
-        <Connections count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+        <Suspense fallback={null}>
+          <DynamicBackground />
+          <LevaCameraControls />
+          <fog attach="fog" near={0} far={farFog} />
+          <OrbitControls dampingFactor={dampingFactor} />
+          {/* <FlyControls movementSpeed={10} rollSpeed={0.6} /> */}
+          <ambientLight intensity={0.4} />
+          <Cloud count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+          <Connections count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+        </Suspense>
       </Canvas>
+      <Loader />
     </div>
   )
 }
