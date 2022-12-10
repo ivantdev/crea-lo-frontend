@@ -11,19 +11,19 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
-    "@mui/icons-material": "^5.10.16",
-    "@mui/lab": "^5.0.0-alpha.111",
     "@mui/material": "^5.10.17",
+    "@react-spring/three": "^9.5.5",
+    "@react-spring/web": "^9.5.5",
     "@react-three/drei": "^9.46.2",
     "@react-three/fiber": "^8.9.1",
     "axios": "^1.2.1",
     "camera-controls": "^1.37.4",
     "leva": "^0.9.34",
-    "random-words": "^1.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-indiana-drag-scroll": "^2.2.0",
     "react-router-dom": "^6.4.4",
+    "react-use-measure": "^2.1.1",
+    "styled-components": "^5.3.6",
     "three": "^0.147.0"
   },
   "devDependencies": {

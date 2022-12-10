@@ -1,2 +1,3 @@
 import useScreenSize from "./useScreenSize";
-export { useScreenSize };
+import usePrevious from "./usePrevious";
+export { useScreenSize, usePrevious };

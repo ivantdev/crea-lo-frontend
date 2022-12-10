@@ -1,20 +1,27 @@
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, BrowserRouter } from 'react-router-dom'
 import ThemeContextProvider from './contexts/ThemeContext'
-import { HomeScreen, TagScreen, EditorialScreen, GlossaryScreen, NotFound } from "./screens"
-function App() {
+import HomeScreen from './screens/HomeScreen'
+import EditorialScreen from './screens/EditorialScreen'
+import GlossaryScreen from './screens/GlossaryScreen'
+import TagScreen from './screens/TagScreen'
+import NotFound from './screens/NotFound'
 
+function App() {
   return (
     <ThemeContextProvider>
-      <Routes location={location}>
-        <Route path="/" element={<HomeScreen />} />
-        <Route path="/editorial" element={<EditorialScreen />} />
-        <Route path="/glossary" element={<GlossaryScreen />} />
-        <Route path="/tags/:tag" element={<TagScreen />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<HomeScreen />} />
+          <Route path="/editorial" element={<EditorialScreen />} />
+          <Route path="/glossary" element={<GlossaryScreen />} />
+          <Route path="/tags/:tag" element={<TagScreen />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeContextProvider>
   )
 }
 
 export default App
+

@@ -1,35 +1,67 @@
-import React from 'react'
-import ScrollContainer from 'react-indiana-drag-scroll'
-import TreeItem from '@mui/lab/TreeItem'
-import TreeView from '@mui/lab/TreeView';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-const GlossaryScreen = () => {
+import * as React from 'react';
+import Tree from '../components/Tree';
+import styled from 'styled-components'
+import '../App.css'
+import { Globals } from "@react-spring/shared";
 
+
+Globals.assign({
+    frameLoop: "always",
+});
+
+export const Container = styled('div')`
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: ui-monospace, monospace;
+  font-size: 14px;
+  line-height: 21px;
+  --webkit-user-select: none;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: center;
+`
+
+const GlossaryScreen = () => {
     return (
-        <ScrollContainer className='scroll-container container'>
-            <TreeView
-                aria-label="multi-select"
-                defaultCollapseIcon={<ExpandMoreIcon />}
-                defaultExpandIcon={<ChevronRightIcon />}
-                multiSelect
-                sx={{ height: 216, flexGrow: 1, maxWidth: 400, overflowY: 'auto' }}
-            >
-                <TreeItem nodeId="1" label="Applications">
-                    <TreeItem nodeId="2" label="Calendar" />
-                    <TreeItem nodeId="3" label="Chrome" />
-                    <TreeItem nodeId="4" label="Webstorm" />
-                </TreeItem>
-                <TreeItem nodeId="5" label="Documents">
-                    <TreeItem nodeId="6" label="MUI">
-                        <TreeItem nodeId="7" label="src">
-                            <TreeItem nodeId="8" label="index.js" />
-                            <TreeItem nodeId="9" label="tree-view.js" />
-                        </TreeItem>
-                    </TreeItem>
-                </TreeItem>
-            </TreeView>
-        </ScrollContainer>
+        <Container>
+            <Tree name="main" defaultOpen>
+                <Tree name="hello" />
+                <Tree name="subtree with children">
+                    <Tree name="hello" />
+                    <Tree name="sub-subtree with children">
+                        <Tree name="child 1" style={{ color: '#37ceff' }} />
+                        <Tree name="child 2" style={{ color: '#37ceff' }} />
+                        <Tree name="child 3" style={{ color: '#37ceff' }} />
+                        <Tree name="custom content">
+                            <div
+                                style={{
+                                    position: 'relative',
+                                    width: '100%',
+                                    height: 200,
+                                    padding: 10,
+                                }}>
+                                <div
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        background: 'black',
+                                        borderRadius: 5,
+                                    }}
+                                />
+                            </div>
+                        </Tree>
+                    </Tree>
+                    <Tree name="hello" />
+                </Tree>
+                <Tree name="world" />
+                <Tree name={<span>🙀 something something</span>} />
+            </Tree>
+        </Container>
     )
 }
 

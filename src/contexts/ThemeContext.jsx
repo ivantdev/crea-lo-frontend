@@ -16,7 +16,7 @@ const getDesignTokens = (mode) => ({
 });
 
 export default function ThemeContextProvider({ children }) {
-    const [mode, setMode] = React.useState('dark');
+    const [mode, setMode] = React.useState('light');
     const colorMode = React.useMemo(() => ({
         toggleColorMode: () => {
             setMode((prevMode) => (prevMode === 'light' ? 'dark' : 'light'));
