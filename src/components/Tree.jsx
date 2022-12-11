@@ -19,12 +19,12 @@ export const Title = styled('span')`
   vertical-align: middle;
 `
 
-export const Content = styled(animated.div)`
-  will-change: transform, opacity, height;
-  margin-left: 6px;
-  padding: 0px 0px 0px 14px;
-  border-left: 1px dashed rgba(255, 255, 255, 0.4);
-`
+export const Content = styled(animated.div)(({ theme }) => ({
+    willChange: "transform, opacity, height",
+    marginLeft: "6px",
+    padding: "0px 0px 0px 14px",
+    borderLeft: `1px dashed ${theme.palette.divider}`,
+}));
 
 export const toggle = {
     width: '1em',
