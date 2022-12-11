@@ -1,3 +1,4 @@
 import useScreenSize from "./useScreenSize";
 import usePrevious from "./usePrevious";
-export { useScreenSize, usePrevious };
+import useDeviceDetect from "./useDeviceDetect";
+export { useScreenSize, usePrevious, useDeviceDetect };

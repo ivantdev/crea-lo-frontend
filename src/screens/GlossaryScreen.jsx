@@ -1,34 +1,47 @@
-import * as React from 'react';
+import React, { useMemo } from 'react';
 import '../css/GlossaryScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
 import { Globals } from "@react-spring/shared";
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { useTheme } from '@mui/material/styles';
+import { useDeviceDetect } from '../hooks/';
 
-
+// necessary for react-spring and react-three-drei to work
 Globals.assign({
     frameLoop: "always",
 });
 
 const TreeText = styled('div')(({ theme }) => ({
-    "fontWeight": 400,
-    "maxWidth": "80vw",
+    fontWeight: 400,
+    maxWidth: "80vw",
+    minWidth: "200px",
     //wrap text
     "whiteSpace": "pre-wrap",
     color: theme.palette.text.secondary,
+}));
 
+const Container = styled('div')(({ theme }) => ({
+    "fontFamily": "ui-monospace, monospace",
+    margin: "3rem",
+    padding: "1rem",
+
+    color: theme.palette.text.primary,
+    lineHeight: "21px",
+    "--webkit-user-elect": "none",
+    userSelect: "none",
 }));
 
 const GlossaryScreen = () => {
     const theme = useTheme();
+    const { isMobile } = useDeviceDetect()
 
-    return (
-        // <Container>
-        <ScrollContainer className='scroll-container' style={{
+    //appropriate container for mobile or desktop
+    const AppropiateContainer = useMemo(() => ({ children }) => {
+        return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
             "fontFamily": "ui-monospace, monospace",
             margin: "3rem",
-            padding: 0,
+            padding: "1rem",
             width: "calc(100vw - 6rem)",
             height: "calc(100vh - 6rem)",
             color: theme.palette.text.primary,
@@ -36,10 +49,11 @@ const GlossaryScreen = () => {
             "--webkit-user-elect": "none",
             overflow: "hidden",
             userSelect: "none",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-        }}>
+        }}>{children}</ScrollContainer>
+    }, [isMobile])
+
+    return (
+        <AppropiateContainer>
             <Tree name="fragmentos">
                 <Tree name="narrativa">
                     <TreeText>
@@ -164,7 +178,7 @@ const GlossaryScreen = () => {
                     </Tree>
                 </Tree>
             </Tree>
-        </ScrollContainer>
+        </AppropiateContainer>
 
     )
 }

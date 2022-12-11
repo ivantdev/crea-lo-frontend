@@ -10,9 +10,6 @@ import { animated } from '@react-spring/web'
 export const Frame = styled('div')(({ theme }) => ({
     position: "relative",
     padding: "4px 0px 0px 0px",
-    textOverflow: "ellipsis",
-    whiteSpace: "nowrap",
-    overflowX: "hidden",
     verticalAlign: "middle",
     color: theme.palette.text.primary,
     fill: theme.palette.text.primary,
@@ -27,7 +24,6 @@ export const Content = styled(animated.div)`
   margin-left: 6px;
   padding: 0px 0px 0px 14px;
   border-left: 1px dashed rgba(255, 255, 255, 0.4);
-  overflow: hidden;
 `
 
 export const toggle = {
