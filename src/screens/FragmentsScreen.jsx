@@ -1,11 +1,11 @@
 import React, { useMemo } from 'react';
-import '../css/GlossaryScreen.css'
+import '../css/FragmentsScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
 import { Globals } from "@react-spring/shared";
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { useTheme } from '@mui/material/styles';
-import { useDeviceDetect } from '../hooks/';
+import { useDeviceDetect } from '../hooks';
 
 // necessary for react-spring and react-three-drei to work
 Globals.assign({
@@ -32,7 +32,7 @@ const Container = styled('div')(({ theme }) => ({
     userSelect: "none",
 }));
 
-const GlossaryScreen = () => {
+const FragmentsScreen = () => {
     const theme = useTheme();
     const { isMobile } = useDeviceDetect()
 
@@ -183,4 +183,4 @@ const GlossaryScreen = () => {
     )
 }
 
-export default GlossaryScreen
+export default FragmentsScreen

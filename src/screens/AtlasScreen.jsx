@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense } from 'react'
-import "../css/HomeScreen.css"
+import "../css/AtlasScreen.css"
 import { getTagsByCategory } from "../api"
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, FlyControls, Loader } from '@react-three/drei'
@@ -9,7 +9,7 @@ import LevaCameraControls from "../components/LevaCameraControls"
 import Connections from '../components/Connections'
 import DynamicBackground from '../components/DynamicBackground'
 
-const HomeScreen = () => {
+const AtlasScreen = () => {
   const [pasoTags, setPasoTags] = React.useState([])
   const [pisadaTags, setPisadaTags] = React.useState([])
   const [huellaTags, setHuellaTags] = React.useState([])
@@ -51,4 +51,4 @@ const HomeScreen = () => {
   )
 }
 
-export default HomeScreen
+export default AtlasScreen
