@@ -19,7 +19,7 @@ const HeaderLayout = () => {
                 top: 0,
                 width: '100%',
                 alignItems: 'center',
-                bgcolor: 'background.default',
+                bgcolor: 'transparent',
                 color: 'text.primary',
                 borderRadius: 1,
                 p: 3,
