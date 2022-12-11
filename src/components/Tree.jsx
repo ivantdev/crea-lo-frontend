@@ -4,19 +4,19 @@ import { usePrevious } from '../hooks'
 import useMeasure from 'react-use-measure'
 import * as Icons from './Icons'
 
-import styled from 'styled-components'
+import { styled } from '@mui/system'
 import { animated } from '@react-spring/web'
 
-export const Frame = styled('div')`
-  position: relative;
-  padding: 4px 0px 0px 0px;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow-x: hidden;
-  vertical-align: middle;
-  color: #24292e;
-  fill: #24292e;
-`
+export const Frame = styled('div')(({ theme }) => ({
+    position: "relative",
+    padding: "4px 0px 0px 0px",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+    overflowX: "hidden",
+    verticalAlign: "middle",
+    color: theme.palette.text.primary,
+    fill: theme.palette.text.primary,
+}));
 
 export const Title = styled('span')`
   vertical-align: middle;

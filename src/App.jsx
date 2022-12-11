@@ -6,10 +6,12 @@ import EditorialScreen from './screens/EditorialScreen'
 import GlossaryScreen from './screens/GlossaryScreen'
 import TagScreen from './screens/TagScreen'
 import NotFound from './screens/NotFound'
+import HeaderLayout from './layouts/HeaderLayout'
 
 function App() {
   return (
     <ThemeContextProvider>
+      <HeaderLayout />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomeScreen />} />

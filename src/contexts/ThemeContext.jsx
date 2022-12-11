@@ -8,9 +8,11 @@ const getDesignTokens = (mode) => ({
         mode,
         primary: {
             main: mode === 'light' ? '#556cd6' : '#19857b',
+            contrastText: mode === 'light' ? '#000' : '#fff',
         },
         secondary: {
             main: mode === 'light' ? '#19857b' : '#19857b',
+            contrastText: mode === 'light' ? '#fff' : '#fff',
         },
     },
 });
