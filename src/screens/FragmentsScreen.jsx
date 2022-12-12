@@ -5,7 +5,8 @@ import { styled } from '@mui/system';
 import { Globals } from "@react-spring/shared";
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { useTheme } from '@mui/material/styles';
-import { useDeviceDetect } from '../hooks';
+import { useDeviceDetect } from "../hooks/";
+
 
 // necessary for react-spring and react-three-drei to work
 Globals.assign({
@@ -23,8 +24,7 @@ const TreeText = styled('div')(({ theme }) => ({
 
 const Container = styled('div')(({ theme }) => ({
     "fontFamily": "ui-monospace, monospace",
-    margin: "3rem",
-    padding: "1rem",
+    padding: "4rem",
     color: theme.palette.text.primary,
     lineHeight: "21px",
     "--webkit-user-elect": "none",
@@ -33,7 +33,7 @@ const Container = styled('div')(({ theme }) => ({
 
 const FragmentsScreen = () => {
     const theme = useTheme();
-    const { isMobile } = useDeviceDetect()
+    const { isMobile } = useDeviceDetect();
 
     //appropriate container for mobile or desktop
     const AppropiateContainer = useMemo(() => ({ children }) => {
