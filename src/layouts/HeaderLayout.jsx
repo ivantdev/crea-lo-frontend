@@ -22,6 +22,7 @@ const HeaderLayout = () => {
                 bgcolor: 'transparent',
                 color: 'text.primary',
                 borderRadius: 1,
+                justifyContent: 'flex-start',
                 p: 3,
             }}
         >

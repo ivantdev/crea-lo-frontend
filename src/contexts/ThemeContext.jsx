@@ -14,6 +14,9 @@ const getDesignTokens = (mode) => ({
             main: mode === 'light' ? '#19857b' : '#19857b',
             contrastText: mode === 'light' ? '#fff' : '#fff',
         },
+        background: {
+            paper: mode === 'light' ? '#6526d6' : '#6526d6',
+        }
     },
 });
 

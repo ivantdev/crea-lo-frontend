@@ -40,13 +40,12 @@ const FragmentsScreen = () => {
     const AppropiateContainer = useMemo(() => ({ children }) => {
         return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
             "fontFamily": "ui-monospace, monospace",
-            margin: "3rem",
-            padding: "1rem",
+            padding: "4rem",
             width: "calc(100vw - 6rem)",
             height: "calc(100vh - 6rem)",
             color: theme.palette.text.primary,
             lineHeight: "21px",
-            "--webkit-user-elect": "none",
+            "--webkit-user-select": "none",
             overflow: "hidden",
             userSelect: "none",
         }}>{children}</ScrollContainer>
