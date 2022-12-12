@@ -1,12 +1,6 @@
 import React, { useMemo } from "react"
 import * as THREE from "three"
 import Word from "./Word"
-import { useFrame } from "@react-three/fiber"
-import { interpolateColors } from "../utils"
-
-const BLUE = 0x005af7
-const RED = 0xF06F5B
-const GREEN = 0xB8F02B
 
 function Cylinder({ height = 4, radius = 20, columns = 4, numOfWordsByColumn = 0 }) {
     // Create a count x count random words with cylindrical distribution

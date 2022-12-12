@@ -25,7 +25,6 @@ const Container = styled('div')(({ theme }) => ({
     "fontFamily": "ui-monospace, monospace",
     margin: "3rem",
     padding: "1rem",
-
     color: theme.palette.text.primary,
     lineHeight: "21px",
     "--webkit-user-elect": "none",
@@ -42,7 +41,7 @@ const FragmentsScreen = () => {
             "fontFamily": "ui-monospace, monospace",
             padding: "4rem",
             width: "calc(100vw - 6rem)",
-            height: "calc(100vh - 6rem)",
+            height: "calc(100vh - 2rem)",
             color: theme.palette.text.primary,
             lineHeight: "21px",
             "--webkit-user-select": "none",
