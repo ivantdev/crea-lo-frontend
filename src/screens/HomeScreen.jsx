@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Center, Text3D, OrbitControls } from '@react-three/drei'
 import { Canvas, useFrame } from '@react-three/fiber'
 import { useControls } from 'leva'
+import { useTheme } from '@mui/system'
 import * as THREE from 'three'
+import "../css/HomeScreen.css"
 
 function Scene({ margin = 0.5 }) {
     const { secondaryTextPosition, bevelSize, bevelThickness, height, rotation } = useControls({
@@ -37,46 +39,55 @@ function Scene({ margin = 0.5 }) {
 
 
     })
+
     return (
-        <group rotation={rotation} ref={textRef}>
-            <Center>
-                <Text3D
-                    curveSegments={32}
-                    bevelEnabled
-                    bevelSize={0.04}
-                    bevelThickness={0.1}
-                    height={0.5}
-                    lineHeight={0.5}
-                    letterSpacing={-0.06}
-                    size={1.5}
-                    font="/Inter_Bold.json">
-                    {`Crealo\n`}
-                    <meshNormalMaterial />
-                </Text3D>
-            </Center>
-            <Center bottom position={[secondaryTextPosition.x, secondaryTextPosition.y, secondaryTextPosition.z]} >
-                <Text3D
-                    curveSegments={32}
-                    bevelEnabled
-                    bevelSize={bevelSize}
-                    bevelThickness={bevelThickness}
-                    height={height}
-                    lineHeight={0.5}
-                    letterSpacing={0}
-                    size={0.5}
-                    font="/Inter_Bold.json">
-                    {`Otros mundos posibles en la UN\n`}
-                    <meshNormalMaterial />
-                </Text3D>
-            </Center>
-        </group>
+        <>
+            <group rotation={rotation} ref={textRef}>
+                <Center>
+                    <Text3D
+                        curveSegments={32}
+                        bevelEnabled
+                        bevelSize={0.04}
+                        bevelThickness={0.1}
+                        height={0.5}
+                        lineHeight={0.5}
+                        letterSpacing={-0.06}
+                        size={1.5}
+                        font="/Inter_Bold.json">
+                        {`Crealo\n`}
+                        <meshNormalMaterial />
+                    </Text3D>
+                </Center>
+                <Center bottom position={[secondaryTextPosition.x, secondaryTextPosition.y, secondaryTextPosition.z]} >
+                    <Text3D
+                        curveSegments={32}
+                        bevelEnabled
+                        bevelSize={bevelSize}
+                        bevelThickness={bevelThickness}
+                        height={height}
+                        lineHeight={0.5}
+                        letterSpacing={0}
+                        size={0.5}
+                        font="/Inter_Bold.json">
+                        {`Otros mundos posibles en la UN\n`}
+                        <meshNormalMaterial />
+                    </Text3D>
+                </Center>
+            </group>
+        </>
 
     )
 }
 
 const HomeScreen = () => {
+    const theme = useTheme()
+    // useEffect(() => {
+    //     document.body.style.backgroundColor = theme.palette.background
+    // }, [])
+
     return (
         <div id="canvas-container">
+            <div id="home-background" />
             <Canvas camera={{ position: [0, 0, 7] }}>
                 {/* <axesHelper args={[60]} /> */}
                 <ambientLight intensity={0.5} />

@@ -6,18 +6,24 @@ export const ColorModeContext = React.createContext({ toggleColorMode: () => { }
 const getDesignTokens = (mode) => ({
     palette: {
         mode,
-        primary: {
-            main: mode === 'light' ? '#556cd6' : '#19857b',
-            contrastText: mode === 'light' ? '#000' : '#fff',
+        home: {
+            main: mode === 'light' ? '#015958' : '#015958',
+            contrastText: mode === 'light' ? '#4E7329' : '#4E7329',
         },
-        secondary: {
-            main: mode === 'light' ? '#19857b' : '#19857b',
-            contrastText: mode === 'light' ? '#fff' : '#fff',
+        fragments: {
+            main: mode === 'light' ? '#275673' : '#275673',
+            contrastText: mode === 'light' ? '#275673' : '#275673',
         },
         background: {
-            paper: mode === 'light' ? '#6526d6' : '#6526d6',
+            default: mode === 'light' ? '#E9EFF2' : '#E9EFF2',
         }
     },
+    typography: {
+        fontFamily: [
+            'Inter',
+            'sans-serif',
+        ].join(','),
+    }
 });
 
 export default function ThemeContextProvider({ children }) {

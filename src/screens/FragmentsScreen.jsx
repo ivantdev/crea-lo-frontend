@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import '../css/FragmentsScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
@@ -6,8 +6,8 @@ import { Globals } from "@react-spring/shared";
 import ScrollContainer from 'react-indiana-drag-scroll'
 import { useTheme } from '@mui/material/styles';
 import { useDeviceDetect } from "../hooks/";
-import { useQuery, gql } from '@apollo/client';
-
+import { useQuery } from '@apollo/client';
+import { GET_CONCEPTS } from '../graphql/queries/concept';
 
 // necessary for react-spring and react-three-drei to work
 Globals.assign({
@@ -15,52 +15,31 @@ Globals.assign({
 });
 
 const Container = styled('div')(({ theme }) => ({
-    "fontFamily": "ui-monospace, monospace",
     padding: "4rem",
-    color: theme.palette.text.primary,
+    color: theme.palette.fragments.contrastText,
     lineHeight: "21px",
     "--webkit-user-elect": "none",
     userSelect: "none",
 }));
 
-const GET_FRAGMENTS = gql`
-    query GetFragments {
-        concepts {
-            data {
-                id
-                attributes {
-                    name
-                    definitions {
-                        data {
-                            id
-                            attributes {
-                                content
-                            }
-                        }
-                    }
-                    concepts {
-                        data {
-                            id
-                        }
-                    }
-                }
-            }
-        }
-    }
-`
-
 const FragmentsScreen = () => {
-    const theme = useTheme();
     const { isMobile } = useDeviceDetect();
-    const { loading, error, data } = useQuery(GET_FRAGMENTS);
-    if (!loading) {
-        console.log(data.concepts.data)
-    }
+    const { loading, error, data } = useQuery(GET_CONCEPTS);
+    const theme = useTheme();
+
+    //create a hashmap of concept id to concept object
+    const conceptMap = useMemo(() => {
+        const conceptMap = {}
+        if (!data) return conceptMap
+        data.concepts.data.forEach(concept => {
+            conceptMap[concept.id] = concept
+        })
+        return conceptMap
+    }, [data])
 
     //appropriate container for mobile or desktop
     const AppropiateContainer = useMemo(() => ({ children }) => {
         return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
-            "fontFamily": "ui-monospace, monospace",
             padding: "4rem",
             width: "calc(100vw - 6rem)",
             height: "calc(100vh - 2rem)",
@@ -73,10 +52,12 @@ const FragmentsScreen = () => {
     }, [isMobile])
 
     return (
-        <AppropiateContainer>
-            {!loading && <Tree treeData={data.concepts.data} currentNode={data.concepts.data[0]} />}
-
-        </AppropiateContainer>
+        <>
+            <div id="fragments-background" />
+            <AppropiateContainer>
+                {!loading && <Tree treeData={conceptMap} currentNode={data.concepts.data[0]} />}
+            </AppropiateContainer>
+        </>
 
     )
 }
