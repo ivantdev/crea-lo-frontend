@@ -20,6 +20,7 @@
     "@react-three/fiber": "^8.9.1",
     "axios": "^1.2.1",
     "camera-controls": "^1.37.4",
+    "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
     "leva": "^0.9.34",
     "mui-image": "^1.0.7",

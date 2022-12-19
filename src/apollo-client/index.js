@@ -1,7 +1,8 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
-
+import dotenv from "dotenv"
+dotenv.config()
 const client = new ApolloClient({
-    uri: 'http://localhost:1339/graphql',
+    uri: process.env.GRAPHQL_URL,
     cache: new InMemoryCache(),
 });
 
