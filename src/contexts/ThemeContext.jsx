@@ -41,7 +41,7 @@ export default function ThemeContextProvider({ children }) {
         let tempTheme = createTheme(getDesignTokens(mode, location.pathname))
         tempTheme = responsiveFontSizes(tempTheme)
         return tempTheme
-    }, [mode]);
+    }, [mode, location]);
 
     return (
         <ColorModeContext.Provider value={colorMode}>

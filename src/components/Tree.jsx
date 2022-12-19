@@ -81,7 +81,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
     const Icon = Icons[`${(currentNode.attributes.concepts.data.length > 0 || currentNode.attributes.definitions.data.length > 0) > 0 ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
-    const toggleOpen = () => setOpen(!isOpen)
+    const toggleOpen = () => setOpen(prev => !prev)
 
     const toggleModalOpen = () => setModalOpen(prev => !prev)
 
