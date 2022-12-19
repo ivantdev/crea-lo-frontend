@@ -34,8 +34,17 @@ export const toggle = {
     verticalAlign: 'middle',
 }
 
+const TreeText = styled('div')(({ theme }) => ({
+    fontWeight: 400,
+    maxWidth: "80vw",
+    minWidth: "200px",
+    //wrap text
+    "whiteSpace": "pre-wrap",
+    color: theme.palette.text.secondary,
+}));
 
-const Tree = (({ children, name, style, defaultOpen = false }) => {
+
+const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
     const [isOpen, setOpen] = useState(defaultOpen)
     const previous = usePrevious(isOpen)
@@ -49,19 +58,33 @@ const Tree = (({ children, name, style, defaultOpen = false }) => {
         },
     })
 
-    const Icon = Icons[`${children ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
+    const Icon = Icons[`${(currentNode.attributes.concepts.data.length > 0 || currentNode.attributes.definitions.data.length > 0) > 0 ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
     const toggleOpen = () => setOpen(!isOpen)
     return (
         <Frame>
-            <Icon style={{ ...toggle, opacity: children ? 1 : 0.3 }} onClick={toggleOpen} />
-            <Title style={style}>{name}</Title>
+            <Icon style={{ ...toggle, opacity: (currentNode.attributes.concepts.data.length > 0 || currentNode.attributes.definitions.data.length > 0) ? 1 : 0.3 }} onClick={toggleOpen} />
+            <Title style={style}>{currentNode.attributes.name}</Title>
             <Content
                 style={{
                     opacity,
                     height: isOpen && previous === isOpen ? 'auto' : height,
                 }}>
-                <a.div ref={ref} style={{ y }} children={children} />
+                <a.div ref={ref} style={{ y }}>
+                    {currentNode.attributes.definitions.data.map((definition) => {
+                        return (
+                            <TreeText key={definition.id}>
+                                {definition.attributes.content}
+                            </TreeText>
+                        )
+                    })}
+                    {currentNode.attributes.concepts.data.map((concept) => {
+                        return (
+                            <Tree key={concept.id} currentNode={treeData[Number(concept.id) - 1]} treeData={treeData} />
+                        )
+                    })}
+                </a.div>
+
             </Content>
         </Frame>
     )
