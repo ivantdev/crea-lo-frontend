@@ -26,3 +26,17 @@ mutation CreateDefinition($content: String!) {
     }
   }
 `
+
+export const DELETE_DEFINITION = gql`
+mutation DeleteDefinition($id: ID!) {
+  deleteDefinition(id:$id) {
+    data {
+      id
+      attributes {
+        content
+        publishedAt
+      }
+    }
+  }
+}
+`

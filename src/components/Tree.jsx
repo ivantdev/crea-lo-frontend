@@ -8,14 +8,16 @@ import { animated } from '@react-spring/web'
 import EditIcon from '@mui/icons-material/Edit'
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/material/IconButton'
-import Modal from '@mui/material/Modal'
-import Box from '@mui/material/Box'
+import Dialog from '@mui/material/Dialog'
+import DialogTitle from '@mui/material/DialogTitle'
+import DialogContent from '@mui/material/DialogContent'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
 import { Button, useTheme } from '@mui/material'
 import { useMutation } from '@apollo/client'
-import { UPDATE_DEFINITION } from '../graphql/mutations/definition'
+import { CREATE_DEFINITION, UPDATE_DEFINITION, DELETE_DEFINITION } from '../graphql/mutations/definition'
+import { CREATE_CONCEPT, UPDATE_CONCEPT, DELETE_CONCEPT } from '../graphql/mutations/concept'
 
 export const Frame = styled('div')(({ theme }) => ({
     position: "relative",
@@ -70,7 +72,12 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
         },
     })
 
-    const [updateDefinition, { loading, error }] = useMutation(UPDATE_DEFINITION)
+    const [updateDefinition] = useMutation(UPDATE_DEFINITION)
+    const [createDefinition] = useMutation(CREATE_DEFINITION)
+    const [deleteDefinition] = useMutation(DELETE_DEFINITION)
+    const [createConcept] = useMutation(CREATE_CONCEPT)
+    const [updateConcept] = useMutation(UPDATE_CONCEPT)
+    const [deleteConcept] = useMutation(DELETE_CONCEPT)
 
     const Icon = Icons[`${(currentNode.attributes.concepts.data.length > 0 || currentNode.attributes.definitions.data.length > 0) > 0 ? (isOpen ? 'Minus' : 'Plus') : 'Close'}SquareO`]
 
@@ -80,7 +87,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
     const theme = useTheme()
 
-    const handleSaveDefinitions = () => {
+    const handleSaveDefinitions = async () => {
         currentNode.attributes.definitions.data.forEach((definition) => {
             updateDefinition({
                 variables: {
@@ -90,6 +97,82 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
             })
         })
         toggleModalOpen()
+    }
+
+    const handleAddDefinition = async () => {
+        if (document.getElementById("newDefinition").value === "") return
+        const newDefinition = await createDefinition({
+            variables: {
+                content: document.getElementById("newDefinition").value,
+                conceptId: currentNode.id
+            }
+        })
+        updateConcept({
+            variables: {
+                id: currentNode.id,
+                definitions: [...currentNode.attributes.definitions.data.map((definition) => definition.id), newDefinition.data.createDefinition.data.id],
+                concepts: currentNode.attributes.concepts.data.map((concept) => concept.id)
+            }
+        })
+        document.getElementById("newDefinition").value = ""
+    }
+
+    const handleDeleteDefinition = async (definitionId) => {
+        deleteDefinition({
+            variables: {
+                id: definitionId
+            }
+        })
+        updateConcept({
+            variables: {
+                id: currentNode.id,
+                definitions: currentNode.attributes.definitions.data.filter((definition) => definition.id !== definitionId).map((definition) => definition.id),
+                concepts: currentNode.attributes.concepts.data.map((concept) => concept.id)
+            }
+        })
+    }
+
+    //recursively delete concept, its subconcepts, and its definitions
+    const handleDeleteConcept = (conceptId) => {
+        treeData[conceptId].attributes.definitions.data.forEach((definition) => {
+            deleteDefinition({
+                variables: {
+                    id: definition.id
+                }
+            })
+        })
+        treeData[conceptId].attributes.concepts.data.forEach((concept) => {
+            handleDeleteConcept(concept.id)
+        })
+        deleteConcept({
+            variables: {
+                id: conceptId
+            }
+        })
+        updateConcept({
+            variables: {
+                id: currentNode.id,
+                concepts: currentNode.attributes.concepts.data.filter((concept) => concept.id !== conceptId).map((concept) => concept.id),
+                definitions: currentNode.attributes.definitions.data.map((definition) => definition.id)
+            }
+        })
+    }
+
+    const handleAddConcept = async () => {
+        if (document.getElementById("newConcept").value === "") return
+        const newConcept = await createConcept({
+            variables: {
+                name: document.getElementById("newConcept").value,
+            }
+        })
+        updateConcept({
+            variables: {
+                id: currentNode.id,
+                concepts: [...currentNode.attributes.concepts.data.map((concept) => concept.id), newConcept.data.createConcept.data.id],
+                definitions: currentNode.attributes.definitions.data.map((definition) => definition.id)
+            }
+        })
+        document.getElementById("newConcept").value = ""
     }
 
     return (
@@ -114,10 +197,10 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     height: isOpen && previous === isOpen ? 'auto' : height,
                 }}>
                 <a.div ref={ref} style={{ y }}>
-                    {currentNode.attributes.definitions.data.map((definition) => {
+                    {currentNode.attributes.definitions.data.map((definition, index) => {
                         return (
                             <TreeText key={definition.id}>
-                                {definition.attributes.content}
+                                {index + 1}. {definition.attributes.content}
                             </TreeText>
                         )
                     })}
@@ -128,79 +211,120 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     })}
                 </a.div>
             </Content>
-            <Modal
+            <Dialog
                 open={modalOpen}
                 onClose={toggleModalOpen}
                 aria-labelledby="modal-modal-title"
+                scroll='paper'
+                sx={{
+                    p: 10,
+                }}
             >
-                <Box sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    maxWidth: "600",
-                    width: "500",
-                    bgcolor: 'background.paper',
-                    boxShadow: 24,
-                    p: 4,
-                }}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {currentNode.attributes.name}
-                    </Typography>
+                <DialogTitle id="modal-modal-title" variant="h2" component="h2" sx={{ fontWeight: 700, px: 5 }}>
+                    {currentNode.attributes.name}
+                </DialogTitle>
 
+                <DialogContent dividers sx={{ p: 5 }}>
                     <Grid container spacing={2} mt={1}>
-                        {currentNode.attributes.definitions.data.length > 0 ? (
-                            <Grid item xs={12}>
-                                <Typography mt={1} >
-                                    Definitions
-                                </Typography>
-                            </Grid>)
-                            : null}
+                        <Grid item xs={12}>
+                            <Typography mt={1} variant="h5" component="h3" sx={{ fontWeight: 700 }} >
+                                Definitions
+                            </Typography>
+                        </Grid>
 
                         {currentNode.attributes.definitions.data.map((definition, index) => {
                             return (
-                                <Grid item xs={6} key={definition.id}>
-                                    <TextField
-                                        key={definition.id}
-                                        id={'textField' + definition.id}
-                                        label={Number(index) + 1}
-                                        multiline
-                                        rows={3}
-                                        defaultValue={definition.attributes.content}
-                                        variant="outlined"
-                                    />
+                                <Grid item xs={6} key={definition.id} container sx={{ position: 'relative' }}>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            key={definition.id}
+                                            id={'textField' + definition.id}
+                                            label={Number(index) + 1}
+                                            multiline
+                                            rows={3}
+                                            defaultValue={definition.attributes.content}
+                                            variant="outlined"
+                                        />
+                                    </Grid>
+                                    <Grid item xs={2} sx={{ position: 'absolute', right: 0, top: 0 }}>
+                                        <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={() => handleDeleteDefinition(definition.id)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Grid>
+
                                 </Grid>
                             )
                         })}
-                        {currentNode.attributes.concepts.data.length > 0 ? (
-                            <Grid item xs={12}>
-                                <Typography mt={1}>
-                                    Concepts
-                                </Typography>
-                            </Grid>
-                        ) : null
-                        }
+                        <Grid item xs={12}>
+                            <TextField
+                                id='newDefinition'
+                                label="New Definition"
+                                multiline
+                                rows={3}
+                                variant="outlined"
+                                placeholder='Add a new definition here'
+                                color="success"
+                                fullWidth
+                            />
+                        </Grid>
 
-                        {currentNode.attributes.concepts.data.map((concept) => {
+                    </Grid>
+
+
+
+                    <Button variant="contained" style={{ marginTop: "10px" }} onClick={handleSaveDefinitions}>
+                        Save
+                    </Button>
+
+
+
+                    <Button color="success" variant="contained" style={{ marginTop: "10px", marginLeft: "10px" }} onClick={handleAddDefinition}>
+                        Add definition
+                    </Button>
+
+                    <Grid container spacing={2} mt={1}>
+                        <Grid item xs={12}>
+                            <Typography mt={1} variant="h5" component="h3" sx={{ fontWeight: 700 }} >
+                                Concepts
+                            </Typography>
+                        </Grid>
+
+                        {currentNode.attributes.concepts.data.map((concept, index) => {
                             return (
-                                <Grid item xs={6} key={concept.id}>
-                                    <Typography>
-                                        {treeData[concept.id].attributes.name}
-                                    </Typography>
-                                    <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
-                                        <DeleteIcon />
-                                    </IconButton>
+                                <Grid item xs={12} key={concept.id} container alignItems="center">
+                                    <Grid item xs={10}>
+                                        <Typography>
+                                            {index + 1}. {treeData[concept.id].attributes.name}
+                                        </Typography>
+                                    </Grid>
+                                    <Grid item xs={2}>
+                                        <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={() => handleDeleteConcept(concept.id)}>
+                                            <DeleteIcon />
+                                        </IconButton>
+                                    </Grid>
                                 </Grid>
                             )
                         }
                         )}
-
                     </Grid>
-                    <Button variant="contained" style={{ marginTop: "10px" }} onClick={handleSaveDefinitions}>
-                        Save
-                    </Button>
-                </Box>
-            </Modal>
+                    <Grid container mt={3}>
+                        <Grid item xs={6}>
+                            <TextField
+                                id='newConcept'
+                                label="New Concept"
+                                variant="outlined"
+                                placeholder='Add a new concept here'
+                                color="success"
+                            />
+                        </Grid>
+                        <Grid item xs={6}>
+                            <Button color="success" variant="contained" style={{ marginTop: "10px", marginLeft: "10px" }} onClick={handleAddConcept}>
+                                Add concept
+                            </Button>
+                        </Grid>
+                    </Grid>
+                </DialogContent>
+            </Dialog>
         </Frame>
     )
 })

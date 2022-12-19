@@ -4,7 +4,6 @@ import Tree from '../components/Tree';
 import { styled } from '@mui/system';
 import { Globals } from "@react-spring/shared";
 import ScrollContainer from 'react-indiana-drag-scroll'
-import { useTheme } from '@mui/material/styles';
 import { useDeviceDetect } from "../hooks/";
 import { useQuery } from '@apollo/client';
 import { GET_CONCEPTS } from '../graphql/queries/concept';
@@ -23,8 +22,9 @@ const Container = styled('div')(({ theme }) => ({
 
 const FragmentsScreen = () => {
     const { isMobile } = useDeviceDetect();
-    const { loading, error, data } = useQuery(GET_CONCEPTS);
-    const theme = useTheme();
+    const { loading, error, data } = useQuery(GET_CONCEPTS, {
+        pollInterval: 500,
+    });
 
     //create a hashmap of concept id to concept object
     const conceptMap = useMemo(() => {
