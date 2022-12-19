@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import '../css/FragmentsScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
@@ -16,7 +16,6 @@ Globals.assign({
 
 const Container = styled('div')(({ theme }) => ({
     padding: "4rem",
-    color: theme.palette.fragments.contrastText,
     lineHeight: "21px",
     "--webkit-user-elect": "none",
     userSelect: "none",
@@ -43,7 +42,6 @@ const FragmentsScreen = () => {
             padding: "4rem",
             width: "calc(100vw - 6rem)",
             height: "calc(100vh - 2rem)",
-            color: theme.palette.text.primary,
             lineHeight: "21px",
             "--webkit-user-select": "none",
             overflow: "hidden",

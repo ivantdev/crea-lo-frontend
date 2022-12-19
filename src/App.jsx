@@ -12,10 +12,12 @@ import Sidebar from './components/Sidebar'
 
 function App() {
   return (
-    <ThemeContextProvider>
 
-      <HeaderLayout />
-      <BrowserRouter>
+
+
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <HeaderLayout />
         <Sidebar pageWrapId="main-content" outerContainerId="root" right />
         <main id="main-content">
           <Routes>
@@ -27,8 +29,8 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-      </BrowserRouter>
-    </ThemeContextProvider>
+      </ThemeContextProvider>
+    </BrowserRouter>
   )
 }
 

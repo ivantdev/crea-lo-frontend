@@ -13,7 +13,7 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
-import { Button } from '@mui/material'
+import { Button, useTheme } from '@mui/material'
 import { useMutation } from '@apollo/client'
 import { UPDATE_DEFINITION } from '../graphql/mutations/definition'
 
@@ -28,7 +28,7 @@ export const Frame = styled('div')(({ theme }) => ({
 export const Title = styled('span')(({ theme }) => ({
     fontWeight: 600,
     verticalAlign: "middle",
-    color: theme.palette.fragments.contrastText,
+
 }));
 
 export const Content = styled(animated.div)(({ theme }) => ({
@@ -52,7 +52,7 @@ const TreeText = styled('div')(({ theme }) => ({
     minWidth: "200px",
     //wrap text
     "whiteSpace": "pre-wrap",
-    color: theme.palette.fragments.contrastText,
+    color: theme.palette.text.primary,
 }));
 
 const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
@@ -76,7 +76,9 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
     const toggleOpen = () => setOpen(!isOpen)
 
-    const toggleModalOpen = () => setModalOpen(!modalOpen)
+    const toggleModalOpen = () => setModalOpen(prev => !prev)
+
+    const theme = useTheme()
 
     const handleSaveDefinitions = () => {
         currentNode.attributes.definitions.data.forEach((definition) => {
@@ -92,7 +94,16 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
     return (
         <Frame>
-            <Icon style={{ ...toggle, opacity: (currentNode.attributes.concepts.data.length > 0 || currentNode.attributes.definitions.data.length > 0) ? 1 : 0.3 }} onClick={toggleOpen} />
+            <Icon style={{
+                ...toggle,
+                opacity: (currentNode.attributes.concepts.data.length > 0
+                    || currentNode.attributes.definitions.data.length > 0)
+                    ? 1 : 0.3,
+                fill: theme.palette.primary,
+            }}
+                onClick={toggleOpen}
+
+            />
             <Title style={style}>{currentNode.attributes.name}</Title>
             <IconButton size="small" color="primary" aria-label="edit" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
                 <EditIcon />
@@ -176,7 +187,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                                     <Typography>
                                         {treeData[concept.id].attributes.name}
                                     </Typography>
-                                    <IconButton size="small" color="danger" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
+                                    <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
                                         <DeleteIcon />
                                     </IconButton>
                                 </Grid>
@@ -185,7 +196,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                         )}
 
                     </Grid>
-                    <Button variant="contained" color="primary" style={{ marginTop: "10px" }} onClick={handleSaveDefinitions}>
+                    <Button variant="contained" style={{ marginTop: "10px" }} onClick={handleSaveDefinitions}>
                         Save
                     </Button>
                 </Box>
