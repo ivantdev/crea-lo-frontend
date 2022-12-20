@@ -3,9 +3,9 @@ import { interpolateColors } from '../utils'
 import * as THREE from "three"
 import { useControls } from "leva"
 
-const BLUE = "#3f3fd1"
-const RED = "#d184ac"
-const GREEN = "#77a780"
+const BLUE = "#0000ff"
+const RED = "#ff0000"
+const GREEN = "#00ff00"
 
 const DynamicBackground = () => {
     // Lerp background color based on angle
