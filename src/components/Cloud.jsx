@@ -15,7 +15,7 @@ function Cloud({ count = 6, radius = 20, tags = [] }) {
         }
         for (let j = 0; j < count; j++) {
             for (let i = 1; i < count + 1; i++) {
-                temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), tags[tagIndex++].attributes.name])
+                temp.push([new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)), tags[tagIndex++]])
             }
         }
 

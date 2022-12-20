@@ -53,7 +53,7 @@ const FragmentsScreen = () => {
         <>
             <div id="fragments-background" />
             <AppropiateContainer>
-                {!loading && <Tree treeData={conceptMap} currentNode={data.concepts.data[0]} />}
+                {!loading && <Tree treeData={conceptMap} currentNode={data.concepts.data.find(concept => concept.attributes.name == 'Fragmentos')} />}
             </AppropiateContainer>
         </>
 

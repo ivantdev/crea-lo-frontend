@@ -30,7 +30,7 @@ function Word({ children, ...props }) {
 
     const navigate = useNavigate()
 
-    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => navigate(`/tags/${children}`)} {...props} {...fontProps} children={children} />
+    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => navigate(`/tags/${children.id}`)} {...props} {...fontProps} children={children.attributes.name} />
 
 }
 
