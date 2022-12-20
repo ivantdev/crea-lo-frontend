@@ -1,0 +1,24 @@
+#Container {
+  background-image: url("../../../assets/fondos-10\ 1.png");
+}
+
+.HuellasDeAgua {
+
+  width: 622px;
+  height: 1318px;
+  left: 177px;
+  top: 1034px;
+
+  /* cuerpo de texto */
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 21px;
+  line-height: 25px;
+  /* or 119% */
+
+  /* A-/fondo/(A1) fondo */
+
+  color: #e9eff2;
+}
