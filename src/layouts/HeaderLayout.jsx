@@ -26,9 +26,9 @@ const HeaderLayout = () => {
                 p: 3,
             }}
         >
-            <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
+            {/* <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
                 {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton>
+            </IconButton> */}
         </Box>
     )
 }

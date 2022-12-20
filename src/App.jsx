@@ -13,9 +13,12 @@ import Profundidad from "./screens/PedagogiesScreen/profundidad/Profundidad";
 
 function App() {
   return (
-    <ThemeContextProvider>
-      <HeaderLayout />
-      <BrowserRouter>
+
+
+
+    <BrowserRouter>
+      <ThemeContextProvider>
+        <HeaderLayout />
         <Sidebar pageWrapId="main-content" outerContainerId="root" right />
         <main id="main-content">
           <Routes>
@@ -28,9 +31,9 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-      </BrowserRouter>
-    </ThemeContextProvider>
-  );
+      </ThemeContextProvider>
+    </BrowserRouter>
+  )
 }
 
 export default App;

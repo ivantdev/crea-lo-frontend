@@ -13,8 +13,8 @@ const Connections = ({ count = 6, tags = [], radius = 20 }) => {
         if (tags.length === 0) {
             return temp
         }
-        for (let i = 1; i < count + 1; i++)
-            for (let j = 0; j < count; j++) {
+        for (let j = 0; j < count; j++)
+            for (let i = 1; i < count + 1; i++) {
                 temp.set(tags[tagIndex++ % tags.length].id, new THREE.Vector3().setFromSpherical(spherical.set(radius, phiSpan * i, thetaSpan * j)))
             }
         return temp
