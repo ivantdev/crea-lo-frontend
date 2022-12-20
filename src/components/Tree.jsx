@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import { useSpring, a } from '@react-spring/web'
 import { usePrevious } from '../hooks'
 import useMeasure from 'react-use-measure'
@@ -175,6 +175,25 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
         document.getElementById("newConcept").value = ""
     }
 
+    const definitionElements = useMemo(() => {
+        return currentNode.attributes.definitions.data.map((definition, index) => {
+            return (
+                <TreeText key={definition.id}>
+                    {index + 1}. {definition.attributes.content}
+                </TreeText>
+            )
+        })
+    }, [treeData])
+
+    const conceptElements = useMemo(() => {
+        return currentNode.attributes.concepts.data.map((concept) => {
+            return (
+                <Tree key={concept.id} currentNode={treeData[concept.id]} treeData={treeData} />
+            )
+        })
+    }, [treeData])
+
+
     return (
         <Frame>
             <Icon style={{
@@ -197,18 +216,8 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     height: isOpen && previous === isOpen ? 'auto' : height,
                 }}>
                 <a.div ref={ref} style={{ y }}>
-                    {currentNode.attributes.definitions.data.map((definition, index) => {
-                        return (
-                            <TreeText key={definition.id}>
-                                {index + 1}. {definition.attributes.content}
-                            </TreeText>
-                        )
-                    })}
-                    {currentNode.attributes.concepts.data.map((concept) => {
-                        return (
-                            <Tree key={concept.id} currentNode={treeData[concept.id]} treeData={treeData} />
-                        )
-                    })}
+                    {definitionElements}
+                    {conceptElements}
                 </a.div>
             </Content>
             <Dialog
