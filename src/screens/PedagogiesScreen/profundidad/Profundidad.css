@@ -1,7 +1,15 @@
 #Container {
   background-image: url("../../../assets/fondos-10\ 1.png");
 }
-
+#profundidad-background{
+position: absolute;
+width: 1295px;
+height: 2180px;
+left: 21px;
+top: 20px;
+mix-blend-mode: soft-light;
+  background: url("../../../assets/images/profundidad_background.png")  center center fixed;
+}
 .HuellasDeAgua {
 
   width: 622px;
@@ -20,5 +28,5 @@
 
   /* A-/fondo/(A1) fondo */
 
-  color: #e9eff2;
+  color: #E9EFF2;
 }

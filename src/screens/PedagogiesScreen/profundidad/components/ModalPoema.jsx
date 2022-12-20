@@ -14,18 +14,16 @@ const style = {
   border: "1px solid #000",
   boxShadow: 24,
   p: 4,
-  textAlign: "center"
-
+  textAlign: "center",
 };
 
-const styleTypography ={
- 
-    fontFamily: "Inter",
-    fontStyle: "normal",
-    fontWeight: 400,
-    lineHeight: "25px"
-
-}
+const styleTypography = {
+  fontFamily: "Inter",
+  fontStyle: "normal",
+  fontWeight: 400,
+  lineHeight: "25px",
+  color: "black",
+};
 
 export default function ModalPoema() {
   const [open, setOpen] = useState(false);
@@ -47,7 +45,6 @@ export default function ModalPoema() {
         setOpen(true);
       }
     }, 10000);
-  
   };
   return (
     <div>
@@ -56,23 +53,34 @@ export default function ModalPoema() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        
       >
         <Box sx={style} id="boxModal">
-          <Typography id="modal-modal-title" variant="h6" component="h2" style={styleTypography}>
+          <Typography
+            id="modal-modal-title"
+            variant="h6"
+            component="h2"
+            style={styleTypography}
+          >
             BALLENA-TRUENO{" "}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }} style={styleTypography}>
-            Aguantar la respiración <br /> ir adentro al adentro del adentro al centro <br />
+          <Typography
+            id="modal-modal-description"
+            sx={{ mt: 2 }}
+            style={styleTypography}
+          >
+            Aguantar la respiración <br /> ir adentro al adentro del adentro al
+            centro <br />
             del mundo líquido con un oído pulpo membrana que resuene todos los
             cantos submarinos. <br /> <br />
             Tomar una bocanada de aire que acoja la incertidumbre del medio
-            cambiante  <br /> una que llene los pulmones y que permita la inmersión.{" "} <br />
+            cambiante <br /> una que llene los pulmones y que permita la
+            inmersión. <br />
             <br />
-            Las bocanadas de aire hacen atmósfera. <br /> Allí nos encontramos <br />
+            Las bocanadas de aire hacen atmósfera. <br /> Allí nos encontramos{" "}
+            <br />
             Pirarucú, Ballena, Humana <br /> <br />
-            Lo profundo suena a rumor, a retumbar, a ronroneo, a letra R: <br /> rugido
-            revoloteo ritmo repetición. <br /> <br />
+            Lo profundo suena a rumor, a retumbar, a ronroneo, a letra R: <br />{" "}
+            rugido revoloteo ritmo repetición. <br /> <br />
             Allá donde, ¿dónde? en el aire-océano… Un grave sonido de marea
             interoceánica pulula. un océano, un océano de palabras.
           </Typography>
