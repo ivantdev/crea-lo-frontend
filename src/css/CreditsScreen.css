@@ -1,0 +1,21 @@
+#creditosScreen {
+  position: absolute;
+  width: 1440px;
+  height: 2154px;
+  left: 0px;
+  top: 10px;
+  background: url("../assets/images/creditos_background.png");
+opacity: .8;
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 21px;
+  line-height: 25px;
+  
+  
+  /* or 119% */
+
+  /* A-/principal/(A4) principal */
+
+}

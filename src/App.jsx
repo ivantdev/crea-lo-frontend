@@ -10,12 +10,12 @@ import NotFound from "./screens/NotFound";
 import HeaderLayout from "./layouts/HeaderLayout";
 import Sidebar from "./components/Sidebar";
 import Profundidad from "./screens/PedagogiesScreen/profundidad/Profundidad";
+import DesahogoScreen from "./screens/DesahogoScreen";
+import CrecienteScreen from "./screens/CrecienteScreen";
+import CreditosScreen from "./screens/CreditosScreen";
 
 function App() {
   return (
-
-
-
     <BrowserRouter>
       <ThemeContextProvider>
         <HeaderLayout />
@@ -28,12 +28,15 @@ function App() {
             <Route path="/fragments" element={<FragmentsScreen />} />
             <Route path="/tags/:tag" element={<TagScreen />} />
             <Route path="/pedagogies/profundidad" element={<Profundidad />} />
+            <Route path="/desahogo" element={<DesahogoScreen />} />
+            <Route path="/creciente" element={<CrecienteScreen />} />
+            <Route path="/credits" element={<CreditosScreen />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
       </ThemeContextProvider>
     </BrowserRouter>
-  )
+  );
 }
 
 export default App;
