@@ -152,7 +152,7 @@ const ModalsProfundidad = () => {
       opensStates.fill(true);
       setOpens(opensStates);
       console.log(opens);
-    }, 15000);
+    }, 60000);
   };
 
   useEffect(() => {
