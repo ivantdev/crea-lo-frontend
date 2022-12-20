@@ -46,6 +46,7 @@ const PedagogiesScreen = () => {
               "--webkit-user-select": "none",
               overflow: "hidden",
               userSelect: "none",
+              
             }}
           >
             {children}
@@ -56,7 +57,7 @@ const PedagogiesScreen = () => {
   );
 
   return (
-    <AppropiateContainer>
+    <AppropiateContainer >
       <Container>
         <h1 className="grid"> Pedagogias</h1>
       </Container>

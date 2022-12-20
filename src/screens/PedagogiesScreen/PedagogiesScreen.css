@@ -10,10 +10,15 @@
   -webkit-text-stroke: 0.5px rgb(245, 245, 245);
   color: white;
 }
-.Button:hover{
-  color:black
+.Button:hover {
+  color: black;
 }
 
 .grid {
   margin: 2rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 46px;
 }
