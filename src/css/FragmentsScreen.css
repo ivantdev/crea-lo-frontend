@@ -6,6 +6,7 @@
     top: 0px;
     mix-blend-mode: color-burn;
     opacity: 0.4;
-    z-index: -1;
+    z-index: 2000;
+    pointer-events: none;
     background: url("../assets/images/fragments_background.png") no-repeat center center fixed;
 }
