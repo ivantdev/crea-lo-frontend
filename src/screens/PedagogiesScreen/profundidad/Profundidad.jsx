@@ -13,12 +13,13 @@ import ModalsProfundidad from "./components/ModalsProfundidad";
 
 const Container = styled("div")(({ theme }) => ({
   fontFamily: "ui-monospace, monospace",
-  padding: "5rem",
+  padding: "4rem",
   color: "white",
   lineHeight: "21px",
   "--webkit-user-elect": "none",
   userSelect: "none",
   backgroundColor: "#2F4F4F",
+  
 }));
 
 const Profundidad = () => {
@@ -57,9 +58,20 @@ const Profundidad = () => {
   return (
     <>
       <div id="profundidad-background" />
-      <AppropiateContainer >
+      <AppropiateContainer>
         <Container>
-          <h1>Profundidad</h1>
+          <h1
+            style={{
+              fontFamily: "Inter",
+              fontStyle: "normal",
+              fontWeight: 800,
+              fontSize: "38px",
+              lineHeight: "46px",
+              
+            }}
+          >
+            Profundidad
+          </h1>
           <br />
           <img src={ballenaHilos} alt="ballena-bordada" width={550} />
           <br />

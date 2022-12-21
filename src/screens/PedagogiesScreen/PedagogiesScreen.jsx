@@ -3,23 +3,17 @@ import { styled } from "@mui/system";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../../hooks";
-import { Button, Grid } from "@mui/material";
-import "./PedagogiesScreen.css";
+import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-
-
-
-
+import "../../css/PedagogiesScreen.css"
 const Container = styled("div")(({ theme }) => ({
-  fontFamily: "ui-monospace, monospace",
+  fontFamily: "Inter",
   padding: "3rem",
   marginLeft: "1rem",
   color: theme.palette.text.primary,
   lineHeight: "21px",
   "--webkit-user-elect": "none",
   userSelect: "none",
-  backgroundColor: "#F8F9F9 ",
- 
 }));
 
 const PedagogiesScreen = () => {
@@ -46,7 +40,6 @@ const PedagogiesScreen = () => {
               "--webkit-user-select": "none",
               overflow: "hidden",
               userSelect: "none",
-              
             }}
           >
             {children}
@@ -57,98 +50,165 @@ const PedagogiesScreen = () => {
   );
 
   return (
-    <AppropiateContainer >
-      <Container>
-        <h1 className="grid"> Pedagogias</h1>
-      </Container>
-      <Container style={{justifyContent: "center", display:"flex"}}>
-        <div className="grid">
-          <Button
-            variant="contained"
-            className="Button"
-            style={{ color: "white", flexGrow:"initial", margin:"10px", fontWeight:"bold" }}
-            onClick={()=> navigate("/pedagogies/profundidad")}
+    <>
+      <div id="pedagogies-screen" />
+      <AppropiateContainer>
+        <Container>
+          <h1
+            style={{
+              position: "absolute",
+              width: "622px",
+              height: "44px",
+              left: "176px",
+              top: "169px",
+              fontWeight:800,
+              fontSize:"38px",
+              lineHeight:"46px"
+            }}
           >
-            Profundidad
-          </Button>
-          <Button
-            variant="contained"
-            className="Button"
-            style={{ color: "white", flexGrow:"initial", margin:"10px" }}
-            onClick={()=> navigate("/pedagogies/descentrar")}
-          >
-            Descentrar
-          </Button>
+            {" "}
+            Pedagogias
+          </h1>
+        </Container>
+        <Container style={{ justifyContent: "center", display: "flex" }}>
+          <div className="grid">
+            <Button
+              variant="contained"
+              className="Button"
+              style={{
+                color: "white",
+                flexGrow: "initial",
+                margin: "10px",
+                textTransform: "capitalize",
+              }}
+              onClick={() => navigate("/pedagogies/profundidad")}
+            >
+              Profundidad
+            </Button>
+            <Button
+              variant="contained"
+              className="Button"
+              style={{
+                color: "white",
+                flexGrow: "initial",
+                margin: "10px",
+                textTransform: "capitalize",
+              }}
+              onClick={() => navigate("/pedagogies/descentrar")}
+            >
+              Descentrar
+            </Button>
 
-          <Button
-            variant="contained"
-            className="Button"
-            style={{ color: "white", flexGrow:"initial", margin:"10px" }}
-            onClick={()=> navigate("/pedagogies/resistir")}
+            <Button
+              variant="contained"
+              className="Button"
+              style={{
+                color: "white",
+                flexGrow: "initial",
+                margin: "10px",
+                textTransform: "capitalize",
+              }}
+              onClick={() => navigate("/pedagogies/resistir")}
+            >
+              Resistir
+            </Button>
+          </div>
+        </Container>
+        <Container
+          style={{
+            fontFamily: "Inter",
+            fontStyle: "normal",
+            fontWeight: 400,
+            color: "#3F5759",
+          }}
+        >
+          <h2
+            style={{
+              fontSize: "36px",
+              lineHeight: "44px",
+              position: "absolute",
+              width: "745px",
+              height: "398px",
+              left: "178px",
+              top: "420px",
+            }}
           >
-            Resistir
-          </Button>
-        </div>
-      </Container>
-      <Container>
-        <h3>
-          Maecenas arcu augue, posuere sit amet elit ut, congue pulvinar risus.
-          Pellentesque habitant morbi tristique senectus et netus et malesuada
-          fames ac turpis egestas. Nullam blandit hendrerit bibendum. Proin sed
-          lacus tristique, hendrerit magna eget, viverra leo. Maecenas tempus
-          gravida vestibulum.
-        </h3>
-        <br />
-        <p>
-          Maecenas tincidunt tempus velit, vel sagittis arcu imperdiet ac. Donec
-          pretium ante neque. Aliquam nisi urna, iaculis quis sodales a, auctor
-          a enim. Vestibulum ante ipsum primis in faucibus orci luctus et
-          ultrices posuere cubilia curae; Proin vehicula, sapien quis porta
-          congue, enim metus auctor libero, ut convallis leo neque eu metus.
-          Maecenas ut ipsum quis urna mattis convallis id non dolor. In hac
-          habitasse platea dictumst. Aliquam eu dignissim massa. Morbi eget
-          tempus magna. Proin neque mi, faucibus non enim in, commodo volutpat
-          ipsum. Quisque convallis consectetur metus sodales pretium. Donec
-          elementum purus et mauris placerat, ultrices tristique nunc pretium.
-          Vestibulum bibendum quis nibh eget finibus. Quisque aliquet erat
-          justo, ut condimentum mauris dapibus a. Donec interdum, lectus sit
-          amet congue tincidunt, nisl dolor pharetra sem, ut sagittis sapien
-          risus ut ex. In accumsan eleifend faucibus. Duis tristique venenatis
-          pellentesque. Nulla facilisi. Aenean nunc magna, porttitor non dapibus
-          et, maximus et lectus. Sed blandit condimentum mi, cursus auctor est
-          vehicula vitae. Integer massa mi, mattis ac libero eget, varius
-          bibendum mauris. Duis dictum, quam a feugiat bibendum, enim nisi
-          facilisis purus, ac fringilla eros. Proin vitae magna lorem. Morbi sit
-          amet risus vestibulum ex tempus convallis nec id lacus. Pellentesque
-          rutrum orci eu massa sodales ultricies. Aenean venenatis consequat
-          enim eu porttitor. Quisque rutrum ut felis ac efficitur. Nulla semper
-          tristique vulputate. Sed a sem finibus, tincidunt eros vel, feugiat
-          leo. Maecenas rhoncus tempus metus, maximus dapibus metus ultricies
-          eget. Pellentesque vel dolor vel massa efficitur egestas. Nullam purus
-          ligula, egestas non justo ut, scelerisque commodo purus. Quisque
-          blandit volutpat ipsum a interdum. Curabitur in nisl lectus. Orci
-          varius natoque penatibus et magnis dis parturient montes, nascetur
-          ridiculus mus. Cras lobortis finibus leo, accumsan ultricies libero
-          varius vel. Integer faucibus pellentesque velit, ut maximus lacus
-          maximus a. Vivamus metus lacus, pulvinar ut feugiat quis, vestibulum
-          vitae ipsum. Vivamus dolor turpis, mattis sed urna id, lacinia
-          facilisis. Curabitur luctus facilisis risus. Nam non eros ac tellus
-          maximus tincidunt a sed augue. Aenean in orci nisi. Etiam mollis
-          dictum ligula et aliquam. Integer et elementum erat. Maecenas
-          ultricies nec ex ac dictum. Vivamus accumsan dolor elit, at euismod
-          lorem efficitur eu. Proin tempus, massa sit amet mollis placerat,
-          lectus ante lacinia ipsum, eu porta eros felis a mauris. Aenean
-          egestas vitae lacus a mollis. Proin eu eros sed leo imperdiet mollis
-          ac id orci. Etiam vel dapibus ex. Nunc finibus nunc ligula, nec porta
-          leo facilisis sed. Phasellus semper ac massa id mollis. Ut venenatis,
-          metus vitae dignissim pulvinar, elit lorem molestie elit, eu venenatis
-          erat sem eget neque. Maecenas in pharetra nunc. Lorem ipsum dolor sit
-          amet, consectetur adipiscing elit. Donec pellentesque ullamcorper
-          justo. Morbi vulputate eleifend purus eu dapibus. Vestibulum gravida
-          tincidunt nisl, non.
-        </p>
-      </Container>
-    </AppropiateContainer>
+            Estas memorias, como ha sido habitual en Crea-lo, responden al
+            devenir y al derivar de nuestras preguntas y prácticas creadoras. A
+            lo largo de 2022, prestando mucha atención a lo que personas,
+            materias y conversaciones iban revelando, un equipo conformado por
+            estudiantes y acompañantes pedagógicos fuimos dando forma a
+            metodologías pedagógicas cuya pregunta nodal casi siempre giró en
+            torno a lo sensible.
+          </h2>
+          <br />
+          <p
+            style={{
+              position: "absolute",
+              width: "622px",
+              height: "1479px",
+              left: "177px",
+              top: "1000px",
+              fontWeight: 400,
+              fontSize: "21px",
+              lineHeight: "25px",
+            }}
+          >
+            Cuando hablábamos de “lo sensible” aparecía de manera protagónica el
+            cuerpo y su potencia perceptiva. Fue así como intensificar
+            experiencias gustativas, olfativas, táctiles, auditivas y visuales
+            nos invitaron a pensar y proponer relacionamientos intersensibles,
+            desde varias acciones del proyecto. Nuestros talleres, laboratorios
+            y demás exploraciones para el activismo cultural universitario
+            atravesaron entonces prácticas de percepción que fueron materia de
+            experimentación regular. Este año, quizás con mayor insistencia que
+            en los anteriores, buscamos a toda costa deslindar nuestros procesos
+            de todo artificio y logística que pudiera llevarnos a una noción de
+            lo cultural entendida como producción de eventos. Lo pedagógico,
+            desde esta perspectiva que pone en cuestión las éticas y políticas
+            del trabajo cultural hoy, implicó situarnos en las personas que
+            hacíamos parte del proyecto, en nuestros deseos y en la estima de
+            las experiencias singulares y colectivas para crear(nos) un sostén
+            temporal y por consiguiente una política-poética de vínculos
+            afectivos y emocionales. De esta manera, revueltas culturales desde
+            los afectos y desde los sentidos fueron ocurriendo en nosotrxs y en
+            cada unx de nosotrxs de diversas maneras. Los tres gestos
+            creativos-pedagógicos que presentamos a continuación
+            (descentramientos, ballena-trueno y resistir) no pretenden describir
+            de manera analítica qué hicimos y cómo. Más bien, dan cuenta de
+            procesos de pensamiento colectivo en torno a una pregunta
+            provocadora y varias condiciones creativas. Qué deseo subrayar del
+            proyecto en esta versión por su potencia o necesidad de
+            profundización fue la pregunta provocadora. Arrojarse de cabeza a
+            plantear una respuesta individual a esa pregunta, a través del uso
+            de la materialidad que cada unx deseara, fue una de las primeras
+            condiciones creativas. Luego todo fue puro juego y experimentación.
+            Nos propusimos visitar cada una de las respuestas y dialogar con
+            ellas. Re-elaboramos las respuestas, les hicimos más preguntas, nos
+            concentramos en sus materialidades, intervenimos aquello que iban
+            haciendo lxs compañerxs, confiamos en la edición que cada quien iba
+            proponiendo y fabulamos, sobre todo fabulamos mucho. Cabe señalar
+            que fue claro desde el inicio, para quienes trabajamos en estos
+            gestos, que teníamos un reto particular con respecto a las
+            características escriturarles y de montaje editorial de los
+            apartados pedagógicos hechos para “Creciente” y “Desahogo” (nuestras
+            memorias publicadas de 2020 y 2021, respectivamente); nos interesó
+            romper la voz singular así como la noción de autoría, inclusive nos
+            propusimos expandir nuestros modos de escribir para provocar otros
+            modos de leer-percibir nuestras intuiciones a propósito de lo
+            pedagógico en Crea-lo. Así fueron brotado escrituras con sonidos,
+            con imágenes, con hilos y con palabras, por mencionar algunas.
+            Insistir en características polifónicas, polisémicas y polimórficas
+            de nuestros modos de hacer en el proyecto fue nuestro lugar de
+            enunciación para hablar de lo pedagógico este año. Con estos gestos,
+            más que dar cuenta de un método, compartimos experiencias de
+            pensamiento-creación que se acercan un poco a aquello que entendemos
+            y practicamos como pedagogías para crear y creer en otros mundos
+            posibles en la UNAL.
+          </p>
+        </Container>
+      </AppropiateContainer>
+    </>
   );
 };
 
