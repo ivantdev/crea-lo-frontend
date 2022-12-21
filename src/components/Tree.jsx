@@ -29,6 +29,7 @@ export const Frame = styled('div')(({ theme }) => ({
 
 export const Title = styled('span')(({ theme }) => ({
     fontWeight: 600,
+    fontSize: "1.2rem",
     verticalAlign: "middle",
 
 }));
@@ -52,6 +53,7 @@ const TreeText = styled('div')(({ theme }) => ({
     fontWeight: 400,
     maxWidth: "80vw",
     minWidth: "200px",
+    fontSize: "1.2rem",
     //wrap text
     "whiteSpace": "pre-wrap",
     color: theme.palette.text.primary,
