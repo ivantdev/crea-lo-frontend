@@ -35,7 +35,7 @@ export const Title = styled('span')(({ theme }) => ({
 
 export const Content = styled(animated.div)(({ theme }) => ({
     willChange: "transform, opacity, height",
-    marginLeft: "6px",
+    marginLeft: "25px",
     padding: "0px 0px 0px 14px",
     borderLeft: `1px dashed ${theme.palette.divider}`,
 }));
@@ -179,7 +179,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
         return currentNode.attributes.definitions.data.map((definition, index) => {
             return (
                 <TreeText key={definition.id}>
-                    {index + 1}. {definition.attributes.content}
+                    {definition.attributes.content}
                 </TreeText>
             )
         })
