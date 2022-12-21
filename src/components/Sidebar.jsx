@@ -7,6 +7,13 @@ import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+import InstagramSvg from '../assets/icons/bxl-instagram.svg.svg'
+import FacebookSvg from '../assets/icons/bxl-facebook-circle.svg.svg'
+import TwitterSvg from '../assets/icons/bxl-twitter.svg.svg'
+import YoutubeSvg from '../assets/icons/bxl-youtube.svg.svg'
+import SpotifySvg from '../assets/icons/bxl-spotify.svg.svg'
+import { Grid } from '@mui/material';
+import { Diversity1Sharp } from '@mui/icons-material';
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -208,7 +215,41 @@ export default props => {
                 <Link className="menu-item" to="/creciente">
                     Creciente
                 </Link >
+                <hr className="separator" />
+                {/* svgs of social media with links */}
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}>
+                    <div>
+                        <a href="https://www.youtube.com/channel/UCY0YQZ0ZQZ1Z1Z1Z1Z1Z1Z1" target="_blank" rel="noreferrer">
+                            <img src={YoutubeSvg} alt="youtube" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://twitter.com/creciente_mx" target="_blank" rel="noreferrer">
+                            <img src={TwitterSvg} alt="twitter" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.facebook.com/creciente.mx" target="_blank" rel="noreferrer">
+                            <img src={FacebookSvg} alt="facebook" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com/creciente.mx/" target="_blank" rel="noreferrer">
+                            <img src={InstagramSvg} alt="instagram" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.spotify.com/mx/" target="_blank" rel="noreferrer">
+                            <img src={SpotifySvg} alt="spotify" />
+                        </a>
+                    </div>
+                </div>
+
             </Menu>
-        </MenuWrapper>
+        </MenuWrapper >
     );
 };
