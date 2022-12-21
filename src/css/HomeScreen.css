@@ -14,6 +14,8 @@ body {
     left: 0px;
     top: 0px;
     mix-blend-mode: normal;
+    background-color: #CBD8DF;
+    overflow: hidden;
 }
 
 #home-background {
@@ -24,6 +26,38 @@ body {
     top: 0px;
     mix-blend-mode: color-burn;
     opacity: 0.4;
-    z-index: -1;
-    background: url("../assets/images/home_background.png") no-repeat center center fixed;
+    z-index: 2000;
+    pointer-events: none;
+    background-image: url("../assets/images/home_background.png");
+    background-repeat: repeat;
+    background-size: cover;
+}
+
+#home-logo-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    right: 40px;
+    top: 40px;
+}
+
+#home-logo {
+    position: relative;
+}
+
+#home-logo-text {
+    font-family: Ampersand;
+    font-size: 30px;
+    color: #4E7329;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+#home-logo-text h1 {
+    margin-top: 10px;
 }

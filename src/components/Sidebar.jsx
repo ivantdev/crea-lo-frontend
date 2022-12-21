@@ -6,8 +6,14 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
-// import '../css/Sidebar.css';
 import { useNavigate } from 'react-router-dom';
+import InstagramSvg from '../assets/icons/bxl-instagram.svg.svg'
+import FacebookSvg from '../assets/icons/bxl-facebook-circle.svg.svg'
+import TwitterSvg from '../assets/icons/bxl-twitter.svg.svg'
+import YoutubeSvg from '../assets/icons/bxl-youtube.svg.svg'
+import SpotifySvg from '../assets/icons/bxl-spotify.svg.svg'
+import { Grid } from '@mui/material';
+import { Diversity1Sharp } from '@mui/icons-material';
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -26,8 +32,14 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     transition: "all 0.3s ease-in-out",
     display: "flex",
     flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
+    gap: "1rem",
+
+    '& > p': {
+        fontWeight: 600,
+        fontSize: "1.2rem",
+        transition: "color 0.2s",
+    },
+
     '& > p:hover': {
         color: "#fff",
         cursor: "pointer",
@@ -35,8 +47,10 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
 }));
 
 const AccordionSummary = styled(MuiAccordionSummary)(({ theme }) => ({
+    padding: 0,
     '& .MuiAccordionSummary-content': {
-        justifyContent: 'center',
+        marginTop: 0,
+        marginBottom: 0,
     }
 }));
 
@@ -61,14 +75,19 @@ const MenuWrapper = styled('div')(({ theme }) => ({
     },
 
     /* Position and sizing of clickable cross button */
-    'bm-cross-button': {
-        height: "24px",
-        width: "24px"
+    '& .bm-cross-button': {
+        height: "30px !important",
+        width: "30px !important",
+        background: "white",
+        borderRadius: "3px",
     },
 
     /* Color/shape of close button cross */
     '& .bm-cross': {
-        background: theme.palette.background.paper
+        background: theme.palette.primary.main,
+        top: "2px !important",
+        right: "0px !important",
+        height: "16px !important",
     },
 
     /*
@@ -77,7 +96,9 @@ const MenuWrapper = styled('div')(({ theme }) => ({
       */
     '& .bm-menu-wrap': {
         position: "fixed",
-        height: "100%",
+        height: "auto !important",
+        top: "20px !important",
+        right: "20px !important",
     },
 
     /* General sidebar styles */
@@ -85,6 +106,8 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         background: theme.palette.primary.main,
         padding: "2.5em 1.5em 0",
         fontSize: "1.15em",
+        height: "auto !important",
+        borderRadius: "5px",
     },
 
     /* Morph shape necessary with bubble or elastic */
@@ -99,14 +122,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         display: "flex",
         flexDirection: "column",
         fontSize: "26px",
-        alignItems: "center",
-        justifyContent: "center",
         fontWeight: 600,
-    },
-
-    /* Individual item */
-    '& .bm-item': {
-        display: "inline-block",
     },
 
     /* Styling of overlay */
@@ -134,6 +150,10 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         height: "1px",
         backgroundColor: "#d1d1d1",
         margin: "10px 0",
+    },
+
+    '& .menu-item': {
+        fontWeight: 900
     }
 
 }));
@@ -141,43 +161,96 @@ const MenuWrapper = styled('div')(({ theme }) => ({
 export default props => {
 
     const navigate = useNavigate();
-    return (
-        <MenuWrapper>
-            <Menu {...props}>
-                <Link className="menu-item" to="/">
-                    Home
-                </Link>
-                <hr className="separator" />
+    const [open, setOpen] = React.useState(false);
+    const ref = React.useRef(null);
 
+    const handleOnClose = () => {
+        // modify animation altering .bm-menu-wrap
+        ref.current.querySelector('.bm-menu-wrap').style.transform = "translate3d(calc(100% + 20px), 0px, 0px)";
+        ref.current.querySelector('.bm-menu-wrap').style.opacity = "0";
+        setOpen(false);
+    }
+
+    const handleOnOpen = () => {
+        // modify animation altering .bm-menu-wrap
+        ref.current.querySelector('.bm-menu-wrap').style.opacity = "1";
+        setOpen(true);
+    }
+
+
+    return (
+        <MenuWrapper ref={ref}>
+            <Menu {...props} isOpen={open} onOpen={handleOnOpen} onClose={handleOnClose}>
                 <Accordion>
                     <AccordionSummary
                         aria-controls="panel1a-content"
                         id="panel1a-header"
                     >
-                        <Typography className="bm-item" sx={{
+                        <Typography sx={{
                             fontSize: '26px',
-                            fontWeight: 'bold',
-                            textAlign: 'center',
-                        }}>2022</Typography>
+                            fontWeight: 900,
+                            display: "inline-block",
+                            color: "#d1d1d1",
+                            textAlign: "left",
+                            textDecoration: "none",
+                            transition: "color 0.2s",
+                            '&:hover': {
+                                color: "#ffffff",
+                            }
+                        }} my={0}>Lorem ipsum</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography onClick={() => navigate("/pedagogies")}>Pedagogías</Typography>
-                        <Typography onClick={() => navigate("/fragments")}>Fragmentos</Typography>
-                        <Typography onClick={() => navigate("/atlas")}>Atlas</Typography>
-                        <Typography onClick={() => navigate("/credits")}>Créditos</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/pedagogies"))}>Pedagogías</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/fragments"))}>Fragmentos</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/atlas"))}>Atlas</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/credits"))}>Créditos</Typography>
                     </AccordionDetails>
                 </Accordion>
 
 
                 <hr className="separator" />
-                <Link className="menu-item" to="/desahogo">
+                <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
                     Desahogo
                 </Link >
                 <hr className="separator" />
-                <Link className="menu-item" to="/creciente">
+                <Link className="menu-item" to="/creciente" onClick={handleOnClose}>
                     Creciente
                 </Link >
+                <hr className="separator" />
+                {/* svgs of social media with links */}
+                <div style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                }}>
+                    <div>
+                        <a href="https://www.youtube.com/channel/UCY0YQZ0ZQZ1Z1Z1Z1Z1Z1Z1" target="_blank" rel="noreferrer">
+                            <img src={YoutubeSvg} alt="youtube" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://twitter.com/creciente_mx" target="_blank" rel="noreferrer">
+                            <img src={TwitterSvg} alt="twitter" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.facebook.com/creciente.mx" target="_blank" rel="noreferrer">
+                            <img src={FacebookSvg} alt="facebook" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.instagram.com/creciente.mx/" target="_blank" rel="noreferrer">
+                            <img src={InstagramSvg} alt="instagram" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="https://www.spotify.com/mx/" target="_blank" rel="noreferrer">
+                            <img src={SpotifySvg} alt="spotify" />
+                        </a>
+                    </div>
+                </div>
+
             </Menu>
-        </MenuWrapper>
+        </MenuWrapper >
     );
 };
