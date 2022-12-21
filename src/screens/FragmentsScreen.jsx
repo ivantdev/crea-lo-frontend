@@ -14,7 +14,8 @@ Globals.assign({
 });
 
 const Container = styled('div')(({ theme }) => ({
-    padding: "175px",
+    padding: "clamp(20px, 10vw, 175px)",
+    paddingTop: "clamp(80px, 10vw, 175px)",
     lineHeight: "25px",
     "--webkit-user-elect": "none",
     userSelect: "none",
@@ -39,7 +40,8 @@ const FragmentsScreen = () => {
     //appropriate container for mobile or desktop
     const AppropiateContainer = useMemo(() => ({ children }) => {
         return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
-            padding: "175px",
+            padding: "clamp(20px, 10vw, 175px)",
+            paddingTop: "clamp(80px, 10vw, 175px)",
             width: "calc(100vw - 6rem)",
             height: "calc(100vh - 2rem)",
             lineHeight: "25px",
