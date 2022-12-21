@@ -4,9 +4,9 @@ import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../../../hooks";
 import { styled } from "@mui/system";
 
-import ballenaHilos from "../../../assets/Provocación_con_hilos.jpg";
+import ballenaHilos from "../../../assets/images/profundidad/Provocación_con_hilos.jpg";
 import audioBallena from "../../../assets/audio/Ballena 1.mp3";
-import ballenaSumergida from "../../../assets/ballenaSumergiendose.png";
+import ballenaSumergida from "../../../assets/images/profundidad/ballenaSumergiendose.png";
 import "./Profundidad.css";
 import ModalPoema from "./components/ModalPoema";
 import ModalsProfundidad from "./components/ModalsProfundidad";
@@ -25,8 +25,7 @@ const Container = styled("div")(({ theme }) => ({
 const Profundidad = () => {
   const theme = useTheme();
   const { isMobile } = useDeviceDetect();
-  const [poemaComplete, setComplete] = useState(false);
-  const [cont, setCont] = useState(0);
+  
 
   const AppropiateContainer = useMemo(
     () =>
