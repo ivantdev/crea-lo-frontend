@@ -28,6 +28,7 @@ const HeaderLayout = () => {
                 top: "36px",
                 left: "36px",
                 cursor: "pointer",
+                zIndex: 3
             }} onClick={() => {
                 navigate('/')
             }}>
