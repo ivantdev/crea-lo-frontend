@@ -1,0 +1,41 @@
+#pedagogies-screen {
+  background-image: url("../assets/images/pedagogias_background.png");
+  background-color: #cbd8df;
+  position: absolute;
+  width: 1300px;
+  height: 2500px;
+  left: 0px;
+  top: 0px;
+  mix-blend-mode: lighten;
+  opacity: 0.6;
+  z-index: 2000;
+  pointer-events: none;
+}
+
+.Button {
+  background-image: url("../assets/images/pedagogias_background.png");
+  background-color: #3f5759;
+  opacity: 0.85;
+  width: 150px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 21px;
+  line-height: 25px;
+
+  /* A-/fondo/(A) fondo */
+
+  color: #cbd8df;
+}
+.Button:hover {
+  color: black;
+}
+
+.grid {
+  margin-top: 6rem;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 38px;
+  line-height: 46px;
+}

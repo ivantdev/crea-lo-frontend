@@ -1,25 +1,28 @@
-#Container {
-  background-image: url("../../../assets/fondos-10\ 1.png");
+#profundidad-background {
+  position: absolute;
+  width: 1315px;
+  height: 2190px;
+  left: 0px;
+  top: 0px;
+  mix-blend-mode: soft-light;
+  opacity: 0.9;
+  background-image: url("../../../assets/images/profundidad_background.png");
+  z-index: 2000;
+  pointer-events: none;
 }
-#profundidad-background{
-position: absolute;
-width: 1295px;
-height: 2180px;
-left: 21px;
-top: 20px;
-mix-blend-mode: soft-light;
-  background: url("../../../assets/images/profundidad_background.png")  center center fixed;
-}
-.HuellasDeAgua {
 
+
+
+
+.HuellasDeAgua {
   width: 622px;
   height: 1318px;
   left: 177px;
   top: 1034px;
-
+  margin-bottom: 20px;
   /* cuerpo de texto */
 
-  font-family: "Inter";
+  font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
   font-size: 21px;
@@ -28,5 +31,5 @@ mix-blend-mode: soft-light;
 
   /* A-/fondo/(A1) fondo */
 
-  color: #E9EFF2;
+  color: #e9eff2;
 }

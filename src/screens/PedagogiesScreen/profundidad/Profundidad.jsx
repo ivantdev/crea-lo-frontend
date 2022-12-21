@@ -4,28 +4,28 @@ import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../../../hooks";
 import { styled } from "@mui/system";
 
-import ballenaHilos from "../../../assets/Provocación_con_hilos.jpg";
+import ballenaHilos from "../../../assets/images/profundidad/Provocación_con_hilos.jpg";
 import audioBallena from "../../../assets/audio/Ballena 1.mp3";
-import ballenaSumergida from "../../../assets/ballenaSumergiendose.png";
+import ballenaSumergida from "../../../assets/images/profundidad/ballenaSumergiendose.png";
 import "./Profundidad.css";
 import ModalPoema from "./components/ModalPoema";
 import ModalsProfundidad from "./components/ModalsProfundidad";
 
 const Container = styled("div")(({ theme }) => ({
   fontFamily: "ui-monospace, monospace",
-  padding: "5rem",
+  padding: "4rem",
   color: "white",
   lineHeight: "21px",
   "--webkit-user-elect": "none",
   userSelect: "none",
   backgroundColor: "#2F4F4F",
+  
 }));
 
 const Profundidad = () => {
   const theme = useTheme();
   const { isMobile } = useDeviceDetect();
-  const [poemaComplete, setComplete] = useState(false);
-  const [cont, setCont] = useState(0);
+  
 
   const AppropiateContainer = useMemo(
     () =>
@@ -57,9 +57,20 @@ const Profundidad = () => {
   return (
     <>
       <div id="profundidad-background" />
-      <AppropiateContainer >
+      <AppropiateContainer>
         <Container>
-          <h1>Profundidad</h1>
+          <h1
+            style={{
+              fontFamily: "Inter",
+              fontStyle: "normal",
+              fontWeight: 800,
+              fontSize: "38px",
+              lineHeight: "46px",
+              
+            }}
+          >
+            Profundidad
+          </h1>
           <br />
           <img src={ballenaHilos} alt="ballena-bordada" width={550} />
           <br />

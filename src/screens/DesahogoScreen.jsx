@@ -68,8 +68,8 @@ const DesahogoScreen = () => {
           <embed
             src={pdfDesahogo}
             type="application/pdf"
-            width={430}
-            height={630}
+            width={800}
+            height={620}
           />
         </Container>
       </AppropiateContainer>

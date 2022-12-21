@@ -4,6 +4,7 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import { styled } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../hooks";
+import pdfCreciente from "../assets/pdfs/Creciente.pdf";
 
 const Container = styled("div")(({ theme }) => ({
   fontFamily: "ui-monospace, monospace",
@@ -60,7 +61,20 @@ const CrecienteScreen = () => {
         <Container>
           <h1 style={{ color: "blue" }}>Creciente</h1>
         </Container>
-        <Container>{/* <embed src={}/> */}</Container>
+        <Container
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <embed
+            src={pdfCreciente}
+            type="application/pdf"
+            width={800}
+            height={620}
+          />
+        </Container>
       </AppropiateContainer>
     </div>
   );
