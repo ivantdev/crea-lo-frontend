@@ -199,20 +199,20 @@ export default props => {
                         }} my={0}>Lorem ipsum</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography onClick={() => navigate("/pedagogies")}>Pedagogías</Typography>
-                        <Typography onClick={() => navigate("/fragments")}>Fragmentos</Typography>
-                        <Typography onClick={() => navigate("/atlas")}>Atlas</Typography>
-                        <Typography onClick={() => navigate("/credits")}>Créditos</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/pedagogies"))}>Pedagogías</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/fragments"))}>Fragmentos</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/atlas"))}>Atlas</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/credits"))}>Créditos</Typography>
                     </AccordionDetails>
                 </Accordion>
 
 
                 <hr className="separator" />
-                <Link className="menu-item" to="/desahogo">
+                <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
                     Desahogo
                 </Link >
                 <hr className="separator" />
-                <Link className="menu-item" to="/creciente">
+                <Link className="menu-item" to="/creciente" onClick={handleOnClose}>
                     Creciente
                 </Link >
                 <hr className="separator" />
