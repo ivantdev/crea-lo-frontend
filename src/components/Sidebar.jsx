@@ -37,6 +37,7 @@ const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
     '& > p': {
         fontWeight: 600,
         fontSize: "1.2rem",
+        transition: "color 0.2s",
     },
 
     '& > p:hover': {
