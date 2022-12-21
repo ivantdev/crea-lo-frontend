@@ -1,35 +1,39 @@
-// display a button to change the theme
 import React from 'react'
-import { ColorModeContext } from '../contexts/ThemeContext'
-import { useTheme } from '@mui/material/styles';
-import { Box, IconButton } from '@mui/material'
-import Brightness4Icon from '@mui/icons-material/Brightness4';
-import Brightness7Icon from '@mui/icons-material/Brightness7';
+import { Box } from '@mui/material'
+import homeIcon from '../assets/home.png'
+import { useNavigate } from 'react-router-dom'
 
 const HeaderLayout = () => {
-
-    const colorMode = React.useContext(ColorModeContext);
-    const theme = useTheme();
+    const navigate = useNavigate()
 
     return (
-        <Box
-            sx={{
-                display: 'flex',
+        <>
+            <Box
+                sx={{
+                    display: 'flex',
+                    position: 'fixed',
+                    top: 0,
+                    width: '100%',
+                    alignItems: 'center',
+                    bgcolor: 'transparent',
+                    color: 'text.primary',
+                    borderRadius: 1,
+                    justifyContent: 'flex-start',
+                    p: 3,
+                }}
+            >
+            </Box>
+            <Box sx={{
                 position: 'fixed',
-                top: 0,
-                width: '100%',
-                alignItems: 'center',
-                bgcolor: 'transparent',
-                color: 'text.primary',
-                borderRadius: 1,
-                justifyContent: 'flex-start',
-                p: 3,
-            }}
-        >
-            {/* <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
-                {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
-            </IconButton> */}
-        </Box>
+                top: "36px",
+                left: "36px",
+                cursor: "pointer",
+            }} onClick={() => {
+                navigate('/')
+            }}>
+                <img src={homeIcon} alt="home" />
+            </Box>
+        </>
     )
 }
 
