@@ -6,6 +6,7 @@ query getTag($id: ID!) {
       data{
         id
         attributes{
+          name
           images{
             data{
               id

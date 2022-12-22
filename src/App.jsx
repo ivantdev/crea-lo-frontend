@@ -5,7 +5,6 @@ import HomeScreen from "./screens/HomeScreen";
 import AtlasScreen from "./screens/AtlasScreen";
 import PedagogiesScreen from "./screens/PedagogiesScreen/PedagogiesScreen";
 import FragmentsScreen from "./screens/FragmentsScreen";
-import TagScreen from "./screens/TagScreen";
 import NotFound from "./screens/NotFound";
 import HeaderLayout from "./layouts/HeaderLayout";
 import Sidebar from "./components/Sidebar";
@@ -27,7 +26,6 @@ function App() {
             <Route path="/atlas" element={<AtlasScreen />} />
             <Route path="/pedagogies" element={<PedagogiesScreen />} />
             <Route path="/fragments" element={<FragmentsScreen />} />
-            <Route path="/tags/:tag" element={<TagScreen />} />
             <Route path="/pedagogies/profundidad" element={<Profundidad />} />
             <Route path="/pedagogies/descentrar" element={<Descentrar />} />
 

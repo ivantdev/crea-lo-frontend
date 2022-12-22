@@ -3,13 +3,14 @@ import React, { useEffect, useState, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Text } from "@react-three/drei"
 import { useNavigate } from 'react-router-dom'
+import TagDetail from "./TagDetail/TagDetail"
 
 function Word({ children, ...props }) {
     const color = new THREE.Color()
     const fontProps = { font: '/Inter-Bold.ttf', fontSize: 2.5, letterSpacing: -0.05, lineHeight: 1, 'material-toneMapped': false }
     const ref = useRef()
     const [hovered, setHovered] = useState(false)
-    const [clicked, setClicked] = useState(false)
+    const [openModal, setOpenModal] = useState(false)
     const over = (e) => (e.stopPropagation(), setHovered(true))
     const out = () => setHovered(false)
     // Change the mouse cursor on hover
@@ -28,9 +29,12 @@ function Word({ children, ...props }) {
 
     })
 
-    const navigate = useNavigate()
-
-    return <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => navigate(`/tags/${children.id}`)} {...props} {...fontProps} children={children.attributes.name} />
+    return (
+        <>
+            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => setOpenModal(true)} {...props} {...fontProps} children={children.attributes.name} />
+            <TagDetail isOpen={openModal} setIsOpen={setOpenModal} tag={children.id} />
+        </>
+    )
 
 }
 

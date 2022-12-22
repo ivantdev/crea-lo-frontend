@@ -10,14 +10,14 @@ const getDesignTokens = (mode, location) => ({
     palette: {
         mode,
         primary: {
-            main: location === '/' ? '#015958' : location === '/fragments' ? '#275673' : location === '/pedagogies' ? '#015958' : location === 'atlas' ? '#015958' : '#015958',
+            main: location === '/' ? '#015958' : location === '/fragments' ? '#275673' : location === '/pedagogies' ? '#015958' : location === '/atlas' ? '#298073' : '#298073',
         },
         background: {
             default: mode === 'light' ? '#E9EFF2' : '#E9EFF2',
             paper: mode === 'light' ? '#E9EFF2' : '#E9EFF2',
         },
         text: {
-            primary: location === '/' ? '#015958' : location === '/fragments' ? '#275673' : location === '/pedagogies' ? '#015958' : location === 'atlas' ? '#015958' : '#015958',
+            primary: location === '/' ? '#015958' : location === '/fragments' ? '#275673' : location === '/pedagogies' ? '#015958' : location === '/atlas' ? '#298073' : '#298073',
         }
     },
     typography: {
