@@ -1,42 +1,47 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
-import Image from 'mui-image'
-import AwesomeSlider from 'react-awesome-slider';
-import 'react-awesome-slider/dist/styles.css';
-import { styled } from '@mui/system';
-
-// wrapper to modify styles from react-awesome-slider library
-const Wrapper = styled('div')(({ theme }) => ({
-    '& .awssld': {
-        height: "100vh"
-    },
-
-    '& .awssld__bullets': {
-        bottom: "40px",
-        zIndex: 2,
-    }
-}));
+import { useQuery } from '@apollo/client'
+import { GET_TAG } from '../graphql/queries/tag'
 
 const TagScreen = () => {
     const tag = useParams().tag
-
-    useEffect(() => {
-
-    }, [])
+    const { loading, error, data } = useQuery(GET_TAG, {
+        variables: {
+            id: tag
+        }
+    })
     const navigate = useNavigate()
 
+    useEffect(() => {
+        if (!loading) {
+            if (!data.tag.data) {
+                navigate('/not-found')
+                return
+            }
+        }
+    }, [data])
+
+    const images = useMemo(() => {
+        if (loading) return []
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.images.data.map(image => {
+            return image.attributes.file.data[0].attributes.url
+        })
+    }, [data])
+    const videos = useMemo(() => {
+        if (!data) return []
+        return data.tag.data.attributes.videos.data
+    }, [data])
+    const creations = useMemo(() => {
+        if (!data) return []
+        return data.tag.data.attributes.creations.data
+    }, [data])
+
     return (
-        <Wrapper>
-            <AwesomeSlider
-                organicArrows={false}
-            >
-                <div>1</div>
-                <div>2</div>
-                <div>3</div>
-                <div>4</div>
-            </AwesomeSlider>
-        </Wrapper>
+        <>
+        </>
     )
 }
 
