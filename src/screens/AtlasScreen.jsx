@@ -2,7 +2,7 @@ import React, { useEffect, Suspense } from 'react'
 import "../css/AtlasScreen.css"
 import { getTagsByCategory } from "../api"
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, FlyControls, Loader } from '@react-three/drei'
+import { OrbitControls, Loader } from '@react-three/drei'
 import { useControls } from "leva"
 import Cloud from '../components/Cloud'
 import LevaCameraControls from "../components/LevaCameraControls"
@@ -25,9 +25,6 @@ const AtlasScreen = () => {
       const pasoTags = await getTagsByCategory("paso")
       const pisadaTags = await getTagsByCategory("pisada")
       const huellaTags = await getTagsByCategory("huella")
-      console.log(pasoTags)
-      console.log(pisadaTags)
-      console.log(huellaTags)
       setPasoTags(pasoTags.data.data)
       setPisadaTags(pisadaTags.data.data)
       setHuellaTags(huellaTags.data.data)
@@ -36,21 +33,23 @@ const AtlasScreen = () => {
   }, [])
 
   return (
-    <div id="canvas-container">
-      <Canvas className='canvas' camera={{ position: [0, 0, 0] }}>
-        <Suspense fallback={null}>
-          <DynamicBackground />
-          <LevaCameraControls />
-          <fog attach="fog" near={0} far={farFog} />
-          <OrbitControls dampingFactor={dampingFactor} />
-          {/* <FlyControls movementSpeed={10} rollSpeed={0.6} /> */}
-          <ambientLight intensity={0.4} />
-          <Cloud count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
-          <Connections count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
-        </Suspense>
-      </Canvas>
-      <Loader />
-    </div>
+    <>
+      <div id="atlas-background" />
+      <div id="canvas-container">
+        <Canvas className='canvas' camera={{ position: [0, 0, 0] }}>
+          <Suspense fallback={null}>
+            <DynamicBackground />
+            <LevaCameraControls />
+            <fog attach="fog" near={0} far={farFog} />
+            <OrbitControls dampingFactor={dampingFactor} />
+            <ambientLight intensity={0.4} />
+            <Cloud count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+            <Connections count={6} radius={radius} tags={Array.prototype.concat(pasoTags, pisadaTags, huellaTags)} />
+          </Suspense>
+        </Canvas>
+        <Loader />
+      </div>
+    </>
   )
 }
 

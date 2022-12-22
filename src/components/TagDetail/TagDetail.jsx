@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { GET_TAG } from '../../graphql/queries/tag'
@@ -9,6 +9,9 @@ import { Typography, Grid, Dialog, IconButton } from '@mui/material'
 import { Html } from '@react-three/drei'
 import { useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
 
 const Container = styled('div')(({ theme }) => ({
     width: "clamp(300px, 80vw, 800px)",
@@ -78,13 +81,38 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     const name = useMemo(() => {
         if (!data) return []
-        if (!data) return []
         if (!data.tag.data) return []
         return data.tag.data.attributes.name
     }, [data])
 
+    const next = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.next.data.id
+    }, [data])
+
+
     const handleOnClose = () => {
         setIsOpen(false)
+    }
+
+    const handleOnChangeTag = () => {
+        setIsOpen(false)
+        emitCustomEvent('changeTag', { id: next })
+    }
+
+    useCustomEventListener('changeTag', (e) => {
+        if (tag != e.id) return
+        setIsOpen(true)
+    })
+
+
+    const buttonStyles = {
+        color: theme.palette.background.default,
+        backgroundColor: theme.palette.primary.main,
+        '&:hover': {
+            backgroundColor: theme.palette.primary.dark,
+        },
     }
 
     const closeButton = <IconButton
@@ -94,25 +122,45 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
             position: 'absolute',
             right: 16,
             top: 16,
-            color: theme.palette.background.default,
-            backgroundColor: theme.palette.primary.main,
             padding: "4px",
             borderRadius: "5px",
-            '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-            },
-
+            ...buttonStyles
         }}
     >
         <CloseIcon />
     </IconButton>
 
+
+    const leftArrowButton = <IconButton
+        aria-label="left"
+        onClick={handleOnChangeTag}
+        sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
+    >
+        <KeyboardDoubleArrowLeftIcon />
+    </IconButton>
+
+    const rightArrowButton = <IconButton
+        aria-label="right"
+        onClick={handleOnChangeTag}
+        sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
+    >
+        <KeyboardDoubleArrowRightIcon />
+    </IconButton>
+
     return (
-        <Html as='div'>
+        <Html as='div' >
             <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }}>
                 {closeButton}
                 <Grid container justifyContent="center" alignItems="center" sx={{ backgroundColor: "#E9EFF2" }} paddingTop={4}>
-                    <Typography variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", position: "relative", top: "7px" }}>
+                        {leftArrowButton}
+                    </Grid>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingX: "1rem" }}>
+                        <Typography variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
+                    </Grid>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", position: "relative", top: "7px" }}>
+                        {rightArrowButton}
+                    </Grid>
                 </Grid>
                 <Container>
                     {images.map((image, index) => {
@@ -146,7 +194,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
                     })}
                 </Container>
             </Dialog>
-        </Html>
+        </Html >
     )
 }
 

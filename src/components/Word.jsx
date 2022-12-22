@@ -2,7 +2,6 @@ import * as THREE from "three"
 import React, { useEffect, useState, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Text } from "@react-three/drei"
-import { useNavigate } from 'react-router-dom'
 import TagDetail from "./TagDetail/TagDetail"
 
 function Word({ children, ...props }) {
@@ -31,7 +30,7 @@ function Word({ children, ...props }) {
 
     return (
         <>
-            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => setOpenModal(true)} {...props} {...fontProps} children={children.attributes.name} />
+            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={(e) => (e.stopPropagation(), setOpenModal(true))} {...props} {...fontProps} children={children.attributes.name} />
             <TagDetail isOpen={openModal} setIsOpen={setOpenModal} tag={children.id} />
         </>
     )
