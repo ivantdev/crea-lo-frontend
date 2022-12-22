@@ -3,6 +3,25 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { GET_TAG } from '../graphql/queries/tag'
+import "../css/TagScreen.css"
+import { styled } from '@mui/system'
+
+const Container = styled('div')(({ theme }) => ({
+    width: "100vw",
+    height: "100vh",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    backgroundColor: "black",
+}))
+
+const Section = styled('section')(({ theme }) => ({
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    width: "100vw",
+    height: "100vh",
+}))
 
 const TagScreen = () => {
     const tag = useParams().tag
@@ -40,8 +59,17 @@ const TagScreen = () => {
     }, [data])
 
     return (
-        <>
-        </>
+        <Container>
+            <Section>
+                <h1>Page 1</h1>
+            </Section>
+            <Section>
+                <h1>Page 2</h1>
+            </Section>
+            <Section>
+                <h1>Page 3</h1>
+            </Section>
+        </Container>
     )
 }
 

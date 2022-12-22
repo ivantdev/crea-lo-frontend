@@ -7,17 +7,6 @@
     z-index: 4;
 }
 
-body {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    left: 0px;
-    top: 0px;
-    mix-blend-mode: normal;
-    background-color: #CBD8DF;
-    overflow: hidden;
-}
-
 #home-background {
     position: absolute;
     width: 100vw;
@@ -42,13 +31,13 @@ body {
     flex-direction: column;
     position: absolute;
     right: 40px;
-    top: 40px;
     padding-left: 40px;
 }
 
 #home-logo {
     position: relative;
-    width: clamp(200px, 70vw, 500px)
+    width: clamp(200px, 70vw, 500px);
+    top: 40px;
 }
 
 #home-logo-text {
@@ -58,6 +47,8 @@ body {
     text-align: center;
     margin: 0;
     padding: 0;
+    position: relative;
+    top: 40px;
 }
 
 #home-logo-text h1 {

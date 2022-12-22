@@ -127,7 +127,9 @@ const MenuWrapper = styled('div')(({ theme }) => ({
 
     /* Styling of overlay */
     '& .bm-overlay': {
-        background: "rgba(0, 0, 0, 0.3)"
+        background: "rgba(0, 0, 0, 0.3)",
+        top: "0 !important",
+        left: "0 !important",
     },
 
     /* Individual item */
