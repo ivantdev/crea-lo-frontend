@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import { GET_TAG } from '../../graphql/queries/tag'
@@ -14,7 +14,6 @@ const Container = styled('div')(({ theme }) => ({
     width: "clamp(300px, 80vw, 800px)",
     height: "70vh",
     scrollSnapType: "x mandatory",
-    overflowX: "scroll",
     overflowY: "hidden",
     display: "flex",
     backgroundColor: "#E9EFF2",
@@ -33,7 +32,7 @@ const Section = styled('section')(({ theme }) => ({
     maxHeight: "100%",
     scrollSnapAlign: "start",
     flex: "none",
-    overflowX: "scroll",
+    overflowX: "scroll"
 }))
 
 const TagDetail = ({ isOpen, setIsOpen, tag }) => {
@@ -88,7 +87,6 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         setIsOpen(false)
     }
 
-
     const closeButton = <IconButton
         aria-label="close"
         onClick={handleOnClose}
@@ -127,8 +125,8 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
                     {videos.map((video, index) => {
                         return (
                             <Section key={index}>
-                                <div class="container">
-                                    <iframe className='video' width="560" height="315" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div className="container">
+                                    <iframe className='video' width="560" height="315" src={video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </Section>
                         )
