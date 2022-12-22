@@ -1,13 +1,16 @@
+import { useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { interpolateColors } from '../utils'
 import * as THREE from "three"
 import { useControls } from "leva"
+import { useCustomEventListener } from 'react-custom-events'
 
 const BLUE = "#0000a0"
 const RED = "#a30000"
 const GREEN = "#00ba00"
 
 const DynamicBackground = () => {
+    const [someDialogIsOpen, setSomeDialogIsOpen] = useState(false)
     // Lerp background color based on angle
     const { firstColor, secondColor, thirdColor } = useControls(
         {
@@ -16,10 +19,22 @@ const DynamicBackground = () => {
             thirdColor: { value: GREEN, label: "Third Color" },
         })
 
+    useCustomEventListener('openDialog', (e) => {
+        setSomeDialogIsOpen(true)
+    })
+
+    useCustomEventListener('closeDialog', (e) => {
+        setSomeDialogIsOpen(false)
+    })
+
     const opacity = 0.3
 
     useFrame(({ camera, gl, scene }) => {
-
+        if (someDialogIsOpen) {
+            gl.setClearColor(new THREE.Color("#298073"))
+            scene.fog.color = new THREE.Color("#298073")
+            return
+        }
         const radian = Math.atan2(camera.position.x, camera.position.z)
         let angle = radian * (180 / Math.PI);
         if (angle < 0.0)

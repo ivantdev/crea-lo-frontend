@@ -7,11 +7,13 @@ import { styled } from '@mui/system'
 import Image from 'mui-image'
 import { Typography, Grid, Dialog, IconButton } from '@mui/material'
 import { Html } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
 import { useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
+import * as THREE from 'three'
 
 const Container = styled('div')(({ theme }) => ({
     width: "clamp(300px, 80vw, 800px)",
@@ -46,6 +48,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
     })
     const navigate = useNavigate()
     const theme = useTheme()
+    const { gl } = useThree()
 
     useEffect(() => {
         if (!loading) {
@@ -55,6 +58,13 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
             }
         }
     }, [data])
+
+    useEffect(() => {
+        if (isOpen) {
+            gl.setClearColor(new THREE.Color("#298073"))
+        }
+    }, [isOpen])
+
 
     const images = useMemo(() => {
         if (loading) return []
@@ -94,6 +104,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     const handleOnClose = () => {
         setIsOpen(false)
+        emitCustomEvent('closeDialog')
     }
 
     const handleOnChangeTag = () => {
@@ -147,9 +158,10 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         <KeyboardDoubleArrowRightIcon />
     </IconButton>
 
+
     return (
         <Html as='div' >
-            <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }}>
+            <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }} hideBackdrop>
                 {closeButton}
                 <Grid container justifyContent="center" alignItems="center" sx={{ backgroundColor: "#E9EFF2" }} paddingTop={4}>
                     <Grid item xs sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", position: "relative", top: "7px" }}>
