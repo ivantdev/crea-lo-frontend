@@ -17,7 +17,7 @@ const AtlasScreen = () => {
     {
       radius: 25,
       dampingFactor: 0.1,
-      farFog: 100,
+      farFog: 0,
     })
 
   useEffect(() => {
