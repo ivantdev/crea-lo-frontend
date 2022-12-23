@@ -44,6 +44,11 @@ query getTag($id: ID!) {
               id
             }
           }
+          previous{
+            data{
+              id
+            }
+          }
         }
       }
     }

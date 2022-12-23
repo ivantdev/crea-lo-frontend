@@ -10,6 +10,8 @@ import { Html } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
+import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
+import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
@@ -101,15 +103,21 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         return data.tag.data.attributes.next.data.id
     }, [data])
 
+    const previous = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.previous.data.id
+    }, [data])
+
 
     const handleOnClose = () => {
         setIsOpen(false)
         emitCustomEvent('closeDialog')
     }
 
-    const handleOnChangeTag = () => {
+    const handleOnChangeTag = (id) => {
         setIsOpen(false)
-        emitCustomEvent('changeTag', { id: next })
+        emitCustomEvent('changeTag', { id })
     }
 
     useCustomEventListener('changeTag', (e) => {
@@ -144,7 +152,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     const leftArrowButton = <IconButton
         aria-label="left"
-        onClick={handleOnChangeTag}
+        onClick={() => handleOnChangeTag(previous)}
         sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
     >
         <KeyboardDoubleArrowLeftIcon />
@@ -152,12 +160,11 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     const rightArrowButton = <IconButton
         aria-label="right"
-        onClick={handleOnChangeTag}
+        onClick={() => handleOnChangeTag(next)}
         sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
     >
         <KeyboardDoubleArrowRightIcon />
     </IconButton>
-
 
     return (
         <Html as='div' >
