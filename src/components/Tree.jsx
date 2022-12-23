@@ -289,7 +289,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                                             fullWidth
                                         />
                                     </Grid>
-                                    <Grid item xs={2} sx={{ position: 'absolute', right: 2, bottom: -30 }}>
+                                    <Grid item xs={2} sx={{ position: 'absolute', right: 2, bottom: -30, zIndex: 100 }}>
                                         <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={() => handleDeleteDefinition(definition.id)}>
                                             <DeleteIcon />
                                         </IconButton>
