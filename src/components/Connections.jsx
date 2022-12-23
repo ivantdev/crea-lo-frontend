@@ -26,7 +26,7 @@ const Connections = ({ count = 6, tags = [], radius = 20 }) => {
         const points = []
         points.push(mapIdToVector3.get(tag.id))
         points.push(mapIdToVector3.get(tag.attributes.next.data.id))
-        return <Line key={index} points={points} color="white"></Line>
+        return <Line dashed key={index} points={points} color="rgba(12, 12, 12)"></Line>
     })
 }
 

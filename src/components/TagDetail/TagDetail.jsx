@@ -7,14 +7,18 @@ import { styled } from '@mui/system'
 import Image from 'mui-image'
 import { Typography, Grid, Dialog, IconButton } from '@mui/material'
 import { Html } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
 import { useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
+import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
+import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
+import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
+import * as THREE from 'three'
 
 const Container = styled('div')(({ theme }) => ({
     width: "clamp(300px, 80vw, 800px)",
     height: "70vh",
     scrollSnapType: "x mandatory",
-    overflowX: "scroll",
     overflowY: "hidden",
     display: "flex",
     backgroundColor: "#E9EFF2",
@@ -33,7 +37,7 @@ const Section = styled('section')(({ theme }) => ({
     maxHeight: "100%",
     scrollSnapAlign: "start",
     flex: "none",
-    overflowX: "scroll",
+    overflowX: "scroll"
 }))
 
 const TagDetail = ({ isOpen, setIsOpen, tag }) => {
@@ -44,6 +48,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
     })
     const navigate = useNavigate()
     const theme = useTheme()
+    const { gl } = useThree()
 
     useEffect(() => {
         if (!loading) {
@@ -53,6 +58,13 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
             }
         }
     }, [data])
+
+    useEffect(() => {
+        if (isOpen) {
+            gl.setClearColor(new THREE.Color("#298073"))
+        }
+    }, [isOpen])
+
 
     const images = useMemo(() => {
         if (loading) return []
@@ -79,15 +91,40 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     const name = useMemo(() => {
         if (!data) return []
-        if (!data) return []
         if (!data.tag.data) return []
         return data.tag.data.attributes.name
     }, [data])
 
+    const next = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.next.data.id
+    }, [data])
+
+
     const handleOnClose = () => {
         setIsOpen(false)
+        emitCustomEvent('closeDialog')
     }
 
+    const handleOnChangeTag = () => {
+        setIsOpen(false)
+        emitCustomEvent('changeTag', { id: next })
+    }
+
+    useCustomEventListener('changeTag', (e) => {
+        if (tag != e.id) return
+        setIsOpen(true)
+    })
+
+
+    const buttonStyles = {
+        color: theme.palette.background.default,
+        backgroundColor: theme.palette.primary.main,
+        '&:hover': {
+            backgroundColor: theme.palette.primary.dark,
+        },
+    }
 
     const closeButton = <IconButton
         aria-label="close"
@@ -96,25 +133,46 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
             position: 'absolute',
             right: 16,
             top: 16,
-            color: theme.palette.background.default,
-            backgroundColor: theme.palette.primary.main,
             padding: "4px",
             borderRadius: "5px",
-            '&:hover': {
-                backgroundColor: theme.palette.primary.dark,
-            },
-
+            ...buttonStyles
         }}
     >
         <CloseIcon />
     </IconButton>
 
+
+    const leftArrowButton = <IconButton
+        aria-label="left"
+        onClick={handleOnChangeTag}
+        sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
+    >
+        <KeyboardDoubleArrowLeftIcon />
+    </IconButton>
+
+    const rightArrowButton = <IconButton
+        aria-label="right"
+        onClick={handleOnChangeTag}
+        sx={{ ...buttonStyles, padding: "1px", borderRadius: "3px" }}
+    >
+        <KeyboardDoubleArrowRightIcon />
+    </IconButton>
+
+
     return (
-        <Html as='div'>
-            <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }}>
+        <Html as='div' >
+            <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }} hideBackdrop>
                 {closeButton}
                 <Grid container justifyContent="center" alignItems="center" sx={{ backgroundColor: "#E9EFF2" }} paddingTop={4}>
-                    <Typography variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", position: "relative", top: "7px" }}>
+                        {leftArrowButton}
+                    </Grid>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingX: "1rem" }}>
+                        <Typography variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
+                    </Grid>
+                    <Grid item xs sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", position: "relative", top: "7px" }}>
+                        {rightArrowButton}
+                    </Grid>
                 </Grid>
                 <Container>
                     {images.map((image, index) => {
@@ -127,8 +185,8 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
                     {videos.map((video, index) => {
                         return (
                             <Section key={index}>
-                                <div class="container">
-                                    <iframe className='video' width="560" height="315" src={video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                                <div className="container">
+                                    <iframe className='video' width="560" height="315" src={video} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe>
                                 </div>
                             </Section>
                         )
@@ -148,7 +206,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
                     })}
                 </Container>
             </Dialog>
-        </Html>
+        </Html >
     )
 }
 

@@ -26,6 +26,7 @@
     "react": "^18.2.0",
     "react-awesome-slider": "^4.1.0",
     "react-burger-menu": "^3.0.8",
+    "react-custom-events": "^1.1.1",
     "react-dom": "^18.2.0",
     "react-indiana-drag-scroll": "^2.2.0",
     "react-router-dom": "^6.4.4",

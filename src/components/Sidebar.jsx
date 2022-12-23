@@ -12,8 +12,6 @@ import FacebookSvg from '../assets/icons/bxl-facebook-circle.svg.svg'
 import TwitterSvg from '../assets/icons/bxl-twitter.svg.svg'
 import YoutubeSvg from '../assets/icons/bxl-youtube.svg.svg'
 import SpotifySvg from '../assets/icons/bxl-spotify.svg.svg'
-import { Grid } from '@mui/material';
-import { Diversity1Sharp } from '@mui/icons-material';
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
@@ -172,7 +170,6 @@ export default props => {
         ref.current.querySelector('.bm-menu-wrap').style.opacity = "0";
         setOpen(false);
     }
-
     const handleOnOpen = () => {
         // modify animation altering .bm-menu-wrap
         ref.current.querySelector('.bm-menu-wrap').style.opacity = "1";

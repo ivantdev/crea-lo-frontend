@@ -2,8 +2,8 @@ import * as THREE from "three"
 import React, { useEffect, useState, useRef } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Text } from "@react-three/drei"
-import { useNavigate } from 'react-router-dom'
 import TagDetail from "./TagDetail/TagDetail"
+import { emitCustomEvent } from 'react-custom-events'
 
 function Word({ children, ...props }) {
     const color = new THREE.Color()
@@ -13,6 +13,7 @@ function Word({ children, ...props }) {
     const [openModal, setOpenModal] = useState(false)
     const over = (e) => (e.stopPropagation(), setHovered(true))
     const out = () => setHovered(false)
+    const click = (e) => (e.stopPropagation(), setOpenModal(true), emitCustomEvent('openDialog'))
     // Change the mouse cursor on hover
     useEffect(() => {
         if (hovered) document.body.style.cursor = 'pointer'
@@ -31,7 +32,7 @@ function Word({ children, ...props }) {
 
     return (
         <>
-            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={() => setOpenModal(true)} {...props} {...fontProps} children={children.attributes.name} />
+            <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={click} {...props} {...fontProps} children={children.attributes.name} />
             <TagDetail isOpen={openModal} setIsOpen={setOpenModal} tag={children.id} />
         </>
     )

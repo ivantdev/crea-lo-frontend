@@ -39,6 +39,11 @@ query getTag($id: ID!) {
               }
             }
           }
+          next{
+            data{
+              id
+            }
+          }
         }
       }
     }
