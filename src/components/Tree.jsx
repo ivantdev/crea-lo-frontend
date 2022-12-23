@@ -256,7 +256,8 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                 onClose={toggleModalOpen}
                 aria-labelledby="modal-modal-title"
                 scroll='paper'
-                maxWidth="auto"
+                repositionOnUpdate={false}
+                style={{ padding: '0px 0px 0px 0px' }}
                 sx={{
                     p: 10,
                 }}
