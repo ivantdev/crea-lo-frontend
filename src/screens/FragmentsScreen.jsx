@@ -14,11 +14,14 @@ Globals.assign({
 });
 
 const Container = styled('div')(({ theme }) => ({
+    width: "100vw",
+    height: "100vh",
     padding: "clamp(20px, 10vw, 175px)",
     paddingTop: "clamp(80px, 10vw, 175px)",
     lineHeight: "25px",
     "--webkit-user-elect": "none",
     userSelect: "none",
+    overflowX: "scroll",
 }));
 
 const FragmentsScreen = () => {

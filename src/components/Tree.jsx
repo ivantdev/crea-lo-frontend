@@ -6,11 +6,13 @@ import * as Icons from './Icons'
 import { styled } from '@mui/system'
 import { animated } from '@react-spring/web'
 import EditIcon from '@mui/icons-material/Edit'
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from '@mui/icons-material/DeleteOutline';
 import IconButton from '@mui/material/IconButton'
 import Dialog from '@mui/material/Dialog'
 import DialogTitle from '@mui/material/DialogTitle'
-import DialogContent from '@mui/material/DialogContent'
+import CloseIcon from '@mui/icons-material/Close'
+import QueueIcon from '@mui/icons-material/Queue';
+import MuiDialogContent from '@mui/material/DialogContent'
 import Typography from '@mui/material/Typography'
 import TextField from '@mui/material/TextField'
 import Grid from '@mui/material/Grid'
@@ -57,6 +59,10 @@ const TreeText = styled('div')(({ theme }) => ({
     //wrap text
     "whiteSpace": "pre-wrap",
     color: theme.palette.text.primary,
+}));
+
+const DialogContent = styled(MuiDialogContent)(({ theme }) => ({
+    borderTop: "none"
 }));
 
 const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
@@ -196,6 +202,29 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
     }, [treeData])
 
 
+    const handleOnClose = () => {
+        setModalOpen(false)
+    }
+    const closeButton = <IconButton
+        aria-label="close"
+        onClick={handleOnClose}
+        sx={{
+            position: 'absolute',
+            right: 16,
+            top: 16,
+            padding: "2px",
+            borderRadius: "5px",
+            color: theme.palette.background.default,
+            backgroundColor: theme.palette.primary.main,
+            '&:hover': {
+                backgroundColor: theme.palette.primary.dark,
+            },
+        }}
+    >
+        <CloseIcon />
+    </IconButton>
+
+
     return (
         <Frame>
             <Icon style={{
@@ -227,16 +256,19 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                 onClose={toggleModalOpen}
                 aria-labelledby="modal-modal-title"
                 scroll='paper'
+                repositionOnUpdate={false}
+                style={{ padding: '0px 0px 0px 0px' }}
                 sx={{
                     p: 10,
                 }}
             >
-                <DialogTitle id="modal-modal-title" variant="h2" component="h2" sx={{ fontWeight: 700, px: 5 }}>
+                {closeButton}
+                <DialogTitle id="modal-modal-title" variant="h3" component="h2" sx={{ fontWeight: 700, pt: 5, px: 5 }} >
                     {currentNode.attributes.name}
                 </DialogTitle>
 
-                <DialogContent dividers sx={{ p: 5 }}>
-                    <Grid container spacing={2} mt={1}>
+                <DialogContent dividers sx={{ pb: 5, px: 5 }}>
+                    <Grid container spacing={4} mt={1}>
                         <Grid item xs={12}>
                             <Typography mt={1} variant="h5" component="h3" sx={{ fontWeight: 700 }} >
                                 Definitions
@@ -245,19 +277,19 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
                         {currentNode.attributes.definitions.data.map((definition, index) => {
                             return (
-                                <Grid item xs={6} key={definition.id} container sx={{ position: 'relative' }}>
+                                <Grid item xs={12} sm={6} key={definition.id} container sx={{ position: 'relative', pt: 0 }}>
                                     <Grid item xs={12}>
                                         <TextField
                                             key={definition.id}
                                             id={'textField' + definition.id}
-                                            label={Number(index) + 1}
                                             multiline
                                             rows={3}
                                             defaultValue={definition.attributes.content}
                                             variant="outlined"
+                                            fullWidth
                                         />
                                     </Grid>
-                                    <Grid item xs={2} sx={{ position: 'absolute', right: 0, top: 0 }}>
+                                    <Grid item xs={2} sx={{ position: 'absolute', right: 2, bottom: -30, zIndex: 100 }}>
                                         <IconButton size="small" color="error" component="span" style={{ marginLeft: "10px" }} onClick={() => handleDeleteDefinition(definition.id)}>
                                             <DeleteIcon />
                                         </IconButton>
@@ -266,32 +298,22 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                                 </Grid>
                             )
                         })}
-                        <Grid item xs={12}>
+                        <Grid item xs={12} sx={{ position: 'relative' }}>
                             <TextField
                                 id='newDefinition'
-                                label="New Definition"
                                 multiline
                                 rows={3}
                                 variant="outlined"
                                 placeholder='Add a new definition here'
-                                color="success"
                                 fullWidth
+                                sx={{ backgroundColor: "white" }}
                             />
+                            <IconButton size="small" color="primary" component="span" style={{ position: 'absolute', right: 0, bottom: -35 }} onClick={handleAddDefinition}>
+                                <QueueIcon />
+                            </IconButton>
                         </Grid>
 
                     </Grid>
-
-
-
-                    <Button variant="contained" style={{ marginTop: "10px" }} onClick={handleSaveDefinitions}>
-                        Save
-                    </Button>
-
-
-
-                    <Button color="success" variant="contained" style={{ marginTop: "10px", marginLeft: "10px" }} onClick={handleAddDefinition}>
-                        Add definition
-                    </Button>
 
                     <Grid container spacing={2} mt={1}>
                         <Grid item xs={12}>
@@ -304,8 +326,8 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                             return (
                                 <Grid item xs={12} key={concept.id} container alignItems="center">
                                     <Grid item xs={10}>
-                                        <Typography>
-                                            {index + 1}. {treeData[concept.id].attributes.name}
+                                        <Typography sx={{ marginLeft: 2 }} fontWeight={600}>
+                                            {treeData[concept.id].attributes.name}
                                         </Typography>
                                     </Grid>
                                     <Grid item xs={2}>
@@ -319,21 +341,30 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                         )}
                     </Grid>
                     <Grid container mt={3}>
-                        <Grid item xs={6}>
+                        <Grid item xs={12} sx={{ position: 'relative' }}>
                             <TextField
                                 id='newConcept'
-                                label="New Concept"
                                 variant="outlined"
                                 placeholder='Add a new concept here'
-                                color="success"
+                                fullWidth
+                                sx={{
+                                    backgroundColor: 'white'
+                                }}
                             />
-                        </Grid>
-                        <Grid item xs={6}>
-                            <Button color="success" variant="contained" style={{ marginTop: "10px", marginLeft: "10px" }} onClick={handleAddConcept}>
-                                Add concept
-                            </Button>
+                            <IconButton size="small" color="primary" component="span" style={{ position: 'absolute', right: -4, bottom: -35 }} onClick={handleAddConcept}>
+                                <QueueIcon />
+                            </IconButton>
                         </Grid>
                     </Grid>
+                    <Grid container mt={9} >
+                        <Grid item xs sx={{ display: 'flex' }} justifyContent="center">
+                            <Button variant="contained" onClick={handleSaveDefinitions}>
+                                Publish
+                            </Button>
+                        </Grid>
+
+                    </Grid>
+
                 </DialogContent>
             </Dialog>
         </Frame>
