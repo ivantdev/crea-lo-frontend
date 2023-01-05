@@ -17,12 +17,7 @@ const Container = styled("div")(({ theme }) => ({
   userSelect: "none",
   backgroundColor: "#2F4F4F",
 }));
-// const getImages = () =>{
-//   lettersButton.forEach((element,index)=>{
-//    import image from `../../../assets/images/descentrar/${element}/1.png`
-//       imagesButton[index]= image;
-//   })
-//   }
+
 const Descentrar = () => {
   const theme = useTheme();
   const { isMobile } = useDeviceDetect();
@@ -108,7 +103,8 @@ const Descentrar = () => {
             direction="column"
             justifyContent="flex-end"
             alignItems="flex-start"
-            spacing={{ xs: 2, md: 3 }}
+            spacing={{ xs: 2, md: 6 }}
+            style={{marginTop:"20rem"}}
           >
             {srcButton.map((element, index) => (
               <Grid item xs={8} key={index}>
@@ -123,7 +119,7 @@ const Descentrar = () => {
               </Grid>
             ))}
           </Grid>
-          <ModalDescentrar open={open} indexContent={indexContent} />
+          <ModalDescentrar open={open} indexContent={indexContent} handleClose={handleClose} style={{zIndex:2001}}/>
         </Container>
       </AppropiateContainer>
     </>

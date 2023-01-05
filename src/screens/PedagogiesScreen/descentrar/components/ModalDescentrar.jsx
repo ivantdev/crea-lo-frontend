@@ -1,7 +1,8 @@
 import { Box, Modal } from "@mui/material";
 import React from "react";
-
-const ModalDescentrar = ({ open, indexContent }) => {
+import Carousel from "react-material-ui-carousel";
+import { Paper, Button } from "@mui/material";
+const ModalDescentrar = ({ open, indexContent, handleClose }) => {
   const imagesArrays = [
     [
       "https://res.cloudinary.com/crea-lo/image/upload/v1671837490/dev/A/1_evwpww.png",
@@ -11,6 +12,12 @@ const ModalDescentrar = ({ open, indexContent }) => {
       "https://res.cloudinary.com/crea-lo/image/upload/v1671837531/dev/B/3._olores_que_narran._mafe_m8r4eo.jpg",
       "https://res.cloudinary.com/crea-lo/image/upload/v1671837529/dev/B/2._olores_que_narran._mafe_exmya5.jpg",
       "https://res.cloudinary.com/crea-lo/image/upload/v1671837529/dev/B/1_zcyb40.jpg",
+    ],
+    [
+      "https://res.cloudinary.com/crea-lo/image/upload/v1671837541/dev/C/1_gtzibj.png",
+      "https://res.cloudinary.com/crea-lo/image/upload/v1671837540/dev/C/2._gabi._experiencia_plaza_zpzier.png",
+      "https://res.cloudinary.com/crea-lo/image/upload/v1671837540/dev/C/3._gabi._experiencia_plaza_qmnf0t.jpg",
+      "https://res.cloudinary.com/crea-lo/image/upload/v1671837540/dev/C/4.gabi._experiencia_plaza_ztx0jl.jpg",
     ],
     [
       "https://res.cloudinary.com/crea-lo/image/upload/v1671837708/dev/D/3.olores_que_narran._laura_ovlh3k.jpg",
@@ -81,27 +88,59 @@ const ModalDescentrar = ({ open, indexContent }) => {
     "https://res.cloudinary.com/crea-lo/video/upload/v1671839465/dev/Ni/%C3%91._Final_ccfuyp.mp3",
   ];
 
+  const ItemImg = ({ src }) => {
+    return (
+      <Paper>
+        <img src={src} width={500} height={375} />
+      </Paper>
+    );
+  };
+  const ItemAud = ({ src }) => {
+    return (
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <audio
+          // controls
+          autoPlay
+        >
+          <source src={src} type="audio/mpeg" />
+        </audio>
+      </div>
+    );
+  };
   const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
+    position: "absolute",
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%, -50%)",
+    width: 500,
+    bgcolor: "background.paper",
+    border: "2px solid #000",
     boxShadow: 24,
     p: 4,
+    zIndex: 2002,
   };
+  let itemsImg = imagesArrays[indexContent];
   return (
     <div>
       <Modal
         open={open}
-        // onClose={handleClose}
+        onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        style={{ zIndex: 2001 }}
       >
         <Box sx={style}>
-  
+          <Carousel>
+            {itemsImg.map((item, i) => (
+              <ItemImg key={i} src={item} />
+            ))}
+          </Carousel>
+          <ItemAud src={audioArray[indexContent]} />
+          <div style={{ display: "flex", justifyContent: "center" }}>
+            <Button color="error" onClick={handleClose}>
+              X
+            </Button>
+          </div>
         </Box>
       </Modal>
     </div>
