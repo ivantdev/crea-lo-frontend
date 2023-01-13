@@ -28,6 +28,9 @@ const AtlasScreen = () => {
       setPasoTags(pasoTags.data.data)
       setPisadaTags(pisadaTags.data.data)
       setHuellaTags(huellaTags.data.data)
+      console.log(pasoTags.data.data)
+      console.log(pisadaTags.data.data)
+      console.log(huellaTags.data.data)
     }
     fetchTags()
   }, [])
