@@ -175,7 +175,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
                         {leftArrowButton}
                     </Grid>
                     <Grid item xs sx={{ display: "flex", justifyContent: "center", alignItems: "center", paddingX: "1rem" }}>
-                        <Typography variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
+                        <Typography sx={{ whiteSpace: 'nowrap' }} variant="h2" component="h1" fontWeight={800} color={theme.palette.text.primary}>{name}</Typography>
                     </Grid>
                     <Grid item xs sx={{ display: "flex", justifyContent: "flex-start", alignItems: "center", position: "relative", top: "7px" }}>
                         {rightArrowButton}
