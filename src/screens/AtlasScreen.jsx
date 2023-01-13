@@ -8,6 +8,7 @@ import Cloud from '../components/Cloud'
 import LevaCameraControls from "../components/LevaCameraControls"
 import Connections from '../components/Connections'
 import DynamicBackground from '../components/DynamicBackground'
+import LevaConfiguration from '../components/LevaConfiguration'
 
 const AtlasScreen = () => {
   const [pasoTags, setPasoTags] = React.useState([])
@@ -18,7 +19,7 @@ const AtlasScreen = () => {
       radius: 25,
       dampingFactor: 0.1,
       farFog: 0,
-    })
+    },)
 
   useEffect(() => {
     const fetchTags = async () => {
@@ -34,6 +35,7 @@ const AtlasScreen = () => {
 
   return (
     <>
+      <LevaConfiguration />
       <div id="atlas-background" />
       <div id="canvas-container">
         <Canvas className='canvas' camera={{ position: [0, 0, 0] }}>

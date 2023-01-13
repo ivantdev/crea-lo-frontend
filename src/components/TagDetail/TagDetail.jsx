@@ -10,8 +10,6 @@ import { Html } from '@react-three/drei'
 import { useThree } from '@react-three/fiber'
 import { useTheme } from '@mui/material'
 import CloseIcon from '@mui/icons-material/Close'
-import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight';
-import KeyboardArrowLeftIcon from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrowLeft';
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
