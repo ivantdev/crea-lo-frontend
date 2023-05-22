@@ -41,7 +41,7 @@ const FragmentsScreen = () => {
     }, [data])
 
     //appropriate container for mobile or desktop
-    const AppropiateContainer = useMemo(() => ({ children }) => {
+    const AppropriateContainer = useMemo(() => ({ children }) => {
         return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
             padding: "clamp(20px, 10vw, 175px)",
             paddingTop: "clamp(80px, 10vw, 175px)",
@@ -57,9 +57,9 @@ const FragmentsScreen = () => {
     return (
         <>
             <div id="fragments-background" />
-            <AppropiateContainer>
+            <AppropriateContainer>
                 {!loading && <Tree treeData={conceptMap} currentNode={data.concepts.data.find(concept => concept.attributes.name == 'Fragmentos')} />}
-            </AppropiateContainer>
+            </AppropriateContainer>
         </>
 
     )
