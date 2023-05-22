@@ -3,6 +3,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })
+import fondo_18 from "../assets/images/fondos-18.jpeg"
+import fondo_14 from "../assets/images/fondos-14.jpeg"
+import fondo_5 from "../assets/images/fondos-5.jpeg"
 
 // This function is used to generate the theme based on the mode and location
 // The mode is not being used, but it is there for future use
@@ -32,11 +35,11 @@ const getDesignTokens = (mode, location, homeIndex) => {
             '#015958',
         ]
         const backgroundImage = [
-            "url('src/assets/images/fondos-18.jpeg')",
-            "url('src/assets/images/fondos-18.jpeg')",
-            "url('src/assets/images/fondos-14.jpeg')",
-            "url('src/assets/images/fondos-5.jpeg')",
-            "url('src/assets/images/fondos-5.jpeg')",
+            `url('${fondo_18}')`,
+            `url('${fondo_18}')`,
+            `url('${fondo_14}')`,
+            `url('${fondo_5}')`,
+            `url('${fondo_5}')`,
         ]
         const text = [
             '#57508d',
