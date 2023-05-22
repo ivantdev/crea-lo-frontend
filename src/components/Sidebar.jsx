@@ -12,11 +12,12 @@ import FacebookSvg from '../assets/icons/bxl-facebook-circle.svg.svg'
 import TwitterSvg from '../assets/icons/bxl-twitter.svg.svg'
 import YoutubeSvg from '../assets/icons/bxl-youtube.svg.svg'
 import SpotifySvg from '../assets/icons/bxl-spotify.svg.svg'
+import { ColorModeContext } from '../contexts/ThemeContext';
 
 const Accordion = styled((props) => (
     <MuiAccordion disableGutters elevation={0} square {...props} />
 ))(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
+    background: theme.palette.background.special || theme.palette.background.default,
     '&:not(:last-child)': {
         borderBottom: 0,
     },
@@ -26,7 +27,6 @@ const Accordion = styled((props) => (
 }));
 
 const AccordionDetails = styled(MuiAccordionDetails)(({ theme }) => ({
-    color: "#d1d1d1",
     transition: "all 0.3s ease-in-out",
     display: "flex",
     flexDirection: "column",
@@ -60,11 +60,12 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         height: "30px",
         right: "36px",
         top: "36px",
+        mixBlendMode: "difference",
     },
 
     /* Color/shape of burger icon bars */
     '& .bm-burger-bars': {
-        background: theme.palette.primary.main
+        background: theme.palette.background.paper
     },
 
     /* Color/shape of burger icon bars on hover*/
@@ -76,7 +77,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
     '& .bm-cross-button': {
         height: "30px !important",
         width: "30px !important",
-        background: "white",
+        background: theme.palette.text.primary,
         borderRadius: "3px",
     },
 
@@ -97,25 +98,32 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         height: "auto !important",
         top: "20px !important",
         right: "20px !important",
+        borderRadius: "5px",
+        background: theme.palette.background.special || theme.palette.background.default,
+        backgroundImage: theme.palette.background.image,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "100vw 100vh",
+        backgroundPosition: "top right",
     },
-
+    
     /* General sidebar styles */
     '& .bm-menu': {
-        background: theme.palette.primary.main,
+        background: theme.palette.background.special || theme.palette.background.default,
         padding: "2.5em 1.5em 0",
         fontSize: "1.15em",
         height: "auto !important",
+        mixBlendMode: theme.palette.background.location === '/pedagogies' ? undefined : "multiply",
         borderRadius: "5px",
     },
 
     /* Morph shape necessary with bubble or elastic */
     '& .bm-morph-shape': {
-        fill: theme.palette.primary.main,
+        fill: theme.palette.background.special || theme.palette.background.default,
+
     },
 
     /* Wrapper for item list */
     '& .bm-item-list': {
-        color: "#b8b7ad",
         padding: "0.8em",
         display: "flex",
         flexDirection: "column",
@@ -133,7 +141,6 @@ const MenuWrapper = styled('div')(({ theme }) => ({
     /* Individual item */
     '& .bm-item': {
         display: "inline-block",
-        color: "#d1d1d1",
         marginBottom: "10px",
         marginTop: "10px",
         textAlign: "left",
@@ -141,25 +148,28 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         transition: "color 0.2s",
     },
 
-    '& .bm-item:hover': {
-        color: "#ffffff",
-    },
-
     '& .separator': {
         width: "100%",
         height: "1px",
-        backgroundColor: "#d1d1d1",
         margin: "10px 0",
     },
-
     '& .menu-item': {
-        fontWeight: 900
-    }
+        fontWeight: 900,
+        color: theme.palette.text.primary,
+    },
+    
+    '& .bm-item p:hover, .bm-item a:hover': {
+        color: "#000000",
+    },
+    '& a.bm-item:hover': {
+        color: "#000000",
+    },
 
 }));
 
 export default props => {
 
+    const { setHomeIndexPalette, theme } = React.useContext(ColorModeContext);
     const navigate = useNavigate();
     const [open, setOpen] = React.useState(false);
     const ref = React.useRef(null);
@@ -168,11 +178,14 @@ export default props => {
         // modify animation altering .bm-menu-wrap
         ref.current.querySelector('.bm-menu-wrap').style.transform = "translate3d(calc(100% + 20px), 0px, 0px)";
         ref.current.querySelector('.bm-menu-wrap').style.opacity = "0";
+        ref.current.querySelector('.bm-burger-button').style.opacity = "1";
         setOpen(false);
+        setHomeIndexPalette((prev) => ((prev + 1) % 5));
     }
     const handleOnOpen = () => {
         // modify animation altering .bm-menu-wrap
         ref.current.querySelector('.bm-menu-wrap').style.opacity = "1";
+        ref.current.querySelector('.bm-burger-button').style.opacity = "0";
         setOpen(true);
     }
 
@@ -189,13 +202,9 @@ export default props => {
                             fontSize: '26px',
                             fontWeight: 900,
                             display: "inline-block",
-                            color: "#d1d1d1",
                             textAlign: "left",
                             textDecoration: "none",
                             transition: "color 0.2s",
-                            '&:hover': {
-                                color: "#ffffff",
-                            }
                         }} my={0}>Lorem ipsum</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
@@ -221,6 +230,7 @@ export default props => {
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "center",
+                    mixBlendMode: "difference",
                 }}>
                     <div>
                         <a href="https://www.youtube.com/channel/UCY0YQZ0ZQZ1Z1Z1Z1Z1Z1Z1" target="_blank" rel="noreferrer">

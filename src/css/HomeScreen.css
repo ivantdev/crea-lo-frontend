@@ -13,13 +13,11 @@
     height: 100vh;
     left: 0px;
     top: 0px;
-    mix-blend-mode: color-burn;
-    opacity: 0.4;
-    z-index: 2000;
+    mix-blend-mode:difference;
+    overflow: hidden;
     pointer-events: none;
-    background-image: url("../assets/images/home_background.png");
-    background-repeat: repeat;
     background-size: cover;
+    background-position: bottom center;
 }
 
 #home-logo-container {
@@ -30,14 +28,20 @@
     align-items: center;
     flex-direction: column;
     position: absolute;
-    right: 40px;
-    padding-left: 40px;
+    z-index: 20;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+    color: #57508d;
 }
 
 #home-logo {
     position: relative;
-    width: clamp(200px, 70vw, 500px);
-    top: 40px;
+    width: clamp(200px, 70vw, 550px);
+    top: 20px;
+    opacity: 0.9;
 }
 
 #home-logo-text {
