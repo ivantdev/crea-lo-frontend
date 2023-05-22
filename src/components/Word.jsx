@@ -33,7 +33,7 @@ function Word({ children, ...props }) {
     return (
         <>
             <Text ref={ref} onPointerOver={over} onPointerOut={out} onClick={click} {...props} {...fontProps} children={children.attributes.name} />
-            <TagDetail isOpen={openModal} setIsOpen={setOpenModal} tag={children.id} />
+            <TagDetail isOpen={openModal} setIsOpen={setOpenModal} tag={children} />
         </>
     )
 
