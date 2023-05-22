@@ -1,9 +1,11 @@
 #pedagogies-screen {
-  background-image: url("../assets/images/pedagogias_background.png");
   background-color: #cbd8df;
-  position: absolute;
-  width: 1300px;
-  height: 2500px;
+  background-image: url("../assets/images/pedagogias_background.png");
+  background-size: cover;
+  background-repeat: repeat-y;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   left: 0px;
   top: 0px;
   mix-blend-mode: lighten;
