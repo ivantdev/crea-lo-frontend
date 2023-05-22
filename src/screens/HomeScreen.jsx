@@ -3,6 +3,12 @@ import logo from "../assets/logo crea-lo.png"
 import "../css/HomeScreen.css"
 import { ColorModeContext } from '../contexts/ThemeContext'
 import { useLocation } from 'react-router-dom'
+import fondo_18 from "../assets/images/fondos-18.jpeg"
+import fondo_14 from "../assets/images/fondos-14.jpeg"
+import fondo_15 from "../assets/images/fondos-15.jpeg"
+import fondo_2 from "../assets/images/fondos-2.jpeg"
+import fondo_5 from "../assets/images/fondos-5.jpeg"
+
 
 const HomeScreen = () => {
     const { homeIndexPalette, theme } = React.useContext(ColorModeContext)
@@ -11,17 +17,17 @@ const HomeScreen = () => {
         [
             // BG 1
             {
-                backgroundImage: "url('src/assets/images/fondos-18.jpeg')",
+                backgroundImage: `url('${fondo_18}')`,
                 mixBlendMode: "difference",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-14.jpeg')",
+                backgroundImage: `url('${fondo_14}')`,
                 mixBlendMode: "color-burn",
                 opacity: "0.5",
                 zIndex: "2",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-15.jpeg')",
+                backgroundImage: `url('${fondo_15}')`,
                 mixBlendMode: "saturation",
                 transform: "rotate(-180deg)",
             },
@@ -29,23 +35,23 @@ const HomeScreen = () => {
         [
             // BG 2
             {
-                backgroundImage: "url('src/assets/images/fondos-18.jpeg')",
+                backgroundImage: `url('${fondo_18}')`,
                 mixBlendMode: "saturation",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-2.jpeg')",
+                backgroundImage: `url('${fondo_2}')`,
                 mixBlendMode: "color-burn",
                 opacity: "0.9",
                 zIndex: 5,
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-14.jpeg')",
+                backgroundImage: `url('${fondo_14}')`,
                 mixBlendMode: "color-burn",
                 transform: "rotate(-180deg)",
                 opacity: "0.5",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-5.jpeg')",
+                backgroundImage: `url('${fondo_5}')`,
                 mixBlendMode: "saturation",
                 transform: "rotate(-180deg)",
             },
@@ -53,11 +59,11 @@ const HomeScreen = () => {
         [
             // BG 3
             {
-                backgroundImage: "url('src/assets/images/fondos-18.jpeg')",
+                backgroundImage: `url('${fondo_18}')`,
                 mixBlendMode: "difference",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-14.jpeg')",
+                backgroundImage: `url('${fondo_14}')`,
                 mixBlendMode: "luminosity",
                 opacity: "0.5",
                 zIndex: "2",
@@ -66,29 +72,29 @@ const HomeScreen = () => {
         [
              // BG 4
              {
-                backgroundImage: "url('src/assets/images/fondos-2.jpeg')",
+                backgroundImage: `url('${fondo_2}')`,
                 mixBlendMode: "multiply",
                 opacity: "0.9",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-14.jpeg')",
+                backgroundImage: `url('${fondo_14}')`,
                 mixBlendMode: "color-burn",
                 opacity: "0.5",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-5.jpeg')",
+                backgroundImage: `url('${fondo_5}')`,
                 mixBlendMode: "color",
             },
         ],
         [
              // BG 5
              {
-                backgroundImage: "url('src/assets/images/fondos-14.jpeg')",
+                backgroundImage: `url('${fondo_14}')`,
                 mixBlendMode: "color-burn",
                 opacity: "0.5",
             },
             {
-                backgroundImage: "url('src/assets/images/fondos-5.jpeg')",
+                backgroundImage: `url('${fondo_5}')`,
                 mixBlendMode: "color",
             },
         ],
