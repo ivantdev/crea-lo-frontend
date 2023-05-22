@@ -5,30 +5,27 @@ import { useNavigate } from 'react-router-dom'
 
 const HeaderLayout = () => {
     const navigate = useNavigate()
+    const [isHomeScreen, setIsHomeScreen] = React.useState(false)
+
+    React.useEffect(() => {
+        if (window.location.pathname === '/') {
+            setIsHomeScreen(true)
+        } else {
+            setIsHomeScreen(false)
+        }
+    }, [window.location.pathname])
+    if (isHomeScreen) {
+        return null
+    }
 
     return (
         <>
-            <Box
-                sx={{
-                    display: 'flex',
-                    position: 'fixed',
-                    top: 0,
-                    width: '100%',
-                    alignItems: 'center',
-                    bgcolor: 'transparent',
-                    color: 'text.primary',
-                    borderRadius: 1,
-                    justifyContent: 'flex-start',
-                    p: 3,
-                }}
-            >
-            </Box>
             <Box sx={{
                 position: 'fixed',
                 top: "36px",
                 left: "36px",
                 cursor: "pointer",
-                zIndex: 3
+                zIndex: 10
             }} onClick={() => {
                 navigate('/')
             }}>
