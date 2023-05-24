@@ -61,7 +61,6 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     useEffect(() => {
         if (isOpen) {
-            gl.setClearColor(new THREE.Color("#298073"))
         }
     }, [isOpen])
 
