@@ -41,8 +41,23 @@ const Section = styled('section')(({ theme }) => ({
 }))
 
 const TagDetail = ({ isOpen, setIsOpen, tag }) => {
+    const { loading, error, data } = useQuery(GET_TAG, {
+        variables: {
+            id: tag
+        }
+    })
+    const navigate = useNavigate()
     const theme = useTheme()
     const { gl } = useThree()
+
+    useEffect(() => {
+        if (!loading) {
+            if (!data.tag.data) {
+                navigate('/not-found')
+                return
+            }
+        }
+    }, [data])
 
     useEffect(() => {
         if (isOpen) {
@@ -51,16 +66,46 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
     }, [isOpen])
 
 
-    const images = tag.attributes.images.data.map(image => {
-        return image.attributes.file.data[0].attributes.url
-    })
-    const videos = tag.attributes.videos.data.map(video => {
-        return video.attributes.link
-    })
-    const creations = tag.attributes.creations.data
-    const name = tag.attributes.name
-    const next = tag.attributes.next.data.id
-    const previous = tag.attributes.previous.data.id
+    const images = useMemo(() => {
+        if (loading) return []
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.images.data.map(image => {
+            return image.attributes.file.data[0].attributes.url
+        })
+    }, [data])
+
+    const videos = useMemo(() => {
+        if (loading) return []
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.videos.data.map(video => {
+            return video.attributes.link
+        })
+    }, [data])
+
+    const creations = useMemo(() => {
+        if (!data) return []
+        return data.tag.data.attributes.creations.data
+    }, [data])
+
+    const name = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.name
+    }, [data])
+
+    const next = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.next.data.id
+    }, [data])
+
+    const previous = useMemo(() => {
+        if (!data) return []
+        if (!data.tag.data) return []
+        return data.tag.data.attributes.previous.data.id
+    }, [data])
 
 
     const handleOnClose = () => {
