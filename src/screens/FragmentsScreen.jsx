@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import '../css/FragmentsScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
@@ -29,6 +29,10 @@ const FragmentsScreen = () => {
     const { loading, error, data } = useQuery(GET_CONCEPTS, {
         pollInterval: 500,
     });
+
+    if (error) {
+        alert("fetch data error: ". error, error.message)
+    }
 
     //create a hashmap of concept id to concept object
     const conceptMap = useMemo(() => {

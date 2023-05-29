@@ -59,13 +59,6 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         }
     }, [data])
 
-    useEffect(() => {
-        if (isOpen) {
-            gl.setClearColor(new THREE.Color("#298073"))
-        }
-    }, [isOpen])
-
-
     const images = useMemo(() => {
         if (loading) return []
         if (!data) return []
@@ -120,13 +113,15 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     useCustomEventListener('changeTag', (e) => {
         if (tag != e.id) return
-        setIsOpen(true)
+        setTimeout(() => {
+            setIsOpen(true)
+        }, 200);
     })
 
 
     const buttonStyles = {
         color: theme.palette.background.default,
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.text.primary,
         '&:hover': {
             backgroundColor: theme.palette.primary.dark,
         },

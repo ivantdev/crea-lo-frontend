@@ -23,12 +23,12 @@ const AtlasScreen = () => {
 
   useEffect(() => {
     const fetchTags = async () => {
-      const pasoTags = await getTagsByCategory("paso")
-      const pisadaTags = await getTagsByCategory("pisada")
-      const huellaTags = await getTagsByCategory("huella")
-      setPasoTags(pasoTags.data.data)
-      setPisadaTags(pisadaTags.data.data)
-      setHuellaTags(huellaTags.data.data)
+        const pasoTags = await getTagsByCategory("paso")
+        const pisadaTags = await getTagsByCategory("pisada")
+        const huellaTags = await getTagsByCategory("huella")
+        setPasoTags(pasoTags.data.data)
+        setPisadaTags(pisadaTags.data.data)
+        setHuellaTags(huellaTags.data.data)
     }
     fetchTags()
   }, [])

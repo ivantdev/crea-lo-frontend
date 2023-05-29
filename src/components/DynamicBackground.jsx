@@ -31,8 +31,6 @@ const DynamicBackground = () => {
 
     useFrame(({ camera, gl, scene }) => {
         if (someDialogIsOpen) {
-            gl.setClearColor(new THREE.Color("#298073"))
-            scene.fog.color = new THREE.Color("#298073")
             return
         }
         const radian = Math.atan2(camera.position.x, camera.position.z)

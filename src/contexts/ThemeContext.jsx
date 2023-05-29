@@ -81,7 +81,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
                 main: location === '/' ? '' 
                 : location === '/fragments' ? '#275673' 
                 : location === '/pedagogies' ? '#015958' 
-                : location === '/atlas' ? '#298073'
+                : location === '/atlas' ? '#CBD8DF'
                 : '#298073',
             },
             background: {
