@@ -1,6 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { useTheme } from "@mui/material/styles";
+import { IconButton } from "@mui/material";
+import CloseIcon from '@mui/icons-material/Close'
 import { useDeviceDetect } from "../../../hooks";
 import { styled } from "@mui/system";
 
@@ -12,14 +14,17 @@ import ModalPoema from "./components/ModalPoema";
 import ModalsProfundidad from "./components/ModalsProfundidad";
 
 const Container = styled("div")(({ theme }) => ({
+  position: "relative",
+  zIndex: 1200,
+  margin: "10px",
+  padding: "2rem",
   fontFamily: "ui-monospace, monospace",
-  padding: "4rem",
   color: "white",
   lineHeight: "21px",
   "--webkit-user-elect": "none",
   userSelect: "none",
   backgroundColor: "#2F4F4F",
-  
+  borderRadius: "10px",
 }));
 
 const Profundidad = () => {
@@ -31,15 +36,14 @@ const Profundidad = () => {
     () =>
       ({ children }) => {
         return !isMobile ? (
-          <Container>{children}</Container>
+          <Container sx={{ padding: "4rem" }}>{children}</Container>
         ) : (
           <ScrollContainer
             className="scroll-container"
             style={{
               fontFamily: "ui-monospace, monospace",
-              padding: "4rem",
-              width: "calc(100vw - 6rem)",
-              height: "calc(100vh - 2rem)",
+              width: "calc(100vw)",
+              height: "calc(100vh)",
               color: theme.palette.text.primary,
               lineHeight: "21px",
               "--webkit-user-select": "none",
@@ -54,10 +58,33 @@ const Profundidad = () => {
     [isMobile]
   );
 
+  const closeButtonStyles = {
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    zIndex: 2000,
+    padding: "4px",
+    borderRadius: "5px",
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.background.default,
+    "&:hover": {
+      backgroundColor: '#FFFFFF',
+    },
+  }
+
   return (
     <>
       <div id="profundidad-background" />
       <AppropiateContainer>
+        <IconButton
+          aria-label="close"
+          onClick={() => {
+            window.history.back();
+          }}
+          sx={{...closeButtonStyles}}
+        >
+          <CloseIcon />
+        </IconButton>
         <Container>
           <h1
             style={{
@@ -136,7 +163,6 @@ const Profundidad = () => {
             <img
               src={ballenaSumergida}
               alt="ballena Sumergiendose"
-              width={600}
             />
           </div>
           <ModalPoema />

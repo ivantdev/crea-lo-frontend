@@ -1,7 +1,7 @@
 #profundidad-background {
-  position: absolute;
-  width: 1315px;
-  height: 2190px;
+  position: fixed;
+  width: 100%;
+  height: 100%;
   left: 0px;
   top: 0px;
   mix-blend-mode: soft-light;
