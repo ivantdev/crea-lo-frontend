@@ -75,17 +75,17 @@ const ModalsProfundidad = () => {
       case 5 <= numb && numb < 10:
         return `25%`;
       case 10 <= numb && numb < 15:
-        return `50%`;
+        return `calc(50% - 300px)`;
       case 20 <= numb && numb < 25:
-        return `75%`;
+        return `calc(75% - 300px)`;
       case 25 <= numb && numb < 30:
-        return `80%`;
+        return `calc(80% - 300px)`;
       case 30 <= numb && numb < 35:
-        return `10%`;
+        return `calc(10% - 300px)`;
       case 35 <= numb && numb < 40:
-        return `35%`;
+        return `calc(35% - 300px)`;
       default:
-        return `85%`;
+        return `calc(85% - 300px)`;
     }
   };
 
