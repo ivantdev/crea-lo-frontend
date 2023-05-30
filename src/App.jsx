@@ -13,6 +13,7 @@ import DesahogoScreen from "./screens/DesahogoScreen";
 import CrecienteScreen from "./screens/CrecienteScreen";
 import CreditosScreen from "./screens/CreditosScreen";
 import Descentrar from "./screens/PedagogiesScreen/descentrar/Descentrar";
+import Resistir from "./screens/PedagogiesScreen/resistir/Resistir";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
             <Route path="/fragments" element={<FragmentsScreen />} />
             <Route path="/pedagogies/profundidad" element={<Profundidad />} />
             <Route path="/pedagogies/descentrar" element={<Descentrar />} />
+            <Route path="/pedagogies/resistir" element={<Resistir />} />
 
             <Route path="/desahogo" element={<DesahogoScreen />} />
             <Route path="/creciente" element={<CrecienteScreen />} />
