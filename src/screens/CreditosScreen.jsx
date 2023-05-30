@@ -4,28 +4,88 @@ import { styled } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../hooks";
 
-import logo from "../assets/Crealo logo png 1.png";
+import logo_crealo from "../assets/Crealo logo png 1.png";
 import escudo from "../assets/escudo.png";
 import "../css/CreditsScreen.css";
 
 const Container = styled("div")(({ theme }) => ({
+  position: "relative",
+  width: "100vw",
+  height: "100%",
+  display: "grid",
+  justifyContent: "center",
   fontFamily: "Inter",
-  padding: "4rem",
   color: "#A3C9D9",
   lineHeight: "21px",
-  "--webkit-user-elect": "none",
-  userSelect: "none",
-  position: "relative",
-  width: "1440px",
-  height: "2722px",
-  left: "0px",
-  top: "0px",
   backgroundColor: "#173040",
 }));
 
 const CreditosScreen = () => {
   const theme = useTheme();
   const { isMobile } = useDeviceDetect();
+
+  const integrantes_2022_1 = [
+    "Anamaría Rodríguez Ramírez",
+    "Brian Sneider Gutiérrez Valderrama",
+    "César Luis Cerquera Montealegre",
+    "Dayanna Lizeth Arteaga Segovia",
+    "Erika Paola Cely Cruz",
+    "Iliana Pastorany Martínez Guio",
+    "Jenaro Larios Carvajal",
+    "Jhoan Andrés Ortiz Castillo",
+    "Johan Rodríguez Meneses",
+    "Karol Ximena Espitia Montaño",
+    "Laura Vanessa Macias Jara",
+    "María Camila Mendoza Quintero",
+    "Melany Gipsy Moreno González",
+    "Miguel Ángel Pascuas Cely",
+    "Paola Andrea Aguirre Bravo",
+    "Phoebe Mariana Lara Reina",
+    "Vielka Valentina Rodríguez Jaimes",
+  ]
+
+  const integrantes_2022_3 = [
+    "Ana Fernanda Montañez Romero",
+    "Ana María Mavisoy González",
+    "Andrea Natalia Garzón Almario",
+    "Angela Gissell Garzón Marín",
+    "Ángela María López Gómez",
+    "Astrid Lorena Castillo Felacio",
+    "Brayan Daniel Reyes González",
+    "Carmen Lorena Pedraza Galvis",
+    "Catalina Daza Rintha",
+    "Cristian Snneyder Salamanca Pacheco",
+    "Daniela Duarte Cepeda",
+    "Duván Stiven Izaquita Sepúlveda",
+    "Escarle Fernanda Sánchez Escorcha",
+    "Francy Nataly Micolta Quiñones",
+    "Gabriela Correa Godoy",
+    "Heiner Fabián Martinez Rangel",
+    "Hollman Junior Ortiz Blanco",
+    "Humberto Antonio Nieto Aguirre",
+    "James Stevan Mena Burbano",
+    "Jennifer Dayana Gelvez Galvis",
+    "Jhosman Stiven Jiménez Ramos",
+    "Jonathan Fabián Ortiz Rojas",
+    "Jorge Iván Torres Ferrer",
+    "Jose Luis Castro Góngora",
+    "Juan David Martínez",
+    "Juliana Redondo Reyes",
+    "Kevin Ricardo Moreno Medalles",
+    "Laura Fernanda Rivera Bermúdez",
+    "Leidy Savina Valencia Andrade",
+    "Lina María Redondo Norato",
+    "María Fernanda Cedeno Reyes",
+    "María José Arias Mora",
+    "Marlon Iván Jiménez Fonseca",
+    "Miguel Alexander Giraldo Giraldo",
+    "Nicolás Gil Pachón",
+    "Oriana Melissa Cruz Cárdenas",
+    "Paola Andrea Certuche Garzón",
+    "Paula Stephania Rodríguez Silva",
+    "Sarakmila Valentina Corredor Pérez",
+    "Valentina Acelas Rodríguez",
+  ]
 
   const AppropiateContainer = useMemo(
     () =>
@@ -38,8 +98,8 @@ const CreditosScreen = () => {
             style={{
               fontFamily: "Inter",
               padding: "4rem",
-              width: "calc(100vw - 6rem)",
-              height: "calc(100vh - 2rem)",
+              width: "100vw",
+              height: "100vh",
               color: theme.palette.text.primary,
               lineHeight: "21px",
               "--webkit-user-select": "none",
@@ -56,236 +116,177 @@ const CreditosScreen = () => {
 
   return (
     <>
-      <div id="creditosScreen" />
       <AppropiateContainer>
-        <p
-          style={{
-            position: "absolute",
-            width: "928px",
-            height: "150px",
-            left: "300px",
-            top: "159px",
-            fontWeight: 700,
-            fontSize: "21px",
-            lineHeight: "25px",
-          }}
-        >
-          MEMORIAS <br />
-          Proyecto: <br /> <br />
-          CREA-LO OTROS MUNDOS POSIBLES EN LA UNAL <br />
-          Laboratorios, talleres y experiencias para el activismo cultural
-          universitario. 2022
-        </p>
-        <p
-          style={{
-            position: "absolute",
-            width: "447px",
-            height: "2090px",
-            left: "300px",
-            top: "358px",
-            fontWeight: 600,
-            fontSize: "21px",
-            lineHeight: "25px",
-          }}
-        >
-          Universidad Nacional de Colombia <br /> Vicerrectoría de Sede Bogotá{" "}
-          <br />
-          Dirección de Bienestar Universitario <br /> División de Cultura <br />{" "}
-          <br />
-          <em>Directora Bienestar Universitario</em> <br /> Sede Bogotá <br />{" "}
-          Yuly Edith Sánchez <br /> <br />
-          Jefe División de Cultura <br />
-          Nicolás Zorro <br />
-          <br />
-          <br />
-          Proyecto “Crea-lo: otros mundos posibles en la UNAL” <br /> <br />{" "}
-          Coordinación general <br /> Diego García Bernal <br /> <br />{" "}
-          Acompañamiento sensible <br /> Rafael Duarte Uriza <br /> María
-          Natscheilly Torres <br /> Natalia Orozco Lucena <br /> Mateo Mejía
-          Mejía <br /> <br /> Diseño visual <br /> Martin Gabriel Castaño
-          Hincapié - Martirio <br /> <br />
-          Estudiantes asistentes del proyecto <br /> Sofía Jaime Pacheco <br />{" "}
-          José David Castañeda García <br /> Lina Constanza Mejía Ramírez <br />
-          <br /> Mediación pedagógica y cultural <br /> Bibiana Carvajal Bernal{" "}
-          <br />
-          <br /> Estudiantes asistentes de mediación pedagógica y cultural{" "}
-          <br /> William Felipe Rodríguez Castañeda <br /> Santiago Sarmiento
-          Mora <br />
-          <br /> Coordinación y conceptualización editorial <br /> Guadalupe
-          Errázuriz <br />
-          <br /> Diseño y desarrollo web <br /> Erick Santiago Díaz Bueno <br />{" "}
-          Sebastián Castañeda García <br />
-          <br /> Diagramación y diseño gráfico <br /> Juan Mojica —Publicaciones
-          La Sorda <br />
-          <br /> Profesoras y profesores invitados <br /> Angie Andrea Rodríguez
-          —Rosil <br /> María Fernanda Vanegas <br /> José Francisco Álvarez
-          Morales <br />
-          Wiñay Mallky —Fredy Chikangana <br /> Adalid R. Rodríguez <br /> Danna
-          Luz Ordóñez Arias <br /> Andrés Forero -HEREJE- <br /> Alexander
-          Caicedo -W4CO- <br />
-          <br /> Comité editorial <br />
-          Sofía Jaime Pacheco <br /> José David García Castañeda <br /> Lina
-          Constanza Mejía Ramírez <br /> Martín Gabriel Castaño Hincapié <br />{" "}
-          Diego García Bernal <br /> Mateo Mejía Mejía <br /> Guadalupe
-          Errázuriz <br /> María Natscheilly Torres <br /> Rafael Duarte Uriza{" "}
-          <br /> Juan Mojica —Publicaciones La Sorda <br /> <br /> Todos los
-          contenidos de esta publicación fueron desarrollados en el marco del
-          proyecto «Crea-lo: otros mundos posibles en la UN. Laboratorios,
-          talleres y experiencias para el activismo cultural universitario» a
-          través de talleres y laboratorios colaborativos y representan una voz
-          común de los participantes.
-        </p>
-        <p
-          style={{
-            position: "absolute",
-            width: "409px",
-            height: "1675px",
-            left: "800px",
-            top: "483px",
-            fontStyle: "italic",
-            fontWeight: 700,
-            fontSize: "21px",
-            lineHeight: "25px",
-          }}
-        >
-          Integrantes laboratorios 2022-1 <br />
-          Anamaría Rodríguez Ramírez <br />
-          Brian Sneider Gutiérrez Valderrama <br />
-          César Luis Cerquera Montealegre
-          <br />
-          Dayanna Lizeth Arteaga Segovia <br />
-          Erika Paola Cely Cruz <br />
-          Iliana Pastorany Martínez Guio
-          <br />
-          Jenaro Larios Carvajal
-          <br />
-          Jhoan Andrés Ortiz Castillo
-          <br />
-          Johan Rodríguez Meneses <br />
-          Karol Ximena Espitia Montaño
-          <br />
-          Laura Vanessa Macias Jara
-          <br />
-          María Camila Mendoza Quintero <br />
-          Melany Gipsy Moreno González <br />
-          Miguel Ángel Pascuas Cely <br />
-          Paola Andrea Aguirre Bravo <br />
-          Phoebe Mariana Lara Reina <br />
-          Vielka Valentina Rodríguez Jaimes <br />
-          <br />
-          Integrantes laboratorios 2022-3 <br />
-          Ana Fernanda Montañez Romero <br />
-          Ana María Mavisoy González <br />
-          Andrea Natalia Garzón Almario
-          <br />
-          Angela Gissell Garzón Marín
-          <br />
-          Ángela María López Gómez <br />
-          Astrid Lorena Castillo Felacio <br />
-          Brayan Daniel Reyes González
-          <br />
-          Carmen Lorena Pedraza Galvis <br />
-          Catalina Daza Rintha <br />
-          Cristian Snneyder Salamanca Pacheco
-          <br />
-          Daniela Duarte Cepeda <br />
-          Duván Stiven Izaquita Sepúlveda <br />
-          Escarle Fernanda Sánchez Escorcha
-          <br />
-          Francy Nataly Micolta Quiñones
-          <br />
-          Gabriela Correa Godoy
-          <br />
-          Heiner Fabián Martinez Rangel
-          <br />
-          Hollman Junior Ortiz Blanco <br />
-          Humberto Antonio Nieto Aguirre <br />
-          James Stevan Mena Burbano
-          <br />
-          Jennifer Dayana Gelvez Galvis <br />
-          Jhosman Stiven Jiménez Ramos
-          <br />
-          Jonathan Fabián Ortiz Rojas
-          <br />
-          Jorge Iván Torres Ferrer <br />
-          Jose Luis Castro Góngora
-          <br />
-          Juan David Martínez <br />
-          Juliana Redondo Reyes
-          <br />
-          Kevin Ricardo Moreno Medalles <br />
-          Laura Fernanda Rivera Bermúdez
-          <br />
-          Leidy Savina Valencia Andrade <br />
-          Lina María Redondo Norato
-          <br />
-          María Fernanda Cedeno Reyes <br />
-          María José Arias Mora
-          <br />
-          Marlon Iván Jiménez Fonseca
-          <br />
-          Miguel Alexander Giraldo Giraldo
-          <br />
-          Nicolás Gil Pachón
-          <br />
-          Oriana Melissa Cruz Cárdenas
-          <br />
-          Paola Andrea Certuche Garzón
-          <br />
-          Paula Stephania Rodríguez Silva
-          <br />
-          Sarakmila Valentina Corredor Pérez
-          <br />
-          Valentina Acelas Rodríguez
-          <br />
-          <br />
-          Agradecimientos
-          <br />
-          <br />
-          Escuela de Artes - UNAL Bogotá
-          <br />
-          Sofía Mejía Arias, Maestría Interdisciplinaria en Teatro y Artes Vivas
-          —MITAV UNAL
-        </p>
-        <p
-          style={{
-            position: "absolute",
-            width: "409px",
-            height: "325px",
-            left: "800px",
-            top: "2190px",
-            fontStyle: "normal",
-            fontWeight: 400,
-            fontSize: "21px",
-            lineHeight: "25px",
-          }}
-        >
-          Universidad Nacional de Colombia <br /> DIVISIÓN DE CULTURA <br />{" "}
-          Dirección de Bienestar Universitario <br /> Sede Bogotá <br />
-          <br /> Edificio 103 - Centro Polideportivo <br /> Primer Piso <br />{" "}
-          Ciudad Universitaria <br /> Bogotá D.C., Colombia <br />
-          <br />
-          Email: culturabien_bog@unal.edu.co <br /> Facebook: <br /> Área
-          Cultura Unal Bog
-        </p>
-        <img
-          src={logo}
-          alt="Logo-Crealo"
-          style={{
-            position: "absolute",
-            width: "200px",
-            height: "132px",
-            left: "400px",
-            top: "2550px",
-          }}
-        />
-        <img src={escudo} alt="Escudo-UN"      style={{
-            position: "absolute",
-            width: "232px",
-            height: "98px",
-            left: "850px",
-            top: "2560px",
-          }} />
+          <Container style={{ padding: "4rem 4rem 2rem 4rem"}}>
+            <div id="creditosScreen" />
+            <div className="creditos-screen ml-15" style={{ maxWidth: "1200px"}}>
+              <header className="mt-3">
+                <h2 className="m-0">MEMORIAS</h2>
+                <h3 className="m-0">Proyecto:</h3>
+              </header>
+
+              <div className="description mt-3">
+                <p style={{ fontSize: "1.2em"}}><span className="bold">CREA-LO</span> OTROS MUNDOS POSIBLES EN LA UNAL </p>
+                <p>Laboratorios, talleres y experiencias para el activismo cultural universitario.</p>
+                <p>2022</p>
+              </div>
+
+              <div className="grid-2 grid-end gap-2">
+                <div>
+                  <div className="parrafo bold">
+                    <p>Universidad Nacional de Colombia</p>
+                    <p>Vicerrectoría de Sede Bogotá</p>
+                    <p>Dirección de Bienestar Universitario</p>
+                    <p>División de Cultura</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Directora Bienestar Universitario </p>
+                    <p className="bold">Sede Bogotá </p>
+                    <p>Yuly Edith Sánchez</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Jefe División de Cultura</p>
+                    <p>Nicolás Zorro</p>
+                  </div>
+                  <div className="parrafo bold">
+                    <p>Proyecto “Crea-lo: otros mundos </p>
+                    <p>posibles en la UNAL”</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Coordinación general</p>
+                    <p>Diego García Bernal</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Acompañamiento sensible</p>
+                    <p>Rafael Duarte Uriza</p>
+                    <p>María Natscheilly Torres</p>
+                    <p>Natalia Orozco Lucena</p>
+                    <p>Mateo Mejía Mejía</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Diseño visual</p>
+                    <p>Martin Gabriel Castaño Hincapié - Martirio</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Estudiantes asistentes del proyecto</p>
+                    <p>Sofía Jaime Pacheco</p>
+                    <p>José David Castañeda García</p>
+                    <p>Lina Constanza Mejía Ramírez</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Mediación pedagógica y cultural</p>
+                    <p>Bibiana Carvajal Bernal</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Estudiantes asistentes de mediación pedagógica y cultural</p>
+                    <p>William Felipe Rodríguez Castañeda</p>
+                    <p>Santiago Sarmiento Mora</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Coordinación y conceptualización editorial</p>
+                    <p>Guadalupe Errázuriz</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Diseño y desarrollo web</p>
+                    <p>Erick Santiago Díaz Bueno</p>
+                    <p>Sebastián Castañeda García</p>
+                    {/* <p>Nelson Ivan Castellanos Betancourt</p> */}
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Diagramación y diseño gráfico </p>
+                    <p>Juan Mojica — Publicaciones La Sorda</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Profesoras y profesores invitados</p>
+                    <p>Angie Andrea Rodríguez — Rosil</p>
+                    <p>María Fernanda Vanegas</p>
+                    <p>José Francisco Álvarez Morales</p>
+                    <p>Wiñay Mallky — Fredy Chikangana</p>
+                    <p>Adalid R. Rodríguez</p>
+                    <p>Danna Luz Ordóñez Arias</p>
+                    <p>Andrés Forero -HEREJE-</p>
+                    <p>Alexander Caicedo -W4CO-</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Comité editorial</p>
+                    <p>Sofía Jaime Pacheco</p>
+                    <p>José David García Castañeda</p>
+                    <p>Lina Constanza Mejía Ramírez</p>
+                    <p>Martín Gabriel Castaño Hincapié</p>
+                    <p>Diego García Bernal</p>
+                    <p>Mateo Mejía Mejía</p>
+                    <p>Guadalupe Errázuriz</p>
+                    <p>María Natscheilly Torres</p>
+                    <p>Rafael Duarte Uriza</p>
+                    <p>Juan Mojica — Publicaciones La Sorda</p>
+                  </div>
+                </div>
+                <div>
+                  <div className="parrafo">
+                    <p className="bold">Integrantes laboratorios 2022-1</p>
+                    {
+                      integrantes_2022_1.map((integrante, index) => (
+                        <p key={index}>{integrante}</p>
+                      ))
+                    }
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Integrantes laboratorios 2022-3</p>
+                    {
+                      integrantes_2022_3.map((integrante, index) => (
+                        <p key={index}>{integrante}</p>
+                      ))
+                    }
+                  </div>
+                  <div className="parrafo">
+                    <p>Agradecimientos</p>
+                  </div>
+                  <div className="parrafo">
+                    <p>Escuela de Artes - UNAL Bogotá</p>
+                    <p>Sofía Mejía Arias, Maestría Interdisciplinaria en Teatro y Artes Vivas —MITAV UNAL</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Container>
+          <Container style={{ padding: "2rem 4rem"}}>
+            <div className="creditos-screen ml-15" style={{ maxWidth: "1200px"}}>
+              <div className="grid-2 gap-2">
+                <div>
+                  <div className="parrafo">
+                    <p>Todos los contenidos de esta publicación fueron desarrollados en el marco del proyecto «Crea-lo: otros mundos posibles en la UN. Laboratorios, talleres y experiencias para el activismo cultural universitario» a través de talleres y laboratorios colaborativos y representan una voz común de los participantes.</p>
+                  </div>
+                </div>
+                <div>
+                  <div className="parrafo">
+                    <p>Universidad Nacional de Colombia</p>
+                    <p>DIVISIÓN DE CULTURA</p>
+                    <p>Dirección de Bienestar Universitario</p>
+                    <p>Sede Bogotá</p>
+                  </div>
+                  <div className="parrafo">
+                    <p>Edificio 103 - Centro Polideportivo</p>
+                    <p>Primer Piso</p>
+                    <p>Ciudad Universitaria</p>
+                    <p>Bogotá D.C., Colombia</p>
+                  </div>
+                  <div className="parrafo">
+                    <p>Email: culturabien_bog@unal.edu.co</p>
+                    <p>Facebook: </p>
+                    <p>Área Cultura Unal Bog</p>
+                  </div>
+                </div>
+              </div>
+              <div className="grid-2 gap-2 mt-3">
+                <div className="center">
+                  <img src={logo_crealo} alt="Logo Crea-lo" />
+                </div>
+                <div className="ml-3">
+                  <img src={escudo} alt="Escudo Univrsidad Nacional de Colombia" />
+                </div>
+              </div>
+            </div>
+          </Container>
       </AppropiateContainer>
     </>
   );
