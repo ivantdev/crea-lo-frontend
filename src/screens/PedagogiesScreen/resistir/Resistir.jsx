@@ -114,7 +114,7 @@ const Resistir = () => {
           >
             Resistir
           </h1>
-          <div style={{ maxWidth: "1200px"}}>
+          <div className="resistir" style={{ maxWidth: "1200px"}}>
 
             <div className="right">
               <img className="mx--500 mt-5" src={images.palabras_1} alt="" />
