@@ -5,17 +5,25 @@ import { useDeviceDetect } from "../../../hooks";
 import { styled } from "@mui/system";
 import Paper from "@mui/material/Paper";
 import "./Descentrar.css";
-import { Button, Grid } from "@mui/material";
+import { Button, Grid, IconButton } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
 import ModalDescentrar from "./components/ModalDescentrar";
+import AsideDescentrar from "./components/AsideDescentrar";
 
 const Container = styled("div")(({ theme }) => ({
+  position: "relative",
+  zIndex: 1200,
+  margin: "10px",
+  padding: "2rem",
+  display: "flex",
+  justifyContent: "center",
   fontFamily: "ui-monospace, monospace",
-  padding: "4rem",
   color: "white",
   lineHeight: "21px",
-  "--webkit-user-elect": "none",
+  "--webkit-user-select": "none",
   userSelect: "none",
   backgroundColor: "#2F4F4F",
+  borderRadius: "10px",
 }));
 
 const Descentrar = () => {
@@ -51,15 +59,15 @@ const Descentrar = () => {
     () =>
       ({ children }) => {
         return !isMobile ? (
-          <Container>{children}</Container>
+          <Container sx={{ padding: "4rem "}}>{children}</Container>
         ) : (
           <ScrollContainer
             className="scroll-container"
             style={{
               fontFamily: "ui-monospace, monospace",
-              padding: "4rem",
-              width: "calc(100vw - 6rem)",
-              height: "calc(100vh - 2rem)",
+              padding: "0rem",
+              width: "100vw",
+              height: "100vh",
               color: theme.palette.text.primary,
               lineHeight: "21px",
               "--webkit-user-select": "none",
@@ -81,45 +89,87 @@ const Descentrar = () => {
     textAlign: "center",
     color: theme.palette.text.secondary,
   }));
+
+  const closeButtonStyles = {
+    position: "absolute",
+    top: "20px",
+    right: "20px",
+    zIndex: 2000,
+    padding: "4px",
+    borderRadius: "3px",
+    color: theme.palette.text.primary,
+    backgroundColor: theme.palette.background.default,
+    "&:hover": {
+      backgroundColor: '#FFFFFF',
+    },
+  }
+
   return (
     <>
-      <div id="descentrar-background" />
       <AppropiateContainer>
+      <div id="descentrar-background" />
+        <IconButton
+          aria-label="close"
+          onClick={() => {
+            window.history.back();
+          }}
+          sx={{...closeButtonStyles}}
+        >
+          <CloseIcon />
+        </IconButton>
         <Container>
-          <h1
-            style={{
-              fontFamily: "Inter",
-              fontStyle: "normal",
-              fontWeight: 800,
-              fontSize: "38px",
-              lineHeight: "46px",
-            }}
-          >
-            Descentramientos
-          </h1>
-          <br />
-          <Grid
-            container
-            direction="column"
-            justifyContent="flex-end"
-            alignItems="flex-start"
-            spacing={{ xs: 2, md: 6 }}
-            style={{marginTop:"20rem"}}
-          >
-            {srcButton.map((element, index) => (
-              <Grid item xs={8} key={index}>
-                <Item>
-                  <Button
-                    onClick={() => handleOpen(index)}
-                    style={{ zIndex: 2001, margin: 0, padding: 0 }}
-                  >
-                    <img src={element} width={213} height={213} />
-                  </Button>
-                </Item>
+          <div style={{ maxWidth: "1350px"}}>
+            <h1
+              style={{
+                fontFamily: "Inter",
+                fontStyle: "normal",
+                fontWeight: 800,
+                fontSize: "38px",
+                lineHeight: "46px",
+              }}
+            >
+              Descentramientos
+            </h1>
+            <Grid
+              container
+              spacing={2}
+            >
+              <Grid
+                item
+                container
+                columns={3}
+                xs={1}
+                direction="row"
+                justifyContent="flex-start"
+                alignItems="flex-start"
+                spacing={2}
+                style={{marginTop:"20rem"}}
+              >
+                {srcButton.map((element, index) => (
+                  <Grid item xs={3} key={index}>
+                    <Item style={{width: "min-content"}}>
+                      <Button
+                        onClick={() => handleOpen(index)}
+                        style={{ zIndex: 2001, margin: 0, padding: 0 }}
+                      >
+                        <img src={element} width={213} height={213} />
+                      </Button>
+                    </Item>
+                  </Grid>
+                ))}
               </Grid>
-            ))}
-          </Grid>
-          <ModalDescentrar open={open} indexContent={indexContent} handleClose={handleClose} style={{zIndex:2001}}/>
+
+              <Grid
+                item
+                xs={8}
+                container
+                style={{ padding: "0"}}
+              >
+                  <AsideDescentrar />
+              </Grid>
+            </Grid>
+            <ModalDescentrar open={open} indexContent={indexContent} handleClose={handleClose} style={{zIndex:2001}}/>
+          </div>
         </Container>
       </AppropiateContainer>
     </>
