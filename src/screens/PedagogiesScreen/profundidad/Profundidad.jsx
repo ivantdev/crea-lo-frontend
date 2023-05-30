@@ -64,7 +64,7 @@ const Profundidad = () => {
     right: "20px",
     zIndex: 2000,
     padding: "4px",
-    borderRadius: "5px",
+    borderRadius: "3px",
     color: theme.palette.text.primary,
     backgroundColor: theme.palette.background.default,
     "&:hover": {
