@@ -13,7 +13,7 @@ import AsideDescentrar from "./components/AsideDescentrar";
 const Container = styled("div")(({ theme }) => ({
   position: "relative",
   margin: "10px",
-  padding: "2rem",
+  padding: "1rem",
   maxWidth: "100%",
   display: "flex",
   justifyContent: "center",
@@ -65,7 +65,7 @@ const Descentrar = () => {
     () =>
       ({ children }) => {
         return !isMobile ? (
-          <Container sx={{ padding: "4rem "}}>{children}</Container>
+          <Container>{children}</Container>
         ) : (
           <ScrollContainer
             className="scroll-container"
@@ -112,7 +112,6 @@ const Descentrar = () => {
 
   return (
     <ContainerBody>
-      <AppropiateContainer>
       <div id="descentrar-background" />
         <IconButton
           aria-label="close"
@@ -124,13 +123,13 @@ const Descentrar = () => {
           <CloseIcon />
         </IconButton>
         <Container>
-          <div style={{ maxWidth: "1350px"}}>
+          <div style={{ maxWidth: "1350px", width: "100%"}}>
             <h1
               style={{
                 fontFamily: "Inter",
                 fontStyle: "normal",
                 fontWeight: 800,
-                fontSize: "38px",
+                fontSize: "2rem",
                 lineHeight: "46px",
               }}
             >
@@ -139,26 +138,26 @@ const Descentrar = () => {
             <Grid
               container
               spacing={2}
+              columns={12}
+              style={{ padding: "0", margin: "0 auto", maxWidth: "100%", gap: "20px" }}
             >
               <Grid
                 item
                 container
-                columns={3}
-                xs={1}
-                direction="row"
-                justifyContent="flex-start"
-                alignItems="flex-start"
                 spacing={2}
-                style={{marginTop:"20rem"}}
+                xs={3.8}
+                justifyContent={"center"}
+                alignContent={"flex-start"}
+                style={{marginTop:"20rem", gap: "20px"}}
               >
                 {srcButton.map((element, index) => (
-                  <Grid item xs={3} key={index}>
-                    <Item style={{width: "min-content"}}>
+                  <Grid item xs={3} key={index} style={{ maxWidth: "100%", padding: "0"}}>
+                    <Item style={{ width: "max-content", maxWidth: "100%", margin: "0 auto" }}>
                       <Button
                         onClick={() => handleOpen(index)}
                         style={{ zIndex: 2001, margin: 0, padding: 0 }}
                       >
-                        <img src={element} width={213} height={213} />
+                        <img src={element} style={{ width: "100%", maxWidth: "213px", aspectRatio: "1 / 1", objectFit: "cover"}} />
                       </Button>
                     </Item>
                   </Grid>
@@ -167,17 +166,19 @@ const Descentrar = () => {
 
               <Grid
                 item
-                xs={8}
+                xs={7.3}
+                md={7.8}
                 container
                 style={{ padding: "0"}}
               >
+                <Item style={{ width: "100%", maxWidth: "100%", background: "none", color: "#ffffff" }}>
                   <AsideDescentrar />
+                </Item>
               </Grid>
             </Grid>
             <ModalDescentrar open={open} indexContent={indexContent} handleClose={handleClose} style={{zIndex:2001}}/>
           </div>
         </Container>
-      </AppropiateContainer>
     </ContainerBody>
   );
 };

@@ -3,7 +3,7 @@ const AsideDescentrar = () => {
         <div className="aside-descentrar">
             <div className="title">
                 <div>DES</div>
-                <div>CENTRA</div>
+                <div style={{ marginLeft: "-2rem" }}>CENTRA</div>
                 <div>MIENTOS</div>
             </div>
             <p className="center my-5">
