@@ -67,7 +67,7 @@ const PedagogiesScreen = () => {
             }}
           >
             {" "}
-            Pedagogias
+            Pedagogías
           </h1>
         </Container>
         <Container style={{ justifyContent: "center", display: "flex" }}>

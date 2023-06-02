@@ -19,6 +19,8 @@
   margin-top: 5rem;
   font-family: "Inter", sans-serif;
   font-size: 1.3rem;
+  position: relative;
+  z-index: 2001;
 }
 
 .container-p {

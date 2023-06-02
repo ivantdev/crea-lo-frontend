@@ -90,8 +90,8 @@ const ModalDescentrar = ({ open, indexContent, handleClose }) => {
 
   const ItemImg = ({ src }) => {
     return (
-      <Paper>
-        <img src={src} width={500} height={375} />
+      <Paper style={{ display: "flex", justifyContent: "center"}}>
+        <img src={src} style={{ width: '100%', maxWidth: '500px', aspectRatio: "4 / 3", objectFit: "cover" }} />
       </Paper>
     );
   };
@@ -113,6 +113,7 @@ const ModalDescentrar = ({ open, indexContent, handleClose }) => {
     left: "50%",
     transform: "translate(-50%, -50%)",
     width: 500,
+    maxWidth: "95%",
     bgcolor: "background.paper",
     border: "2px solid #000",
     boxShadow: 24,

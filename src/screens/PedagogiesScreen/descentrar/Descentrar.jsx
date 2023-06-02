@@ -12,9 +12,9 @@ import AsideDescentrar from "./components/AsideDescentrar";
 
 const Container = styled("div")(({ theme }) => ({
   position: "relative",
-  zIndex: 1200,
   margin: "10px",
   padding: "2rem",
+  maxWidth: "100%",
   display: "flex",
   justifyContent: "center",
   fontFamily: "ui-monospace, monospace",
@@ -24,6 +24,12 @@ const Container = styled("div")(({ theme }) => ({
   userSelect: "none",
   backgroundColor: "#2F4F4F",
   borderRadius: "10px",
+}));
+
+const ContainerBody = styled("div")(({ theme }) => ({
+  position: "relative",
+  zIndex: 1001,
+  backgroundColor: theme.palette.background.default,
 }));
 
 const Descentrar = () => {
@@ -105,7 +111,7 @@ const Descentrar = () => {
   }
 
   return (
-    <>
+    <ContainerBody>
       <AppropiateContainer>
       <div id="descentrar-background" />
         <IconButton
@@ -172,7 +178,7 @@ const Descentrar = () => {
           </div>
         </Container>
       </AppropiateContainer>
-    </>
+    </ContainerBody>
   );
 };
 
