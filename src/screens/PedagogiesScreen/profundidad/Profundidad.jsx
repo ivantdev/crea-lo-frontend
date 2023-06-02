@@ -12,12 +12,14 @@ import ballenaSumergida from "../../../assets/images/profundidad/ballenaSumergie
 import "./Profundidad.css";
 import ModalPoema from "./components/ModalPoema";
 import ModalsProfundidad from "./components/ModalsProfundidad";
+import { ContentCopy } from "@mui/icons-material";
 
 const Container = styled("div")(({ theme }) => ({
   position: "relative",
   zIndex: 1200,
   margin: "10px",
   padding: "2rem",
+  width: "calc(100% - 20px)",
   display: "flex",
   justifyContent: "center",
   fontFamily: "ui-monospace, monospace",
@@ -77,7 +79,7 @@ const Profundidad = () => {
   return (
     <>
       <div id="profundidad-background" />
-      <AppropiateContainer>
+      <Container>
         <IconButton
           aria-label="close"
           onClick={() => {
@@ -87,8 +89,8 @@ const Profundidad = () => {
         >
           <CloseIcon />
         </IconButton>
-        <Container>
-          <div style={{ maxWidth: "1500px"}}>
+        <Container style={{ padding: "0", margin: 0}}>
+          <div style={{ maxWidth: "1050px"}}>
             <h1
               style={{
                 fontFamily: "Inter",
@@ -111,21 +113,24 @@ const Profundidad = () => {
               <br />
 
               <h3>HUELLAS DE AGUA</h3>
-              <p>
+              <p className="parrafo">
                 Los cuerpos de agua, todo lo que contienen y evocan, han sido
                 metáforas de trabajo creativo recurrentes en Crea-lo. A finales de
                 2020, durante la época de lluvias en el centro del país, la fuerza
                 del agua nos dio motivos suficientes para pensar en las
                 crecientes; conversamos entonces sobre maneras como el agua se
                 abría paso en la tierra, brotaba de ella en forma de ríos,
-                cascadas, lagunas, riachuelos… todos cuerpos de agua dulce. A la
+                cascadas, lagunas, riachuelos… todos cuerpos de agua dulce.
+              </p>
+              <p className="parrafo">
+                A la
                 luz de la geografía, nos encantamos con los sistemas de drenaje,
                 nos parecieron gestos de crecimiento y proliferación de las aguas
                 en el planeta maravillosos, al punto que fueron grafías
                 protagonistas en Creciente, las memorias del proyecto Crea-lo
                 2020.
               </p>
-              <p>
+              <p className="parrafo">
                 Plegar y desplegar relacionamientos posibles en estos tres años de
                 resistencias pedagógicas, políticas y culturales nos ha llevado a
                 derivar entre aguas dulces, pero también desembocamos en la
@@ -135,7 +140,10 @@ const Profundidad = () => {
                 al mar debíamos llevar la mirada a lo alto y contemplar por un
                 tiempo a su pareja inseparable: la bóveda celeste. Mar y cielo, el
                 abrazo y la conexión entre mundos, especies y fuerzas, fueron
-                también trocha de nuestro andar metafórico y pedagógico. Iniciamos
+                también trocha de nuestro andar metafórico y pedagógico.
+              </p>
+              <p className="parrafo">
+                Iniciamos
                 2021 con la creación de cartografías celestes y en ellas nos
                 dibujamos como proyecto; por un tiempo fuimos cartografía celeste
                 y jugamos a ser estrellas, estrellas fugaces, constelaciones,
@@ -147,7 +155,7 @@ const Profundidad = () => {
                 nuestras memorias 2021 donde el agua, de una u otra forma, seguía
                 presente.
               </p>
-              <p>
+              <p className="parrafo">
                 Insistimos con las aguas en este tercer cierre en 2022, pero esta
                 vez fabulamos con ser ballenas que nadan en corrientes de hilos y
                 océanos de palabras. Devenimos en mamíferxs de mar que surcan
@@ -156,13 +164,14 @@ const Profundidad = () => {
                 nuestras corrientes transformadoras. Nuestra ballena va-llena de
                 prácticas pedagógicas resistentes, emergentes y parciales…{" "}
               </p>
-              <p>
+              <p className="parrafo">
                 Invitamos a lxs lectorxs a que naveguen con nosotrxs en este nuevo
                 gesto de inmersión para, cada vez, ir a lo más profundo de los
                 agenciamientos y los activismos para otros mundos posibles.
               </p>
               <img
                 src={ballenaSumergida}
+                style={{ width: "100%", maxWidth: "1000px", padding: "2rem 0 0" }}
                 alt="ballena Sumergiendose"
               />
             </div>
@@ -170,7 +179,7 @@ const Profundidad = () => {
             <ModalsProfundidad />
           </div>
         </Container>
-      </AppropiateContainer>
+      </Container>
     </>
   );
 };

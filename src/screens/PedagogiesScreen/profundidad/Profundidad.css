@@ -15,21 +15,24 @@
 
 
 .HuellasDeAgua {
-  width: 622px;
-  height: 1318px;
-  left: 177px;
-  top: 1034px;
   margin-bottom: 20px;
   /* cuerpo de texto */
 
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400;
-  font-size: 21px;
-  line-height: 25px;
+  font-size: 1rem;
+  line-height: 1.5rem;
   /* or 119% */
 
   /* A-/fondo/(A1) fondo */
 
   color: #e9eff2;
+}
+
+@media (min-width: 768px) {
+  .HuellasDeAgua {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
 }
