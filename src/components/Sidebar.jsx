@@ -220,7 +220,6 @@ export default props => {
 
 
                 <hr className="separator" />
-                <p style={{ opacity: "0.8", fontSize: "1.3rem" }}>Ediciones anteriores</p>
                 <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
                     Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2020</span>
                 </Link >
