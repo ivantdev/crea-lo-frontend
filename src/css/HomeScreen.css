@@ -8,7 +8,7 @@
 }
 
 #home-background {
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     left: 0px;
@@ -21,12 +21,15 @@
 
 #home-logo-container {
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
+    max-width: 1000px;
+    margin: 0 auto;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    position: absolute;
     z-index: 20;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -43,17 +46,70 @@
     opacity: 0.9;
 }
 
-#home-logo-text {
-    font-family: Ampersand;
-    font-size: clamp(16px, 5vw, 30px);
-    color: #4E7329;
-    text-align: center;
-    margin: 0;
+.home-logo-text {
     padding: 0;
     position: relative;
-    top: 40px;
+    font-family: "Inter";
+    font-size: clamp(16px, 5vw, 30px);
+    text-align: center;
 }
 
-#home-logo-text h1 {
-    margin-top: 10px;
+.home-logo-text p {
+    line-height: 0.1rem;
 }
+
+:root {
+    /* The intrinsic width of the underline stroke (in pixels). This is 
+     * the same as the height of the cap images. Don't specify the
+     * units! This is because of some of the calculations we do later on. */
+    --underline-intrinsic-width: 8;
+    
+    /* The actual width of the underline stroke we want to render (in pixels).
+     * You can modify this, and the sizing and positioning should be calculated
+     * accordingly. Again, Don't specify the units! */
+    --underline-width: 30;
+    
+    /* The colour used to draw the underline. It should match the colour
+     * used in the cap images... unfortunately we can't modify the SVG
+     * fill via CSS because it's a background image. */
+    --underline-color: #ffffff;
+    
+    /* We need to know the width of the cap images so that we
+     * can position everything on the x axis accordingly. */
+    --underline-cap-width: 4px;
+    
+    /* The border is positioned relative to the bottom of the line.
+     * We can move it upwards a little to create an overlap effect. */
+    --underline-offset-y: -2px;
+    
+    /* The padding to add to the x axis. By default, the caps would be
+     * aligned with the beginning and end of the line. */
+    --underline-padding-x: 0.12em;
+    
+    /* The cap images to use that form the left and right rounded
+     * shape. I guess these could be any shape, they don't
+     * necessarily have to be round 🙂.
+     */
+    --cap-image-left: url(https://files-d4s40otz1.now.sh/left.svg);
+    --cap-image-right: url(https://files-4vvqilj8v.now.sh/right.svg);
+  }
+
+.underline {
+    display: inline;
+    --underline-width-scale: calc(var(--underline-width) / var(--underline-intrinsic-width));
+    padding: 0 calc(var(--underline-padding-x) + calc(var(--underline-cap-width) * var(--underline-width-scale)));
+    box-decoration-break: clone;
+    background-repeat: no-repeat;
+    color: var(--underline-text-color);
+    background-image:
+      linear-gradient(180deg, var(--underline-color), var(--underline-color));
+    background-position-x:
+      calc(var(--underline-cap-width) * var(--underline-width-scale)),
+      0,
+      100%;
+    background-position-y: calc(100% - var(--underline-offset-y) * -1);
+    background-size:
+      calc(100% - calc(var(--underline-cap-width) * var(--underline-width-scale) * 2)) calc(var(--underline-width) * 1px),
+      auto calc(var(--underline-width) * 1px),
+      auto calc(var(--underline-width) * 1px);
+  }
