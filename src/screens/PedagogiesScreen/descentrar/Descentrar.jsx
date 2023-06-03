@@ -171,7 +171,7 @@ const Descentrar = () => {
                 container
                 style={{ padding: "0"}}
               >
-                <Item style={{ width: "100%", maxWidth: "100%", background: "none", color: "#ffffff" }}>
+                <Item style={{ width: "100%", maxWidth: "100%", background: "none", color: "#ffffff", textAlign: "unset" }}>
                   <AsideDescentrar />
                 </Item>
               </Grid>
