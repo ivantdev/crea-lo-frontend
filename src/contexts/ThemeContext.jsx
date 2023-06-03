@@ -8,6 +8,7 @@ import home_2 from "../assets/images/Home 2.jpg"
 import home_3 from "../assets/images/Home 3.jpg"
 import home_4 from "../assets/images/Home 4.jpg"
 import home_5 from "../assets/images/Home 5.jpg"
+import pedagogias_background from "../assets/images/pedagogias_background.png"
 
 // This function is used to generate the theme based on the mode and location
 // The mode is not being used, but it is there for future use
@@ -119,7 +120,11 @@ const getDesignTokens = (mode, location, homeIndex) => {
             background: {
                 default: mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 paper: mode === 'light' ? '#3F5759' : '#CBD8DF',
-                special: location === '/pedagogies' ? '#163133' : undefined,
+                image: location === '/pedagogies' ? {
+                    backgroundImage: `url('${pedagogias_background}')`,
+                } : undefined,
+                mixBlendMode: "difference",
+                special: location === '/pedagogies' ? '#a3c1b3' : undefined,
                 location,
             },
             text: {

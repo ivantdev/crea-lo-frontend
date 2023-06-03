@@ -100,7 +100,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         top: "20px !important",
         right: "20px !important",
         borderRadius: "5px",
-        backgroundImage: theme.palette.background.image.backgroundImage,
+        backgroundImage: theme.palette.background.image?.backgroundImage || "none",
         "@media (min-width: 600px)": {
             backgroundSize: "100vw 100vh",
         },
