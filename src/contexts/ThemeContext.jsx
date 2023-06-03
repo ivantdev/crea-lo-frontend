@@ -152,6 +152,24 @@ export default function ThemeContextProvider({ children }) {
     const theme = React.useMemo(() => {
         let tempTheme = createTheme(getDesignTokens(mode, location.pathname, homeIndexPalette))
         tempTheme = responsiveFontSizes(tempTheme)
+
+        // -------------------- preload next background image
+
+        // URL de la siguiente imagen a precargar
+        const idx = (homeIndexPalette + 1) % backgroundUrls.length;
+        const nextImageURL = backgroundUrls[idx].backgroundImage.split("'")[1];
+
+        // Crear una nueva instancia de Image
+        const nextImage = new Image();
+
+        // Asignar la URL de la siguiente imagen a precargar
+        nextImage.src = nextImageURL;
+
+        // Opcionalmente, puedes agregar un evento de carga para realizar acciones después de que la imagen se haya precargado
+        nextImage.addEventListener('load', () => {
+            console.log('La siguiente imagen se ha precargado.');
+        });
+
         
         return tempTheme
     }, [mode, location, homeIndexPalette]);
