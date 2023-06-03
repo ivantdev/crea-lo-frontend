@@ -3,79 +3,44 @@ import { styled } from "@mui/system";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../../hooks";
-import { Button } from "@mui/material";
+import { Button, colors } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import "../../css/PedagogiesScreen.css"
 const Container = styled("div")(({ theme }) => ({
+  padding: "3rem 1rem 1rem 1rem",
+  width: "100%",
   fontFamily: "Inter",
-  padding: "3rem",
-  marginLeft: "1rem",
   color: theme.palette.text.primary,
   lineHeight: "21px",
-  "--webkit-user-elect": "none",
-  userSelect: "none",
+  // "--webkit-user-elect": "none",
+  // userSelect: "none",
 }));
 
 const PedagogiesScreen = () => {
   const navigate = useNavigate();
-  const theme = useTheme();
-  const { isMobile } = useDeviceDetect();
-
-  //appropriate container for mobile or desktop
-  const AppropiateContainer = useMemo(
-    () =>
-      ({ children }) => {
-        return !isMobile ? (
-          <Container>{children}</Container>
-        ) : (
-          <ScrollContainer
-            className="scroll-container"
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              padding: "4rem",
-              width: "calc(100vw - 6rem)",
-              height: "calc(100vh - 2rem)",
-              color: theme.palette.text.primary,
-              lineHeight: "21px",
-              "--webkit-user-select": "none",
-              overflow: "hidden",
-              userSelect: "none",
-            }}
-          >
-            {children}
-          </ScrollContainer>
-        );
-      },
-    [isMobile]
-  );
 
   return (
-    <>
+    <Container style={{ position: "relative", minHeight: "100vh"}}>
       <div id="pedagogies-screen" />
-      <AppropiateContainer>
-        <Container>
-          <h1
-            style={{
-              position: "absolute",
-              width: "622px",
-              height: "44px",
-              left: "176px",
-              top: "169px",
-              fontWeight:800,
-              fontSize:"38px",
-              lineHeight:"46px"
-            }}
-          >
-            {" "}
-            Pedagogías
-          </h1>
-        </Container>
-        <Container style={{ justifyContent: "center", display: "flex" }}>
+      <Container style={{ margin: "0 auto", position: "relative", zIndex: "1", maxWidth: "1300px"}}>
+        <h1
+          style={{
+            fontWeight: "800",
+            fontSize: "2.2rem",
+            lineHeight: "46px",
+            color: "#3F5759",
+          }}
+        >
+          Pedagogías
+        </h1>
+        <Container style={{ justifyContent: "center", display: "flex", padding: "0" }}>
           <div className="grid">
             <Button
               variant="contained"
               className="Button"
               style={{
+                fontSize: "1.4rem",
+                fontWeight: "600",
                 color: "white",
                 flexGrow: "initial",
                 margin: "10px",
@@ -89,6 +54,8 @@ const PedagogiesScreen = () => {
               variant="contained"
               className="Button"
               style={{
+                fontSize: "1.4rem",
+                fontWeight: "600",
                 color: "white",
                 flexGrow: "initial",
                 margin: "10px",
@@ -103,6 +70,8 @@ const PedagogiesScreen = () => {
               variant="contained"
               className="Button"
               style={{
+                fontSize: "1.4rem",
+                fontWeight: "600",
                 color: "white",
                 flexGrow: "initial",
                 margin: "10px",
@@ -120,18 +89,13 @@ const PedagogiesScreen = () => {
             fontStyle: "normal",
             fontWeight: 400,
             color: "#3F5759",
+            padding: "0",
+            maxWidth: "920px",
           }}
         >
-          <h2
-            style={{
-              fontSize: "36px",
-              lineHeight: "44px",
-              position: "absolute",
-              width: "745px",
-              height: "398px",
-              left: "178px",
-              top: "420px",
-            }}
+          <h2 
+            className="mt-5"
+            style={{ fontSize: "2.4rem", fontWeight: "400", lineHeight: "2.8rem" }}
           >
             Estas memorias, como ha sido habitual en Crea-lo, responden al
             devenir y al derivar de nuestras preguntas y prácticas creadoras. A
@@ -141,19 +105,7 @@ const PedagogiesScreen = () => {
             metodologías pedagógicas cuya pregunta nodal casi siempre giró en
             torno a lo sensible.
           </h2>
-          <br />
-          <p
-            style={{
-              position: "absolute",
-              width: "622px",
-              height: "1479px",
-              left: "177px",
-              top: "1000px",
-              fontWeight: 400,
-              fontSize: "21px",
-              lineHeight: "25px",
-            }}
-          >
+          <p className="parrafo" style={{ fontSize: "1.3rem", lineHeight: "2rem", opacity: "0.9", maxWidth: "650px"}}>
             Cuando hablábamos de “lo sensible” aparecía de manera protagónica el
             cuerpo y su potencia perceptiva. Fue así como intensificar
             experiencias gustativas, olfativas, táctiles, auditivas y visuales
@@ -172,7 +124,10 @@ const PedagogiesScreen = () => {
             temporal y por consiguiente una política-poética de vínculos
             afectivos y emocionales. De esta manera, revueltas culturales desde
             los afectos y desde los sentidos fueron ocurriendo en nosotrxs y en
-            cada unx de nosotrxs de diversas maneras. Los tres gestos
+            cada unx de nosotrxs de diversas maneras.
+          </p>
+          <p className="parrafo" style={{ fontSize: "1.3rem", lineHeight: "2rem", opacity: "0.9", maxWidth: "650px"}}>
+            Los tres gestos
             creativos-pedagógicos que presentamos a continuación
             (descentramientos, ballena-trueno y resistir) no pretenden describir
             de manera analítica qué hicimos y cómo. Más bien, dan cuenta de
@@ -207,8 +162,8 @@ const PedagogiesScreen = () => {
             posibles en la UNAL.
           </p>
         </Container>
-      </AppropiateContainer>
-    </>
+      </Container>
+    </Container>
   );
 };
 
