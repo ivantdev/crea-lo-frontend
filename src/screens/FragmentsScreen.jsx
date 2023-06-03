@@ -45,25 +45,25 @@ const FragmentsScreen = () => {
     }, [data])
 
     //appropriate container for mobile or desktop
-    const AppropriateContainer = useMemo(() => ({ children }) => {
-        return isMobile ? <Container>{children}</Container> : <ScrollContainer className='scroll-container' style={{
-            padding: "clamp(20px, 10vw, 175px)",
-            paddingTop: "clamp(80px, 10vw, 175px)",
-            width: "calc(100vw - 6rem)",
-            height: "calc(100vh - 2rem)",
-            lineHeight: "25px",
-            "--webkit-user-select": "none",
-            overflow: "hidden",
-            userSelect: "none",
-        }}>{children}</ScrollContainer>
-    }, [isMobile])
 
     return (
         <>
             <div id="fragments-background" />
-            <AppropriateContainer>
-                {!loading && <Tree treeData={conceptMap} currentNode={data.concepts.data.find(concept => concept.attributes.name == 'Fragmentos')} />}
-            </AppropriateContainer>
+            <Container style={{ maxWidth: "1200px", margin: "0 auto"}}>
+                <h1
+                    style={{
+                        fontWeight: "800",
+                        fontSize: "2.2rem",
+                        lineHeight: "46px",
+                    }}
+                    >
+                    Glosario
+                </h1>
+                <p className='parrafo' style={{ fontSize: "1.2rem", fontWeight: "500"}}>
+                    Aquí puedes añadir algún concepto o definición que quieras, sólo haz clic en el lápiz y allí podrás editar.
+                </p>
+                {!loading && <Tree treeData={conceptMap} defaultOpen={true} currentNode={data.concepts.data.find(concept => concept.attributes.name == 'Fragmentos')} />}
+            </Container>
         </>
 
     )

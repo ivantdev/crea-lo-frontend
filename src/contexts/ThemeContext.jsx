@@ -119,7 +119,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
             },
             background: {
                 default: mode === 'light' ? '#CBD8DF' : '#CBD8DF',
-                paper: mode === 'light' ? '#3F5759' : '#CBD8DF',
+                paper: mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 image: location === '/pedagogies' ? {
                     backgroundImage: `url('${pedagogias_background}')`,
                 } : undefined,

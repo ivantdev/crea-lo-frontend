@@ -212,7 +212,7 @@ export default props => {
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography onClick={() => (handleOnClose(), navigate("/pedagogies"))}>Pedagogías</Typography>
-                        <Typography onClick={() => (handleOnClose(), navigate("/fragments"))}>Fragmentos</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/fragments"))}>Glosario</Typography>
                         <Typography onClick={() => (handleOnClose(), navigate("/atlas"))}>Atlas</Typography>
                         <Typography onClick={() => (handleOnClose(), navigate("/credits"))}>Créditos</Typography>
                     </AccordionDetails>

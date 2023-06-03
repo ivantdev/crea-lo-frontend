@@ -196,7 +196,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
     const conceptElements = useMemo(() => {
         return currentNode.attributes.concepts.data.map((concept) => {
             return (
-                <Tree key={concept.id} currentNode={treeData[concept.id]} treeData={treeData} />
+                <Tree key={concept.id} defaultOpen={true} currentNode={treeData[concept.id]} treeData={treeData} />
             )
         })
     }, [treeData])
@@ -239,7 +239,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
             />
             <Title style={style}>{currentNode.attributes.name}</Title>
             <IconButton size="small" color="primary" aria-label="edit" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
-                <EditIcon />
+                <EditIcon style={{ fill: theme.palette.text.primary }} />
             </IconButton>
             <Content
                 style={{
