@@ -20,19 +20,19 @@ const getDesignTokens = (mode, location, homeIndex) => {
 
         ]
         const background = [
-            '#CBD8DF',
-            '#D98080',
-            '#F2B4B4',
+            '#C0BFE1',
+            '#ffbaba',
+            '#FFC8C8',
             '#101010',
-            '#370000',
+            '#7b7b7b',
 
         ]
         const backgroundPaper = [
             '#CBD8DF',
             '#93D9FF',
-            '#D98080',
-            '#015958',
-            '#015958',
+            '#F2B6B6',
+            '#000000',
+            '#402020',
         ]
         const backgroundImage = [
             `url('${fondo_18}')`,
@@ -43,10 +43,17 @@ const getDesignTokens = (mode, location, homeIndex) => {
         ]
         const text = [
             '#57508d',
-            '#262626',
-            '#262626',
+            '#444444',
+            '#555555',
             '#B54135',
-            '#F2B4B4',
+            '#FFFFFF',
+        ]
+        const mixBlendMode = [
+            "difference",
+            "hard-light",
+            "difference",
+            "hard-light",
+            "color-burn",
         ]
 
         return {
@@ -59,6 +66,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
                     default: background[homeIndex] || '#CBD8DF',
                     paper: backgroundPaper[homeIndex] || '#CBD8DF',
                     image: backgroundImage[homeIndex] || '#CBD8DF',
+                    mixBlendMode: mixBlendMode[homeIndex] || 'normal',
                 },
                 text: {
                     primary: text[homeIndex] || '#57508d',
@@ -79,19 +87,19 @@ const getDesignTokens = (mode, location, homeIndex) => {
             mode,
             primary: {
                 main: location === '/' ? '' 
-                : location === '/fragments' ? '#275673' 
+                : location === '/fragments' ? '#CBD8DF' 
                 : location === '/pedagogies' ? '#015958' 
                 : location === '/atlas' ? '#CBD8DF'
                 : '#298073',
             },
             background: {
                 default: mode === 'light' ? '#CBD8DF' : '#CBD8DF',
-                paper: mode === 'light' ? '#CBD8DF' : '#CBD8DF',
+                paper: mode === 'light' ? '#3F5759' : '#CBD8DF',
                 special: location === '/pedagogies' ? '#163133' : undefined,
                 location,
             },
             text: {
-                primary: location === '/' ? '#57508d' 
+                primary: location === '/' ? '#015958' 
                 : location === '/fragments' ? '#275673' 
                 : location === '/pedagogies' ? '#ffffff' 
                 : location === '/atlas' ? '#298073' 
