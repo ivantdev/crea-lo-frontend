@@ -60,7 +60,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         height: "30px",
         right: "36px",
         top: "36px",
-        mixBlendMode: "difference",
+        mixBlendMode: theme.palette.background.mixBlendMode,
     },
 
     /* Color/shape of burger icon bars */
@@ -96,23 +96,25 @@ const MenuWrapper = styled('div')(({ theme }) => ({
     '& .bm-menu-wrap': {
         position: "fixed",
         height: "auto !important",
+        width: "320px !important",
         top: "20px !important",
         right: "20px !important",
         borderRadius: "5px",
-        background: theme.palette.background.special || theme.palette.background.default,
-        backgroundImage: theme.palette.background.image,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "100vw 100vh",
+        backgroundImage: theme.palette.background.image.backgroundImage,
+        "@media (min-width: 600px)": {
+            backgroundSize: "100vw 100vh",
+        },
+        backgroundSize: "cover",
         backgroundPosition: "top right",
     },
     
     /* General sidebar styles */
     '& .bm-menu': {
         background: theme.palette.background.special || theme.palette.background.default,
+        mixBlendMode: theme.palette.background.mixBlendMode || "luminosity",
         padding: "2.5em 1.5em 0",
         fontSize: "1.15em",
         height: "auto !important",
-        mixBlendMode: theme.palette.background.location === '/pedagogies' ? undefined : "multiply",
         borderRadius: "5px",
     },
 
@@ -193,6 +195,7 @@ export default props => {
     return (
         <MenuWrapper ref={ref}>
             <Menu {...props} isOpen={open} onOpen={handleOnOpen} onClose={handleOnClose}>
+                <hr className="separator" />
                 <Accordion>
                     <AccordionSummary
                         aria-controls="panel1a-content"
@@ -205,7 +208,7 @@ export default props => {
                             textAlign: "left",
                             textDecoration: "none",
                             transition: "color 0.2s",
-                        }} my={0}>Lorem ipsum</Typography>
+                        }} my={0}>Inestabilidad</Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography onClick={() => (handleOnClose(), navigate("/pedagogies"))}>Pedagogías</Typography>
@@ -217,12 +220,13 @@ export default props => {
 
 
                 <hr className="separator" />
+                <p style={{ opacity: "0.8", fontSize: "1.3rem" }}>Ediciones anteriores</p>
                 <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
-                    Desahogo
+                    Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2020</span>
                 </Link >
                 <hr className="separator" />
                 <Link className="menu-item" to="/creciente" onClick={handleOnClose}>
-                    Creciente
+                    Creciente <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2021</span>
                 </Link >
                 <hr className="separator" />
                 {/* svgs of social media with links */}

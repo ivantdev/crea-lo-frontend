@@ -3,12 +3,36 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })
-import fondo_18 from "../assets/images/fondos-18.jpeg"
-import fondo_14 from "../assets/images/fondos-14.jpeg"
-import fondo_5 from "../assets/images/fondos-5.jpeg"
+import home_1 from "../assets/images/Home 1.jpg"
+import home_2 from "../assets/images/Home 2.jpg"
+import home_3 from "../assets/images/Home 3.jpg"
+import home_4 from "../assets/images/Home 4.jpg"
+import home_5 from "../assets/images/Home 5.jpg"
 
 // This function is used to generate the theme based on the mode and location
 // The mode is not being used, but it is there for future use
+const backgroundUrls = [
+    // BG 1
+    {
+      backgroundImage: `url('${home_1}')`,
+    },
+    // BG 2
+    {
+      backgroundImage: `url('${home_2}')`,
+    },
+    // BG 3
+    {
+      backgroundImage: `url('${home_3}')`,
+    },
+    // BG 4
+    {
+      backgroundImage: `url('${home_4}')`,
+    },
+    // BG 5
+    {
+      backgroundImage: `url('${home_5}')`,
+    },
+]
 const getDesignTokens = (mode, location, homeIndex) => {
     if (location == '/') {
         const primary = [
@@ -35,25 +59,25 @@ const getDesignTokens = (mode, location, homeIndex) => {
             '#402020',
         ]
         const backgroundImage = [
-            `url('${fondo_18}')`,
-            `url('${fondo_18}')`,
-            `url('${fondo_14}')`,
-            `url('${fondo_5}')`,
-            `url('${fondo_5}')`,
+            backgroundUrls[0],
+            backgroundUrls[1],
+            backgroundUrls[2],
+            backgroundUrls[3],
+            backgroundUrls[4],
         ]
         const text = [
             '#57508d',
             '#444444',
             '#555555',
             '#B54135',
-            '#FFFFFF',
+            '#000000',
         ]
         const mixBlendMode = [
             "difference",
             "hard-light",
             "difference",
             "hard-light",
-            "color-burn",
+            "difference",
         ]
 
         return {
