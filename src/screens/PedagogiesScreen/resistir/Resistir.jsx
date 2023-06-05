@@ -13,6 +13,7 @@ const Container = styled("div")(({ theme }) => ({
   zIndex: 1200,
   margin: "10px",
   padding: "2rem",
+  width: "calc(100% - 1rem)",
   display: "flex",
   justifyContent: "center",
   fontFamily: "ui-monospace, monospace",
@@ -48,33 +49,6 @@ const Resistir = () => {
     }
   }, []);
 
-  const AppropiateContainer = useMemo(
-    () =>
-      ({ children }) => {
-        return !isMobile ? (
-          <Container sx={{ padding: "4rem "}}>{children}</Container>
-        ) : (
-          <ScrollContainer
-            className="scroll-container"
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              padding: "0rem",
-              width: "100vw",
-              height: "100vh",
-              color: theme.palette.text.primary,
-              lineHeight: "21px",
-              "--webkit-user-select": "none",
-              overflow: "hidden",
-              userSelect: "none",
-            }}
-          >
-            {children}
-          </ScrollContainer>
-        );
-      },
-    [isMobile]
-  );
-
   const closeButtonStyles = {
     position: "absolute",
     top: "20px",
@@ -91,7 +65,7 @@ const Resistir = () => {
 
   return (
     <>
-      <AppropiateContainer>
+      <Container>
       <div id="resistir-background" />
         <IconButton
           aria-label="close"
@@ -102,7 +76,7 @@ const Resistir = () => {
         >
           <CloseIcon />
         </IconButton>
-        <Container style={{ zIndex: "3000", background: "unset", display: "block" }}>
+        <Container style={{ zIndex: "3000", background: "unset", display: "block", padding: "0", maxWidth: "1200px" }}>
           <h1
             style={{
               fontFamily: "Inter",
@@ -123,25 +97,25 @@ const Resistir = () => {
               <img className="mx--500" src={images.palabras_2} alt="" />
             </div>
 
-            <div className="grid-1 gap-1 mt-3 ml-3">
+            <div className="grid-1 gap-1 mt-3">
               <img className="" src={images.pies_sobre_cupula_2} alt="" />
               <img className="" src={images.pies_sobre_cupula} alt="" />
               <img className="" src={images.pies_dibujando_2} alt="" />
             </div>
 
-            <div className="flex gap-1 mt-2 relative left-3">
+            <div className="flex gap-1 mt-2 relative">
               <img className="mx--420" src={images.video} alt="" />
               <img className="mx--420" src={images.video} alt="" />
             </div>
 
-            <div className="grid-1 gap-1 mt-3 ml-3">
+            <div className="grid-1 gap-1 mt-3">
               <img className="" src={images.pies_dibujando_2} alt="" />
               <img className="" src={images.pies_tierra} alt="" />
             </div>
 
             <div className="flex gap-1 mt-3">
               <img className="" src={images.palabras_3} alt="" />
-              <img className="mt-8 ml-3" src={images.palabras_4} alt="" />
+              <img className="" src={images.palabras_4} alt="" style={{"@media (min-width: 768px)": { marginTop: "8rem"}}} />
             </div>
 
             <div className="center mt-3">
@@ -154,7 +128,7 @@ const Resistir = () => {
 
             <div className="flex gap-1 mt-3">
               <img className="" src={images.palabras_6} alt="" />
-              <img className="pt-15" src={images.palabras_7} alt="" />
+              <img className="" src={images.palabras_7} alt=""  style={{"@media (min-width: 786px)": { paddingTop: "15rem" }}}/>
             </div>
 
             <div className="center mt-3">
@@ -163,7 +137,7 @@ const Resistir = () => {
             
           </div>
         </Container>
-      </AppropiateContainer>
+      </Container>
     </>
   );
 };

@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #resistir-background {
   position: absolute;
   width: 100%;
@@ -16,9 +22,15 @@
 
 .resistir img {
   position: relative;
-  width: 65%;
-  min-width: 300px;
+  width: 90%;
+  min-width: 200px;
   max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .resistir img {
+    width: 65%;
+  }
 }
 
 .mx--500 {
@@ -77,6 +89,13 @@
 .flex {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .flex img {
+    max-width: 40%;
+  }
 }
 
 .relative {
