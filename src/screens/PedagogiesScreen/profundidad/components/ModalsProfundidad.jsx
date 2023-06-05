@@ -156,13 +156,13 @@ const ModalsProfundidad = () => {
   };
 
   useEffect(() => {
-    return () => {
-      stylesA();
-      //   inicializerStates();
-      console.log(stylesC);
-      controlModalsProfundidad();
-    };
+    stylesA();
+    //   inicializerStates();
+    console.log(stylesC);
+    controlModalsProfundidad();
   }, []);
+
+  console.log(hoja1);
 
   return (
     <div>

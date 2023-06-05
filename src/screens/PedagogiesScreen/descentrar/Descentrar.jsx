@@ -61,33 +61,6 @@ const Descentrar = () => {
     "https://res.cloudinary.com/crea-lo/image/upload/v1671839464/dev/Ni/WhatsApp_Image_2022-12-13_at_8.25.37_PM_1_tibttt.jpg",
   ];
 
-  const AppropiateContainer = useMemo(
-    () =>
-      ({ children }) => {
-        return !isMobile ? (
-          <Container>{children}</Container>
-        ) : (
-          <ScrollContainer
-            className="scroll-container"
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              padding: "0rem",
-              width: "100vw",
-              height: "100vh",
-              color: theme.palette.text.primary,
-              lineHeight: "21px",
-              "--webkit-user-select": "none",
-              overflow: "hidden",
-              userSelect: "none",
-            }}
-          >
-            {children}
-          </ScrollContainer>
-        );
-      },
-    [isMobile]
-  );
-
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,

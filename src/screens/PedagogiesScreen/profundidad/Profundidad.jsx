@@ -1,9 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
-import ScrollContainer from "react-indiana-drag-scroll";
 import { useTheme } from "@mui/material/styles";
 import { IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close'
-import { useDeviceDetect } from "../../../hooks";
 import { styled } from "@mui/system";
 
 import ballenaHilos from "../../../assets/images/profundidad/Provocación_con_hilos.jpg";
@@ -33,34 +31,6 @@ const Container = styled("div")(({ theme }) => ({
 
 const Profundidad = () => {
   const theme = useTheme();
-  const { isMobile } = useDeviceDetect();
-  
-
-  const AppropiateContainer = useMemo(
-    () =>
-      ({ children }) => {
-        return !isMobile ? (
-          <Container sx={{ padding: "4rem" }}>{children}</Container>
-        ) : (
-          <ScrollContainer
-            className="scroll-container"
-            style={{
-              fontFamily: "ui-monospace, monospace",
-              width: "calc(100vw)",
-              height: "calc(100vh)",
-              color: theme.palette.text.primary,
-              lineHeight: "21px",
-              "--webkit-user-select": "none",
-              overflow: "hidden",
-              userSelect: "none",
-            }}
-          >
-            {children}
-          </ScrollContainer>
-        );
-      },
-    [isMobile]
-  );
 
   const closeButtonStyles = {
     position: "absolute",

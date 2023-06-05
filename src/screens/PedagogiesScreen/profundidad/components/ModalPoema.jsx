@@ -33,12 +33,6 @@ export default function ModalPoema() {
     console.log(open);
   };
 
-  useEffect(() => {
-    return () => {
-      ControlModalPoema();
-    };
-  }, []);
-
   const ControlModalPoema = () => {
     setTimeout(() => {
       if (open == false) {
@@ -46,6 +40,10 @@ export default function ModalPoema() {
       }
     }, 10000);
   };
+  
+  useEffect(() => {
+    ControlModalPoema();
+  }, []);
   return (
     <div>
       <Modal
