@@ -11,3 +11,8 @@
   font-family: Ampersand;
   src: url("/ampersand.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "Gloria Hallelujah";
+  src: url("/GloriaHallelujah.ttf") format("truetype");
+}
