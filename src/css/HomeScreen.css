@@ -45,13 +45,18 @@
     top: 20px;
     opacity: 0.9;
 }
-
 .home-logo-text {
-    padding: 0;
+    padding: 0 1rem 1rem 1rem;
     position: relative;
     font-family: "Inter";
-    font-size: clamp(16px, 5vw, 30px);
-    text-align: center;
+    font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+    .home-logo-text {
+        padding: 0;
+        font-size: 1.3rem;
+    }
 }
 
 .home-logo-text p {

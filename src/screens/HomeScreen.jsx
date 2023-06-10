@@ -33,13 +33,13 @@ const HomeScreen = () => {
       <div id="home-background" style={background[homeIndexPalette]} />
       <div id="home-logo-container">
         <img src={logo} alt="logo" id="home-logo" />
-        <div className='home-logo-text mt-5'>
-          <p className='parrafo center underline' style={{ mixBlendMode: theme.palette.background.mixBlendMode, "--underline-color": theme.palette.background.default, "--underline-text-color": theme.palette.text.primary }}>
+        <div className='home-logo-text mt-5' style={{ textAlign: "left" }}>
+          <p className='parrafo underline' style={{ mixBlendMode: theme.palette.background.mixBlendMode, "--underline-color": theme.palette.background.default, "--underline-text-color": theme.palette.text.primary }}>
             Crea-lo es un proyecto del Área de Cultura de Bienestar Universitario UNAL-Sede Bogotá, que fomenta la reflexión y creación de múltiples prácticas desde lo interdisciplinar y lo micropolítico, promoviendo el hacer cultural desde lo sensible, las emociones y las afectividades e invitando a la emergencia de lo recíproco, la corresponsabilidad y la no instrumentalización de la cultura a través de miradas interdisciplinarias.
           </p>
         </div>
-        <div className='home-logo-text mt-2'>
-          <p className="parrafo center underline" style={{ mixBlendMode: theme.palette.background.mixBlendMode, "--underline-color": theme.palette.background.default, "--underline-text-color": theme.palette.text.primary }}>
+        <div className='home-logo-text mt-2' style={{ textAlign: "right" }}>
+          <p className="parrafo underline" style={{ mixBlendMode: theme.palette.background.mixBlendMode, "--underline-color": theme.palette.background.default, "--underline-text-color": theme.palette.text.primary }}>
             A continuación encontrarás trazos de memorias de los diferentes momentos del proyecto Crea-lo, desde el 2020 a 2023. Te invitamos a viajar en este universo virtual que se construyó con materiales diversos gestados con los participantes en los laboratorios sensibles.
           </p>
         </div>
