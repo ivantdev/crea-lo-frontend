@@ -104,7 +104,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         "@media (min-width: 600px)": {
             backgroundSize: "100vw 100vh",
         },
-        backgroundSize: "cover",
+        backgroundSize: "100vw 100vh",
         backgroundPosition: "top right",
     },
     
@@ -208,7 +208,7 @@ export default props => {
                             textAlign: "left",
                             textDecoration: "none",
                             transition: "color 0.2s",
-                        }} my={0}>Inestabilidad</Typography>
+                        }} my={0}>Inestabilidad <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2022</span></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography onClick={() => (handleOnClose(), navigate("/pedagogies"))}>Pedagogías</Typography>
@@ -221,11 +221,11 @@ export default props => {
 
                 <hr className="separator" />
                 <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
-                    Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2020</span>
+                    Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2021</span>
                 </Link >
                 <hr className="separator" />
                 <Link className="menu-item" to="/creciente" onClick={handleOnClose}>
-                    Creciente <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2021</span>
+                    Creciente <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2020</span>
                 </Link >
                 <hr className="separator" />
                 {/* svgs of social media with links */}
@@ -241,22 +241,12 @@ export default props => {
                         </a>
                     </div>
                     <div>
-                        <a href="https://twitter.com/creciente_mx" target="_blank" rel="noreferrer">
-                            <img src={TwitterSvg} alt="twitter" />
-                        </a>
-                    </div>
-                    <div>
-                        <a href="https://www.facebook.com/creciente.mx" target="_blank" rel="noreferrer">
-                            <img src={FacebookSvg} alt="facebook" />
-                        </a>
-                    </div>
-                    <div>
                         <a href="https://www.instagram.com/creciente.mx/" target="_blank" rel="noreferrer">
                             <img src={InstagramSvg} alt="instagram" />
                         </a>
                     </div>
                     <div>
-                        <a href="https://www.spotify.com/mx/" target="_blank" rel="noreferrer">
+                        <a href="https://open.spotify.com/show/2h9VD59G5p5Y25d4tnoK7s" target="_blank" rel="noreferrer">
                             <img src={SpotifySvg} alt="spotify" />
                         </a>
                     </div>
