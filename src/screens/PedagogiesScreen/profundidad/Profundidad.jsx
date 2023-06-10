@@ -83,7 +83,7 @@ const Profundidad = () => {
               <br />
 
               <h3>HUELLAS DE AGUA</h3>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 Los cuerpos de agua, todo lo que contienen y evocan, han sido
                 metáforas de trabajo creativo recurrentes en Crea-lo. A finales de
                 2020, durante la época de lluvias en el centro del país, la fuerza
@@ -92,7 +92,7 @@ const Profundidad = () => {
                 abría paso en la tierra, brotaba de ella en forma de ríos,
                 cascadas, lagunas, riachuelos… todos cuerpos de agua dulce.
               </p>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 A la
                 luz de la geografía, nos encantamos con los sistemas de drenaje,
                 nos parecieron gestos de crecimiento y proliferación de las aguas
@@ -100,7 +100,7 @@ const Profundidad = () => {
                 protagonistas en Creciente, las memorias del proyecto Crea-lo
                 2020.
               </p>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 Plegar y desplegar relacionamientos posibles en estos tres años de
                 resistencias pedagógicas, políticas y culturales nos ha llevado a
                 derivar entre aguas dulces, pero también desembocamos en la
@@ -112,7 +112,7 @@ const Profundidad = () => {
                 abrazo y la conexión entre mundos, especies y fuerzas, fueron
                 también trocha de nuestro andar metafórico y pedagógico.
               </p>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 Iniciamos
                 2021 con la creación de cartografías celestes y en ellas nos
                 dibujamos como proyecto; por un tiempo fuimos cartografía celeste
@@ -125,7 +125,7 @@ const Profundidad = () => {
                 nuestras memorias 2021 donde el agua, de una u otra forma, seguía
                 presente.
               </p>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 Insistimos con las aguas en este tercer cierre en 2022, pero esta
                 vez fabulamos con ser ballenas que nadan en corrientes de hilos y
                 océanos de palabras. Devenimos en mamíferxs de mar que surcan
@@ -134,7 +134,7 @@ const Profundidad = () => {
                 nuestras corrientes transformadoras. Nuestra ballena va-llena de
                 prácticas pedagógicas resistentes, emergentes y parciales…{" "}
               </p>
-              <p className="parrafo">
+              <p className="parrafo" style={{textAlign: "justify"}}>
                 Invitamos a lxs lectorxs a que naveguen con nosotrxs en este nuevo
                 gesto de inmersión para, cada vez, ir a lo más profundo de los
                 agenciamientos y los activismos para otros mundos posibles.
