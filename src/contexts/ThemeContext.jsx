@@ -93,20 +93,17 @@ const getDesignTokens = (mode, location, homeIndex) => {
                 : location === '/fragments' ? '#015958' 
                 : location === '/pedagogies' ? '#015958' 
                 : location === '/atlas' ? '#CBD8DF'
-                : '#298073',
+                : '#CBD8DF',
             },
             background: {
                 default:mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 paper: location === '/desahogo' ? "#00E6E6"
                         : mode === 'light' ? '#CBD8DF' : '#CBD8DF',
-                image: location === '/pedagogies' ? {
+                image: location === '/fragments' ? undefined
+                        : {
                             backgroundImage: `url('${pedagogias_background}')`,
-                        }
-                        : location === '/desahogo' ? {
-                            backgroundImage: `url('${pedagogias_background}')`,
-                        }
-                        : undefined,
-                mixBlendMode: "difference",
+                        },
+                mixBlendMode: "hard-light",
                 special: location === '/pedagogies' ? '#a3c1b3' 
                         : location === '/desahogo' ? '#FDD'
                         : undefined,
