@@ -1,14 +1,15 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { styled } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
 import { Typography } from "@mui/material";
 import Gallery from "../components/Gallery";
+import PdfViewer from "../components/PdfViewer";
 import pdfDesahogo from "../assets/pdfs/Desahogo-21-11-22-bajaWebpages.pdf";
 import desahogo_background from "../assets/images/desahogo_background.jpg";
+import "../css/DesahogoScreen.css"
 
 const Container = styled("div")(({ theme }) => ({
   position: "relative",
-  fontFamily: "ui-monospace, monospace",
   padding: "2rem",
   color: theme.palette.text.primary,
   lineHeight: "21px",
@@ -75,6 +76,7 @@ const DesahogoScreen = () => {
               ]}
               styles={{ margin: "2rem 0" }}
             />
+            <PdfViewer file={ pdfDesahogo } />
           </Container>
         </Container>
       </Container>
