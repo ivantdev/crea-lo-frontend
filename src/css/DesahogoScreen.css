@@ -1,3 +1,9 @@
 .react-pdf__Document {
     display: flex;
 }
+
+.credits-generic {
+    font-size: 0.8rem;
+    text-align: center;
+    background-color: #173040;
+}
