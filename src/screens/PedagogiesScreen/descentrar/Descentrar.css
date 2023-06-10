@@ -47,6 +47,10 @@
   }
 }
 
+.aside-descentrar .title {
+  font-size: 3rem;
+}
+
 div.title {
   display: grid;
 }

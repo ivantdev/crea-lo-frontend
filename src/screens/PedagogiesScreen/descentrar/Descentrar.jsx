@@ -97,17 +97,6 @@ const Descentrar = () => {
         </IconButton>
         <Container>
           <div style={{ maxWidth: "1350px", width: "100%"}}>
-            <h1
-              style={{
-                fontFamily: "Inter",
-                fontStyle: "normal",
-                fontWeight: 800,
-                fontSize: "2rem",
-                lineHeight: "46px",
-              }}
-            >
-              Descentramientos
-            </h1>
             <Grid
               container
               spacing={2}
