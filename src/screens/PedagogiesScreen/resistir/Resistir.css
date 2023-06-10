@@ -20,7 +20,7 @@
   border-radius: 10px;
 }
 
-.resistir img {
+.resistir img, .resistir video {
   position: relative;
   width: 90%;
   min-width: 200px;
@@ -28,7 +28,7 @@
 }
 
 @media (min-width: 768px) {
-  .resistir img {
+  .resistir video, .resistir img {
     width: 65%;
   }
 }
@@ -93,7 +93,7 @@
 }
 
 @media (min-width: 768px) {
-  .flex img {
+  .flex img, .flex video {
     max-width: 40%;
   }
 }

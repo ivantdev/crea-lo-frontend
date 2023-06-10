@@ -45,7 +45,8 @@ const Resistir = () => {
       pies_sobre_cupula_2: "https://res.cloudinary.com/crea-lo/image/upload/v1685416975/Pie_2_sobre_cupula_Edificio_Gloria_Garces_Galeano_1c0b4779bc.jpg",
       pies_tierra: "https://res.cloudinary.com/crea-lo/image/upload/v1685416974/Pies_tierra_concreto_baldosa_64b883cba0.jpg",
       huella_pie: "https://res.cloudinary.com/crea-lo/image/upload/v1685416970/A_Fundirse_huela_pie_png_0e0a6c3529.jpg",
-      video: "https://res.cloudinary.com/crea-lo/image/upload/v1685416972/video_1a6cf2d366.png",
+      video1: "https://res.cloudinary.com/crea-lo/video/upload/v1686411427/Resistir_1_0732f0ef98.mov",
+      video2: "https://res.cloudinary.com/crea-lo/video/upload/v1686411370/Resistir_2_a5fc30a2e0.mov",
     }
   }, []);
 
@@ -104,8 +105,8 @@ const Resistir = () => {
             </div>
 
             <div className="flex gap-1 mt-2 relative">
-              <img className="mx--420" src={images.video} alt="" />
-              <img className="mx--420" src={images.video} alt="" />
+              <video className="mx--420" autoPlay controls muted src={images.video1}></video>
+              <video className="mx--420" autoPlay controls muted src={images.video2}></video>
             </div>
 
             <div className="grid-1 gap-1 mt-3">
@@ -115,7 +116,7 @@ const Resistir = () => {
 
             <div className="flex gap-1 mt-3">
               <img className="" src={images.palabras_3} alt="" />
-              <img className="" src={images.palabras_4} alt="" style={{"@media (min-width: 768px)": { marginTop: "8rem"}}} />
+              <img className="" src={images.palabras_4} alt="" style={{"@media (minWidth: 768px)": { marginTop: "8rem"}}} />
             </div>
 
             <div className="center mt-3">
@@ -128,7 +129,7 @@ const Resistir = () => {
 
             <div className="flex gap-1 mt-3">
               <img className="" src={images.palabras_6} alt="" />
-              <img className="" src={images.palabras_7} alt=""  style={{"@media (min-width: 786px)": { paddingTop: "15rem" }}}/>
+              <img className="" src={images.palabras_7} alt=""  style={{"@media (minWidth: 786px)": { paddingTop: "15rem" }}}/>
             </div>
 
             <div className="center mt-3">
