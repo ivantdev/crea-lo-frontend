@@ -182,7 +182,7 @@ export default props => {
         ref.current.querySelector('.bm-menu-wrap').style.opacity = "0";
         ref.current.querySelector('.bm-burger-button').style.opacity = "1";
         setOpen(false);
-        setHomeIndexPalette((prev) => ((prev + 1) % 5));
+        setHomeIndexPalette((prev) => ((prev + 1) % 3));
     }
     const handleOnOpen = () => {
         // modify animation altering .bm-menu-wrap

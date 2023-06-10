@@ -3,20 +3,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { useLocation } from 'react-router-dom';
 import React, { useEffect } from 'react';
 export const ColorModeContext = React.createContext({ toggleColorMode: () => { } })
-import home_1 from "../assets/images/Home 1.jpg"
 import home_2 from "../assets/images/Home 2.jpg"
 import home_3 from "../assets/images/Home 3.jpg"
 import home_4 from "../assets/images/Home 4.jpg"
-import home_5 from "../assets/images/Home 5.jpg"
 import pedagogias_background from "../assets/images/pedagogias_background.png"
 
 // This function is used to generate the theme based on the mode and location
 // The mode is not being used, but it is there for future use
 const backgroundUrls = [
-    // BG 1
-    {
-      backgroundImage: `url('${home_1}')`,
-    },
     // BG 2
     {
       backgroundImage: `url('${home_2}')`,
@@ -29,10 +23,6 @@ const backgroundUrls = [
     {
       backgroundImage: `url('${home_4}')`,
     },
-    // BG 5
-    {
-      backgroundImage: `url('${home_5}')`,
-    },
 ]
 const getDesignTokens = (mode, location, homeIndex) => {
     if (location == '/') {
@@ -40,45 +30,33 @@ const getDesignTokens = (mode, location, homeIndex) => {
             '#CBD8DF',
             '#CBD8DF',
             '#CBD8DF',
-            '#CBD8DF',
-            '#CBD8DF',
 
         ]
         const background = [
-            '#C0BFE1',
             '#ffbaba',
             '#FFC8C8',
             '#101010',
-            '#7b7b7b',
 
         ]
         const backgroundPaper = [
-            '#CBD8DF',
             '#93D9FF',
             '#F2B6B6',
             '#000000',
-            '#402020',
         ]
         const backgroundImage = [
             backgroundUrls[0],
             backgroundUrls[1],
             backgroundUrls[2],
-            backgroundUrls[3],
-            backgroundUrls[4],
         ]
         const text = [
-            '#57508d',
             '#444444',
             '#555555',
             '#B54135',
-            '#000000',
         ]
         const mixBlendMode = [
-            "difference",
             "hard-light",
             "difference",
             "hard-light",
-            "difference",
         ]
 
         return {
@@ -178,12 +156,6 @@ export default function ThemeContextProvider({ children }) {
         // Asignar la URL de la siguiente imagen a precargar
         nextImage.src = nextImageURL;
 
-        // Opcionalmente, puedes agregar un evento de carga para realizar acciones después de que la imagen se haya precargado
-        nextImage.addEventListener('load', () => {
-            console.log('La siguiente imagen se ha precargado.');
-        });
-
-        
         return tempTheme
     }, [mode, location, homeIndexPalette]);
 

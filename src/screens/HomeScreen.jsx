@@ -14,10 +14,6 @@ const HomeScreen = () => {
   const { homeIndexPalette, theme } = React.useContext(ColorModeContext)
   const location = useLocation()
   const background = [
-      // BG 1
-      {
-        backgroundImage: `url('${home_1}')`,
-      },
       // BG 2
       {
         backgroundImage: `url('${home_2}')`,
@@ -29,10 +25,6 @@ const HomeScreen = () => {
       // BG 4
       {
         backgroundImage: `url('${home_4}')`,
-      },
-      // BG 5
-      {
-        backgroundImage: `url('${home_5}')`,
       },
   ]
 
