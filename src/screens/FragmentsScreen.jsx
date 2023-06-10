@@ -25,13 +25,12 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 const FragmentsScreen = () => {
-    const { isMobile } = useDeviceDetect();
     const { loading, error, data } = useQuery(GET_CONCEPTS, {
         pollInterval: 500,
     });
 
     if (error) {
-        alert("fetch data error: ". error, error.message)
+        alert("fetch data error: ", error)
     }
 
     //create a hashmap of concept id to concept object
@@ -57,7 +56,7 @@ const FragmentsScreen = () => {
                         lineHeight: "46px",
                     }}
                     >
-                    Glosario
+                    Glosario Crealo
                 </h1>
                 <p className='parrafo' style={{ fontSize: "1.2rem", fontWeight: "500"}}>
                     Aquí puedes añadir algún concepto o definición que quieras, sólo haz clic en el lápiz y allí podrás editar.

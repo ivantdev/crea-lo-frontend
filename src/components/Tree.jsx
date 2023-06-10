@@ -96,6 +96,8 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
     const theme = useTheme()
 
     const handleSaveDefinitions = async () => {
+        handleAddConcept();
+        handleAddDefinition();
         currentNode.attributes.definitions.data.forEach((definition) => {
             updateDefinition({
                 variables: {
@@ -256,7 +258,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                 onClose={toggleModalOpen}
                 aria-labelledby="modal-modal-title"
                 scroll='paper'
-                repositionOnUpdate={false}
+                // repositionOnUpdate={false}
                 style={{ padding: '0px 0px 0px 0px' }}
                 sx={{
                     p: 10,
@@ -271,7 +273,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     <Grid container spacing={4} mt={1}>
                         <Grid item xs={12}>
                             <Typography mt={1} variant="h5" component="h3" sx={{ fontWeight: 700 }} >
-                                Definitions
+                                Definiciones
                             </Typography>
                         </Grid>
 
@@ -304,7 +306,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                                 multiline
                                 rows={3}
                                 variant="outlined"
-                                placeholder='Add a new definition here'
+                                placeholder='Agrega una nueva definición aquí'
                                 fullWidth
                                 sx={{ backgroundColor: "white" }}
                             />
@@ -318,7 +320,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     <Grid container spacing={2} mt={1}>
                         <Grid item xs={12}>
                             <Typography mt={1} variant="h5" component="h3" sx={{ fontWeight: 700 }} >
-                                Concepts
+                                Conceptos
                             </Typography>
                         </Grid>
 
@@ -345,7 +347,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                             <TextField
                                 id='newConcept'
                                 variant="outlined"
-                                placeholder='Add a new concept here'
+                                placeholder='Agrega un nuevo concepto aquí'
                                 fullWidth
                                 sx={{
                                     backgroundColor: 'white'
@@ -359,7 +361,7 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
                     <Grid container mt={9} >
                         <Grid item xs sx={{ display: 'flex' }} justifyContent="center">
                             <Button variant="contained" onClick={handleSaveDefinitions}>
-                                Publish
+                                Publicar
                             </Button>
                         </Grid>
 

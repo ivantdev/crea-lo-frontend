@@ -90,7 +90,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
             mode,
             primary: {
                 main: location === '/' ? '' 
-                : location === '/fragments' ? '#CBD8DF' 
+                : location === '/fragments' ? '#015958' 
                 : location === '/pedagogies' ? '#015958' 
                 : location === '/atlas' ? '#CBD8DF'
                 : '#298073',
