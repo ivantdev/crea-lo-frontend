@@ -84,18 +84,19 @@ const PedagogiesScreen = () => {
           </div>
         </Container>
         <Container
+          className="pedagogias-text-container"
           style={{
             fontFamily: "Inter",
-            fontStyle: "normal",
             fontWeight: 400,
             color: "#3F5759",
             padding: "0",
+            margin: "0 auto",
             maxWidth: "920px",
           }}
         >
-          <h2 
-            className="mt-5"
-            style={{ fontSize: "2.4rem", fontWeight: "400", lineHeight: "2.8rem" }}
+          <p 
+            className="parrafo"
+            style={{textAlign: "justify", marginTop: "4rem" }}
           >
             Estas memorias, como ha sido habitual en Crea-lo, responden al
             devenir y al derivar de nuestras preguntas y prácticas creadoras. A
@@ -104,8 +105,8 @@ const PedagogiesScreen = () => {
             estudiantes y acompañantes pedagógicos fuimos dando forma a
             metodologías pedagógicas cuya pregunta nodal casi siempre giró en
             torno a lo sensible.
-          </h2>
-          <p className="parrafo" style={{ fontSize: "1.3rem", lineHeight: "2rem", opacity: "0.9", maxWidth: "650px"}}>
+          </p>
+          <p className="parrafo" style={{textAlign: "justify"}}>
             Cuando hablábamos de “lo sensible” aparecía de manera protagónica el
             cuerpo y su potencia perceptiva. Fue así como intensificar
             experiencias gustativas, olfativas, táctiles, auditivas y visuales
@@ -126,7 +127,7 @@ const PedagogiesScreen = () => {
             los afectos y desde los sentidos fueron ocurriendo en nosotrxs y en
             cada unx de nosotrxs de diversas maneras.
           </p>
-          <p className="parrafo" style={{ fontSize: "1.3rem", lineHeight: "2rem", opacity: "0.9", maxWidth: "650px"}}>
+          <p className="parrafo" style={{textAlign: "justify"}}>
             Los tres gestos
             creativos-pedagógicos que presentamos a continuación
             (descentramientos, ballena-trueno y resistir) no pretenden describir
