@@ -31,7 +31,7 @@ const HomeScreen = () => {
   return (
     <>
       <div id="home-background" style={background[homeIndexPalette]} />
-      <div id="home-logo-container">
+      <div id="home-logo-container" style={{ padding: "3rem 1rem"}}>
         <img src={logo} alt="logo" id="home-logo" />
         <div className='home-logo-text mt-5' style={{ textAlign: "left" }}>
           <p className='parrafo underline' style={{ mixBlendMode: theme.palette.background.mixBlendMode, "--underline-color": theme.palette.background.default, "--underline-text-color": theme.palette.text.primary }}>
