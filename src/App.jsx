@@ -14,6 +14,7 @@ import CrecienteScreen from "./screens/CrecienteScreen";
 import CreditosScreen from "./screens/CreditosScreen";
 import Descentrar from "./screens/PedagogiesScreen/descentrar/Descentrar";
 import Resistir from "./screens/PedagogiesScreen/resistir/Resistir";
+import ProximamaneteScreen from "./screens/ProximamenteScreen";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
             <Route path="/desahogo" element={<DesahogoScreen />} />
             <Route path="/creciente" element={<CrecienteScreen />} />
             <Route path="/credits" element={<CreditosScreen />} />
+
+            <Route path="/mapa-colombia" element={<ProximamaneteScreen />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
