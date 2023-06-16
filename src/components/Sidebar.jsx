@@ -70,7 +70,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
 
     /* Color/shape of burger icon bars on hover*/
     '& .bm-burger-bars-hover': {
-        background: theme.palette.primary.dark
+        background: theme.palette.primary.light
     },
 
     /* Position and sizing of clickable cross button */
@@ -161,10 +161,10 @@ const MenuWrapper = styled('div')(({ theme }) => ({
     },
     
     '& .bm-item p:hover, .bm-item a:hover': {
-        color: "#000000",
+        color: "#fff",
     },
     '& a.bm-item:hover': {
-        color: "#000000",
+        color: "#fff",
     },
 
 }));
@@ -196,6 +196,29 @@ export default props => {
         <MenuWrapper ref={ref}>
             <Menu {...props} isOpen={open} onOpen={handleOnOpen} onClose={handleOnClose}>
                 <hr className="separator" />
+                
+                <Accordion>
+                    <AccordionSummary
+                        aria-controls="panel1a-content"
+                        id="panel1a-header"
+                    >
+                        <Typography sx={{
+                            fontSize: '26px',
+                            fontWeight: 900,
+                            display: "inline-block",
+                            textAlign: "left",
+                            textDecoration: "none",
+                            transition: "color 0.2s",
+                        }} my={0}>NP <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2023</span></Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography onClick={() => (handleOnClose(), navigate("/blog"))}>Blog</Typography>
+                        <Typography onClick={() => (handleOnClose(), navigate("/mapa-colombia"))}>Mapa</Typography>
+                    </AccordionDetails>
+                </Accordion>
+
+                <hr className="separator" />
+
                 <Accordion>
                     <AccordionSummary
                         aria-controls="panel1a-content"
@@ -219,6 +242,10 @@ export default props => {
                 </Accordion>
 
 
+                <hr className="separator" />
+                <Link className="menu-item" to="/np" onClick={handleOnClose}>
+                    NP-2 <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2022-1</span>
+                </Link >
                 <hr className="separator" />
                 <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
                     Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2021</span>
