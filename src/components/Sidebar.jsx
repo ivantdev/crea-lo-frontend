@@ -6,6 +6,7 @@ import MuiAccordion from '@mui/material/Accordion';
 import MuiAccordionSummary from '@mui/material/AccordionSummary';
 import MuiAccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
+import LaunchIcon from '@mui/icons-material/Launch';
 import { useNavigate } from 'react-router-dom';
 import InstagramSvg from '../assets/icons/bxl-instagram.svg.svg'
 import FacebookSvg from '../assets/icons/bxl-facebook-circle.svg.svg'
@@ -116,6 +117,7 @@ const MenuWrapper = styled('div')(({ theme }) => ({
         fontSize: "1.15em",
         height: "auto !important",
         borderRadius: "5px",
+        maxHeight: "calc(100vh - 40px)",
     },
 
     /* Morph shape necessary with bubble or elastic */
@@ -191,6 +193,10 @@ export default props => {
         setOpen(true);
     }
 
+    const openWindow = (url) => {
+        window.open(url, '_blank');
+    }
+
 
     return (
         <MenuWrapper ref={ref}>
@@ -209,10 +215,10 @@ export default props => {
                             textAlign: "left",
                             textDecoration: "none",
                             transition: "color 0.2s",
-                        }} my={0}>NP <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2023</span></Typography>
+                        }} my={0}>En curso <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2023</span></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
-                        <Typography onClick={() => (handleOnClose(), navigate("/blog"))}>Blog</Typography>
+                        <Typography onClick={() => (openWindow("https://crealoun.wordpress.com/"))}>Blog <LaunchIcon fontSize="0.7rem" /></Typography>
                         <Typography onClick={() => (handleOnClose(), navigate("/mapa-colombia"))}>Mapa</Typography>
                     </AccordionDetails>
                 </Accordion>

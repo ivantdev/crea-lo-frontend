@@ -97,7 +97,8 @@ const getDesignTokens = (mode, location, homeIndex) => {
             },
             background: {
                 default:mode === 'light' ? '#CBD8DF' : '#CBD8DF',
-                paper: location === '/desahogo' ? "#00E6E6"
+                paper: location === '/desahogo' ? "#710000"
+                        : location === '/creciente' ? '#00204A'
                         : mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 image: location === '/fragments' ? undefined
                         : {
@@ -115,6 +116,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
                 : location === '/pedagogies' ? '#ffffff' 
                 : location === '/atlas' ? '#298073'
                 : location === '/desahogo' ? '#D90404'
+                : location === '/creciente' ? '#034AA6'
                 : '#298073',
             }
         },

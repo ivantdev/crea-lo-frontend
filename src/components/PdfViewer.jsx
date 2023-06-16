@@ -95,7 +95,7 @@ const PdfViewer = ({ file }) => {
         handleResize();
     }, []);
     return (
-        <Container ref={ContainerRef} style={{ width: "100%", padding: "0", minHeight: "65vh", margin: "0 auto", }}>
+        <Container ref={ContainerRef} style={{ width: "100%", padding: "0", minHeight: "min(65vh, 800px)", margin: "0 auto", }}>
             <PdfHeader>
                 <PrevPageButton onClick={handlePrevPage}>
                     {"Ant."}

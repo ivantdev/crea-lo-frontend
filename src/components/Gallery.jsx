@@ -40,11 +40,42 @@ const GalleryWrapper = styled("div")({
   },
   "@media (min-width: 600px)": {
     gridTemplateColumns: "1fr min(200px, 20%)",
-    gridAutoRows: "150px",
+    gridAutoRows: "180px",
     "& > .gallery-child:first-of-type": {
       gridColumn: "unset",
     },
   },
+});
+
+const NextButton = styled("button")({
+  position: "absolute",
+  zIndex: "1",
+  top: "40%",
+  right: "10px",
+  transform: "translateY(-50%)",
+  width: "2rem",
+  height: "2rem",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  border: "none",
+  outline: "none",
+  color: "#000000",
+  backgroundColor: "#FFFFFF",
+  opacity: "0.85",
+  borderRadius: "50%",
+  cursor: "pointer",
+  transition: "opacity 0.3s",
+  "&:disabled": {
+    opacity: "0.5",
+    cursor: "unset",
+  },
+  "&:hover": {
+    opacity: "1",
+  },
+  "@media (min-width: 600px)": {
+    visibility: "hidden",
+  }
 });
 
 const PreviousButton = styled("button")({
@@ -163,6 +194,9 @@ const Gallery = ({ imageUrls, styles = {} }) => {
       <PreviousButton onClick={handlePrevImage} >
         <ArrowBackIosNewIcon style={{ width: "1rem" }} />
       </PreviousButton>
+      <NextButton onClick={handleNextImage} >
+          <ArrowBackIosNewIcon style={{ width: "1rem", transform: "rotate(180deg)" }} />
+      </NextButton>
     </GalleryWrapper>
   );
 };
