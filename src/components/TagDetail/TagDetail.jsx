@@ -118,6 +118,10 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         }, 200);
     })
 
+    useCustomEventListener('closeAllDialog', (e) => {
+        setIsOpen(false)
+    })
+
 
     const buttonStyles = {
         color: theme.palette.background.default,
@@ -161,7 +165,7 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
 
     return (
         <Html as='div' >
-            <Dialog open={isOpen} maxWidth="auto" sx={{ maxHeight: "auto", position: 'relative' }} hideBackdrop>
+            <Dialog open={isOpen} maxWidth="auto" sx={{ height: "100vh", position: 'relative' }} hideBackdrop>
                 {closeButton}
                 <Grid container justifyContent="center" alignItems="center" sx={{ backgroundColor: "#E9EFF2" }} paddingTop={4}>
                     <Grid item xs sx={{ display: "flex", justifyContent: "flex-end", alignItems: "center", position: "relative", top: "7px" }}>

@@ -13,7 +13,7 @@ function Word({ children, ...props }) {
     const [openModal, setOpenModal] = useState(false)
     const over = (e) => (e.stopPropagation(), setHovered(true))
     const out = () => setHovered(false)
-    const click = (e) => (e.stopPropagation(), setOpenModal(true), emitCustomEvent('openDialog'))
+    const click = (e) => (emitCustomEvent('closeAllDialog'), e.stopPropagation(), setOpenModal(true), emitCustomEvent('openDialog'))
     // Change the mouse cursor on hover
     useEffect(() => {
         if (hovered) document.body.style.cursor = 'pointer'
