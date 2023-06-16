@@ -22,10 +22,70 @@ const Container = styled("div")(({ theme }) => ({
 const DesahogoScreen = () => {
   const theme = useTheme();
 
-  const integrantes_2022_1 = [
+  const integrantes_2021_1 = [
+    "Valentina Lozano Sánchez",
+    "Martin Gabriel Castaño Hincapié",
+    "Sofía Sabina Yandar Sabogal",
+    "Damián René Rivera Ortiz",
+    "Lauren Jasury Micolta Gallego",
+    "William Camilo Castro Ciendua",
+    "Paola Andrea Aguirre Bravo",
+    "Sara Nicol Álvarez Rojas",
+    "Santiago Sarmiento Mora",
+    "César Luis Cerquera Montealegre",
+    "María Alejandra Ruiz Hernández",
+    "Laura Juliana Gáfaro Ortíz",
+    "Phoebe Mariana Lara Reina",
+    "María de los Ángeles León Moreno",
+    "Carol Marcela Turriago Valbuena",
+    "Gabriela Isabel Rico Ortega",
+    "Jefferson David Rocha Contreras",
+    "Greissy Gutiérrez Ortiz",
+    "Angie Lorena Pardo Rodríguez",
+    "José David García Castañeda",
+    "Juan Sebastián Guerrero González",
+    "Jhoan Andrés Ortiz Castillo",
+    "Jessica Alexandra Santos Contreras",
+    "Erick Santiago Díaz Bueno",
+    "Nicolás Alberto Ramírez Clavijo",
+    "Xuamy Sandrid Jamany Ariza Arciniegas",
+    "Daniela Parra Campos Iliana",
+    "Pastorany Martínez Guio",
+    "Estefanny Alejandra Martínez Montaño",
+    "Juan Esteban Bastidas Saavedr",
+    "Dayanna Lizeth Arteaga Segovia",
+    "Yiyi Alejandra López Torres",
+    "Daniela Alexandra Morales Rojas",
+    "Cristian Estiben Dulcey Zamudio",
+    "José Francisco Álvarez Morales",
+    "Deiby Mateo Trillos Vega",
+    "Óscar Rafael Torres Rosas",
+    "Daniela Valentina Afanador Jaimes",
+    "Miguel Ángel Pascuas Cely",
+    "Juliana Pasuy Jojoa",
+    "Jenaro Larios Carvajal",
+    "Melany Gipsy Moreno González",
+    "Miguel Ángel Mahecha Zamora",
+    "María Carolina Sarmiento-pérez Tapia",
+    "Andrés Felipe Lara López",
+    "Anamaría Rodríguez Ramírez",
+    "Johan Rodríguez Meneses",
   ];
 
-  const integrantes_2022_3 = [
+  const integrantes_2021_3 = [
+    "Paula Johanna Rodríguez Badillo",
+    "Erika Paola Cely Cruz",
+    "Dahiana Vanessa Rocha Rodríguez",
+    "Sofía Jaime Pacheco",
+    "Jorge Esteban Guerrero Polo",
+    "William Felipe Rodríguez Castañeda",
+    "Jose Daniel Solano Galvis",
+    "Cristian David Gómez Gómez",
+    "Brian Sneider Gutiérrez Valderrama",
+    "Laura Vanessa Macias Jara",
+    "Vielka Valentina Rodríguez Jaimes",
+    "David Fernando Quinche Rodríguez",
+    "Karol Ximena Espitia Montaño",
   ];
 
   const styleTypography = {
@@ -47,14 +107,15 @@ const DesahogoScreen = () => {
         <Container style={{ maxWidth: "1000px", margin: "0 auto", padding: "4rem 2rem" }}>
           <Typography variant="h3" sx={{fontWeight: "600"}}>Desahogo</Typography>
           <Container   style={{
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
               padding: "0",
+              marginTop: "2rem",
             }}>
-              <p className="parrafo">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Impedit, vero soluta deserunt animi hic eos consequuntur quae maiores magni consectetur quod dolor tempore quasi dolorum non beatae unde reprehenderit nihil? Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate sit laboriosam libero, nisi voluptatum dolorem iure ratione at ipsum perspiciatis incidunt architecto quasi, quia, voluptates saepe iusto necessitatibus et nesciunt.
-              </p>
+            <Typography variant="body" paragraph={true} >
+              {`“Nuestra lengua está viva y se multiplica”`}
+            </Typography>
+            <Typography variant="body" paragraph={true}>
+              {`Aquí encontrarás las memorias que nacieron en el marco del laboratorio de edición  del proyecto «Crea-lo: otros mundos posibles en la UN» 2021. Donde estudiantes y acompañantes pedagógicos se encontraron para entretejer voces, sentires y aprendizajes. “Te invitamos a ser parte activa de esta red desde la escucha, la resonancia, el encuentro y la activación, de otros modos de relacionamiento multiespecies, para este y otros tiempos.”`}
+            </Typography>
           </Container>
           <Container
             style={{
@@ -67,16 +128,16 @@ const DesahogoScreen = () => {
 
             <Gallery imageUrls=
               {[
-                "https://picsum.photos/seed/picsum/2500/1667/",
-                "https://picsum.photos/seed/1/2500/1667/",
-                "https://picsum.photos/seed/2/2500/1667/",
-                "https://picsum.photos/seed/3/2500/1667/",
-                "https://picsum.photos/seed/4/2500/1667/",
-                "https://picsum.photos/seed/5/2500/1667/",
-                "https://picsum.photos/seed/6/2500/1667/",
-                "https://picsum.photos/seed/7/2500/1667/",
-                "https://picsum.photos/seed/8/2500/1667/",
-                "https://picsum.photos/seed/9/2500/1667/",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869550/bocanadas_de_aire_corregido_01_a850b448ec.png",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869549/Edit_18_c29badae13.jpg",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869547/Cartel_Crea_lo_2021_1_4c3ae6c2b1.png",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869538/cartografia_crea_lo_02_a6a1b1a46f.png",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869538/Desdibujar_947d7c1a2c.png",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869537/Radio_Resistencia_2dce222c59.png",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869533/Edit_9_94fc3cbde2.jpg",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869533/Edit_21_c2be79eff7.jpg",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869533/Edit_2_61c17371ff.jpg",
+                "https://res.cloudinary.com/crea-lo/image/upload/v1686869532/Edit_20_f14be1c4ca.jpg",
               ]}
               styles={{ margin: "2rem 0" }}
             />
@@ -99,31 +160,27 @@ const DesahogoScreen = () => {
         >
           <Container
             style={{
-              maxWidth: "1000px",
+              width: "100%",
+              maxWidth: "1200px",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              padding: "0",
+              padding: "2rem 4rem",
               flexDirection: "column",
               color: "#A3C9D9",
             }}
           >
-            <Typography variant="h4" sx={{...styleTypography}}>
-              Créditos
+            <Typography variant="h4" sx={{...styleTypography, marginBottom: "0"}}>
+              Participantes
             </Typography>
-            <div className="creditos-screen ml-15" style={{ maxWidth: "1200px", textAlign: "left"}}>
-              <header className="mt-3">
-                <h2 className="m-0">MEMORIAS</h2>
-                <h3 className="m-0">Proyecto:</h3>
-              </header>
-
+            <div className="creditos-screen" style={{ maxWidth: "1200px", textAlign: "left", marginLeft: "0", width: "100%",}}>
               <div className="description mt-3">
                 <p style={{ fontSize: "1.2em"}}><span className="bold">CREA-LO</span> OTROS MUNDOS POSIBLES EN LA UNAL </p>
                 <p>Laboratorios, talleres y experiencias para el activismo cultural universitario.</p>
-                <p>2022</p>
+                <p>2021</p>
               </div>
 
-              <div className="grid-2 grid-end gap-2">
+              <div className="grid-2 grid-end gap-2" style={{alignItems: "start"}}>
                 <div>
                   <div className="parrafo bold">
                     <p>Universidad Nacional de Colombia</p>
@@ -150,100 +207,71 @@ const DesahogoScreen = () => {
                   </div>
                   <div className="parrafo">
                     <p className="bold">Acompañamiento sensible</p>
-                    <p>Rafael Duarte Uriza</p>
-                    <p>María Natscheilly Torres</p>
                     <p>Natalia Orozco Lucena</p>
                     <p>Mateo Mejía Mejía</p>
                   </div>
                   <div className="parrafo">
-                    <p className="bold">Diseño visual</p>
-                    <p>Martin Gabriel Castaño Hincapié - Martirio</p>
+                    <p className="bold">Acompañamiento y producción sonora</p>
+                    <p>Sebastián Laura Wiesner</p>
+                  </div>
+                  <div className="parrafo">
+                    <p className="bold">Profesores invitados del proyecto</p>
+                    <p>Emilio Carrera Quiroga</p>
+                    <p>Rafael Duarte Uriza</p>
+                    <p>Felipe León</p>
                   </div>
                   <div className="parrafo">
                     <p className="bold">Estudiantes asistentes del proyecto</p>
-                    <p>Sofía Jaime Pacheco</p>
-                    <p>José David Castañeda García</p>
                     <p>Lina Constanza Mejía Ramírez</p>
+                    <p>Diego Fernando Díaz Daza</p>
+                    <p>Diana Lorena Cuervo Piñeros</p>
                   </div>
                   <div className="parrafo">
-                    <p className="bold">Mediación pedagógica y cultural</p>
-                    <p>Bibiana Carvajal Bernal</p>
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Estudiantes asistentes de mediación pedagógica y cultural</p>
-                    <p>William Felipe Rodríguez Castañeda</p>
-                    <p>Santiago Sarmiento Mora</p>
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Coordinación y conceptualización editorial</p>
-                    <p>Guadalupe Errázuriz</p>
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Diseño y desarrollo web</p>
-                    <p>Erick Santiago Díaz Bueno</p>
-                    <p>Sebastián Castañeda García</p>
-                    {/* <p>Nelson Ivan Castellanos Betancourt</p> */}
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Diagramación y diseño gráfico </p>
-                    <p>Juan Mojica — Publicaciones La Sorda</p>
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Profesoras y profesores invitados</p>
-                    <p>Angie Andrea Rodríguez — Rosil</p>
-                    <p>María Fernanda Vanegas</p>
-                    <p>José Francisco Álvarez Morales</p>
-                    <p>Wiñay Mallky — Fredy Chikangana</p>
-                    <p>Adalid R. Rodríguez</p>
-                    <p>Danna Luz Ordóñez Arias</p>
-                    <p>Andrés Forero -HEREJE-</p>
-                    <p>Alexander Caicedo -W4CO-</p>
-                  </div>
-                  <div className="parrafo">
-                    <p className="bold">Comité editorial</p>
-                    <p>Sofía Jaime Pacheco</p>
+                    <p className="bold">Laboratorio Editorial</p>
+                    <p>Antonia Lagos Arévalo</p>
+                    <p>Damián René Rivera Ortiz</p>
                     <p>José David García Castañeda</p>
+                    <p>José Francisco Álvarez Morales</p>
                     <p>Lina Constanza Mejía Ramírez</p>
+                    <p>María Carolina Sarmiento-pérez Tapia</p>
+                    <p>María de los Ángeles León Moreno</p>
                     <p>Martín Gabriel Castaño Hincapié</p>
+                    <p>Óscar Rafael Torres Rosas</p>
+                    <p>Sebastián Ramírez Monsalve</p>
+                    <p>Yiyi Alejandra López Torres</p>
                     <p>Diego García Bernal</p>
-                    <p>Mateo Mejía Mejía</p>
-                    <p>Guadalupe Errázuriz</p>
-                    <p>María Natscheilly Torres</p>
-                    <p>Rafael Duarte Uriza</p>
-                    <p>Juan Mojica — Publicaciones La Sorda</p>
+                    <p>Juan Mojica P</p>
                   </div>
                 </div>
                 <div>
                   <div className="parrafo">
-                    <p className="bold">Integrantes laboratorios 2022-1</p>
+                    <p className="bold">Integrantes laboratorios 2021-1</p>
                     {
-                      integrantes_2022_1.map((integrante, index) => (
+                      integrantes_2021_1.map((integrante, index) => (
+                        <p key={index}>{integrante}</p>
+                      ))
+                    }
+                  <div className="parrafo">
+                    <p className="bold">Integrantes laboratorios 2021-3</p>
+                    {
+                      integrantes_2021_3.map((integrante, index) => (
                         <p key={index}>{integrante}</p>
                       ))
                     }
                   </div>
-                  <div className="parrafo">
-                    <p className="bold">Integrantes laboratorios 2022-3</p>
-                    {
-                      integrantes_2022_3.map((integrante, index) => (
-                        <p key={index}>{integrante}</p>
-                      ))
-                    }
-                  </div>
-                  <div className="parrafo">
-                    <p>Agradecimientos</p>
-                  </div>
-                  <div className="parrafo">
-                    <p>Escuela de Artes - UNAL Bogotá</p>
-                    <p>Sofía Mejía Arias, Maestría Interdisciplinaria en Teatro y Artes Vivas —MITAV UNAL</p>
                   </div>
                 </div>
               </div>
             </div>
           </Container>
         </Container>
-          <Container className="credits-generic" style={{ padding: "2rem 4rem", color: "#A3C9D9"}}>
-            <div className="creditos-screen ml-15" style={{ maxWidth: "1200px"}}>
+          <Container className="credits-generic" style={{
+            padding: "2rem 4rem",
+            color: "#A3C9D9",
+            display: "flex",
+            justifyContent: "center",
+          }}>
+            <div className="creditos-screen" style={{ maxWidth: "1200px", textAlign: "left", marginLeft: "0"}}>
               <div className="grid-2 gap-2">
                 <div>
                   <div className="parrafo">
