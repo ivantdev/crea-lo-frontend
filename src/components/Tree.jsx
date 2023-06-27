@@ -67,6 +67,8 @@ const DialogContent = styled(MuiDialogContent)(({ theme }) => ({
 
 const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
+    const STATIC = import.meta.env.VITE_STATIC
+
     const [isOpen, setOpen] = useState(defaultOpen)
     const [modalOpen, setModalOpen] = useState(false)
     const previous = usePrevious(isOpen)
@@ -240,9 +242,12 @@ const Tree = (({ currentNode, treeData, style, defaultOpen = false }) => {
 
             />
             <Title style={style}>{currentNode.attributes.name}</Title>
-            <IconButton size="small" color="primary" aria-label="edit" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
-                <EditIcon style={{ fill: theme.palette.text.primary }} />
-            </IconButton>
+            {
+                STATIC !== "1" &&
+                <IconButton size="small" color="primary" aria-label="edit" component="span" style={{ marginLeft: "10px" }} onClick={toggleModalOpen}>
+                    <EditIcon style={{ fill: theme.palette.text.primary }} />
+                </IconButton>
+            }
             <Content
                 style={{
                     opacity,

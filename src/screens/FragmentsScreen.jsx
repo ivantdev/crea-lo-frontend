@@ -56,9 +56,12 @@ const FragmentsScreen = () => {
                     >
                     Glosario Crealo
                 </h1>
-                <p className='parrafo' style={{ fontSize: "1.2rem", fontWeight: "500"}}>
-                    Aquí puedes añadir algún concepto o definición que quieras, sólo haz clic en el lápiz y allí podrás editar.
-                </p>
+                {
+                    STATIC !== "1" &&
+                    <p className='parrafo' style={{ fontSize: "1.2rem", fontWeight: "500"}}>
+                        Aquí puedes añadir algún concepto o definición que quieras, sólo haz clic en el lápiz y allí podrás editar.
+                    </p>
+                }
                 {!loading && <Tree treeData={conceptMap} defaultOpen={true} currentNode={data.concepts.data.find(concept => concept.attributes.name == 'Fragmentos')} />}
             </Container>
         </>
