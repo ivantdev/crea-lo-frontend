@@ -8,6 +8,7 @@ import home_2 from "../assets/images/Home 2.jpg"
 import home_3 from "../assets/images/Home 3.jpg"
 import home_4 from "../assets/images/Home 4.jpg"
 import home_5 from "../assets/images/Home 5.jpg"
+import FooterLogos from '../components/FooterLogos'
 
 
 const HomeScreen = () => {
@@ -44,6 +45,7 @@ const HomeScreen = () => {
           </p>
         </div>
       </div>
+      <FooterLogos isHome={true} />
     </>
   )
 }

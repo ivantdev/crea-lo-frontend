@@ -55,7 +55,7 @@ const PrevPageButton = styled("button")(({ theme }) => ({
     backgroundColor: theme.palette.text.primary,
 }));
 
-const PdfViewer = ({ file }) => {
+const PdfViewer = ({ file, doublePage = true }) => {
     const [numPages, setNumPages] = useState(null);
     const [pageNumber, setPageNumber] = useState(1);
     const ContainerRef = useRef(null);
@@ -116,9 +116,9 @@ const PdfViewer = ({ file }) => {
                 file={file}
                 onItemClick={onItemClick}
             >
-                <Page className="pdf-page" pageNumber={pageNumber} width={widthDefault > 800 ? widthDefault/2 : widthDefault} />
+                <Page className="pdf-page" pageNumber={pageNumber} width={ doublePage && widthDefault > 800 ? widthDefault/2 : widthDefault} />
                 {
-                    widthDefault > 800 && <Page className="pdf-page" pageNumber={pageNumber + 1} width={widthDefault/2} />
+                    ( doublePage &&  widthDefault > 800) && <Page className="pdf-page" pageNumber={pageNumber + 1} width={widthDefault/2} />
                 }
             </Document>
         </Container>

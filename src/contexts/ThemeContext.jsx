@@ -99,6 +99,7 @@ const getDesignTokens = (mode, location, homeIndex) => {
                 default:mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 paper: location === '/desahogo' ? "#710000"
                         : location === '/creciente' ? '#00204A'
+                        : location === "/memorias" ? '#244f3b'
                         : mode === 'light' ? '#CBD8DF' : '#CBD8DF',
                 image: location === '/fragments' ? undefined
                         : {

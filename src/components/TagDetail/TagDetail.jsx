@@ -14,6 +14,7 @@ import KeyboardDoubleArrowLeftIcon from '@mui/icons-material/KeyboardDoubleArrow
 import KeyboardDoubleArrowRightIcon from '@mui/icons-material/KeyboardDoubleArrowRight';
 import { emitCustomEvent, useCustomEventListener } from 'react-custom-events'
 import * as THREE from 'three'
+import { useStaticFetch } from '../../hooks/useStaticFetch'
 
 const Container = styled('div')(({ theme }) => ({
     width: "clamp(300px, 80vw, 800px)",
@@ -41,7 +42,8 @@ const Section = styled('section')(({ theme }) => ({
 }))
 
 const TagDetail = ({ isOpen, setIsOpen, tag }) => {
-    const { loading, error, data } = useQuery(GET_TAG, {
+    const STATIC = import.meta.env.VITE_STATIC
+    const { loading, error, data } = STATIC === "1" ? useStaticFetch(`/api/tags/${tag}.json`) : useQuery(GET_TAG, {
         variables: {
             id: tag
         }
@@ -64,8 +66,10 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
         if (!data) return []
         if (!data.tag.data) return []
         return data.tag.data.attributes.images.data.map(image => {
-            return image.attributes.file.data[0].attributes.url
-        })
+            return image.attributes.file.data.map(file => {
+                return file.attributes.url
+        })}).flat()
+
     }, [data])
 
     const videos = useMemo(() => {
@@ -121,6 +125,10 @@ const TagDetail = ({ isOpen, setIsOpen, tag }) => {
     useCustomEventListener('closeAllDialog', (e) => {
         setIsOpen(false)
     })
+
+    if (isOpen) {
+      console.log(tag)
+    }
 
 
     const buttonStyles = {

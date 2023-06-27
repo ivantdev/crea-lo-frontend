@@ -7,8 +7,7 @@ import PdfViewer from "../components/PdfViewer";
 import pdfDesahogo from "../assets/pdfs/Desahogo-21-11-22-bajaWebpages.pdf";
 import desahogo_background from "../assets/images/desahogo_background.jpg";
 import "../css/DesahogoScreen.css"
-import logo_crealo from "../assets/Crealo logo png 1.png";
-import escudo from "../assets/escudo.png";
+import FooterLogos from "../components/FooterLogos";
 
 const Container = styled("div")(({ theme }) => ({
   position: "relative",
@@ -298,16 +297,9 @@ const DesahogoScreen = () => {
                   </div>
                 </div>
               </div>
-              <div className="grid-2 gap-2 mt-3">
-                <div className="center">
-                  <img src={logo_crealo} alt="Logo Crea-lo" />
-                </div>
-                <div className="ml-3">
-                  <img src={escudo} alt="Escudo Univrsidad Nacional de Colombia" />
-                </div>
-              </div>
             </div>
           </Container>
+          <FooterLogos />
       </Container>
   );
 };

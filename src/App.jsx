@@ -14,6 +14,7 @@ import CrecienteScreen from "./screens/CrecienteScreen";
 import CreditosScreen from "./screens/CreditosScreen";
 import Descentrar from "./screens/PedagogiesScreen/descentrar/Descentrar";
 import Resistir from "./screens/PedagogiesScreen/resistir/Resistir";
+import MemoriasScreen from "./screens/MemoriasScreen";
 import ProximamaneteScreen from "./screens/ProximamenteScreen";
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
 
             <Route path="/desahogo" element={<DesahogoScreen />} />
             <Route path="/creciente" element={<CrecienteScreen />} />
+            <Route path="/memorias" element={<MemoriasScreen />} />
             <Route path="/credits" element={<CreditosScreen />} />
 
             <Route path="/mapa-colombia" element={<ProximamaneteScreen />} />

@@ -215,7 +215,7 @@ export default props => {
                             textAlign: "left",
                             textDecoration: "none",
                             transition: "color 0.2s",
-                        }} my={0}>En curso <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2023</span></Typography>
+                        }} my={0}>Lorem Ipsum <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2023</span></Typography>
                     </AccordionSummary>
                     <AccordionDetails>
                         <Typography onClick={() => (openWindow("https://crealoun.wordpress.com/"))}>Blog <LaunchIcon fontSize="0.7rem" /></Typography>
@@ -249,16 +249,16 @@ export default props => {
 
 
                 <hr className="separator" />
-                <Link className="menu-item" to="/np" onClick={handleOnClose}>
-                    NP-2 <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2022-1</span>
-                </Link >
-                <hr className="separator" />
                 <Link className="menu-item" to="/desahogo" onClick={handleOnClose}>
                     Desahogo <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2021</span>
                 </Link >
                 <hr className="separator" />
                 <Link className="menu-item" to="/creciente" onClick={handleOnClose}>
                     Creciente <span style={{ fontSize: "1rem", fontWeight: "bold", opacity: "0.8"}}>2020</span>
+                </Link >
+                <hr className="separator" />
+                <Link className="menu-item" to="/memorias" onClick={handleOnClose}>
+                    Memorias Crealo
                 </Link >
                 <hr className="separator" />
                 {/* svgs of social media with links */}

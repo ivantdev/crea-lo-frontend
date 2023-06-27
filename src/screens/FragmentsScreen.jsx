@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect } from 'react';
+import React, { useMemo, useEffect, useState } from 'react';
 import '../css/FragmentsScreen.css'
 import Tree from '../components/Tree';
 import { styled } from '@mui/system';
@@ -7,6 +7,7 @@ import ScrollContainer from 'react-indiana-drag-scroll'
 import { useDeviceDetect } from "../hooks/";
 import { useQuery } from '@apollo/client';
 import { GET_CONCEPTS } from '../graphql/queries/concept';
+import { useStaticFetch } from '../hooks/useStaticFetch'; 
 
 // necessary for react-spring and react-three-drei to work
 Globals.assign({
@@ -25,13 +26,10 @@ const Container = styled('div')(({ theme }) => ({
 }));
 
 const FragmentsScreen = () => {
-    const { loading, error, data } = useQuery(GET_CONCEPTS, {
+    const STATIC = import.meta.env.VITE_STATIC
+    const { loading, error, data } = STATIC === "1" ? useStaticFetch("/api/fragments/concepts.json") : useQuery(GET_CONCEPTS, {
         pollInterval: 500,
     });
-
-    if (error) {
-        alert("fetch data error: ", error)
-    }
 
     //create a hashmap of concept id to concept object
     const conceptMap = useMemo(() => {

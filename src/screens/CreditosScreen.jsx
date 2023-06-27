@@ -4,8 +4,7 @@ import { styled } from "@mui/system";
 import { useTheme } from "@mui/material/styles";
 import { useDeviceDetect } from "../hooks";
 
-import logo_crealo from "../assets/Crealo logo png 1.png";
-import escudo from "../assets/escudo.png";
+import FooterLogos from "../components/FooterLogos";
 import "../css/CreditsScreen.css";
 
 const Container = styled("div")(({ theme }) => ({
@@ -249,15 +248,8 @@ const CreditosScreen = () => {
               </div>
             </div>
           </div>
-          <div className="grid-2 gap-2 mt-3">
-            <div className="center">
-              <img src={logo_crealo} alt="Logo Crea-lo" />
-            </div>
-            <div className="ml-3">
-              <img src={escudo} alt="Escudo Univrsidad Nacional de Colombia" />
-            </div>
-          </div>
         </div>
+        <FooterLogos />
       </Container>
     </>
   );
