@@ -269,12 +269,12 @@ export default props => {
                     mixBlendMode: "difference",
                 }}>
                     <div>
-                        <a href="https://www.youtube.com/channel/UCY0YQZ0ZQZ1Z1Z1Z1Z1Z1Z1" target="_blank" rel="noreferrer">
+                        <a href="https://www.youtube.com/@DivisiondeCulturaUNBogota/featured" target="_blank" rel="noreferrer">
                             <img src={YoutubeSvg} alt="youtube" />
                         </a>
                     </div>
                     <div>
-                        <a href="https://www.instagram.com/creciente.mx/" target="_blank" rel="noreferrer">
+                        <a href="https://instagram.com/culturaunalbog" target="_blank" rel="noreferrer">
                             <img src={InstagramSvg} alt="instagram" />
                         </a>
                     </div>
